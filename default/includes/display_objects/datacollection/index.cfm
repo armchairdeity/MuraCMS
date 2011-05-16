@@ -121,7 +121,7 @@ to your own modified versions of Mura CMS.
 	<cfinclude template="dsp_response.cfm">
 	<cfelse>
 	<cfset addToHTMLHeadQueue("htmlEditor.cfm")>
-	#setDynamicContent(application.dataCollectionManager.renderForm(rsForm.contentid,request.siteid,rsForm.body,rsForm.responseChart, $.content('contentID')))#
+	#setDynamicContent(application.dataCollectionManager.renderForm(rsForm.contentid,request.siteid,request.currentFileName,request.contentID,rsForm.body,rsForm.responseChart, $.content('contentID')))#
 	<script type="text/javascript">
 	setHTMLEditors(200,500);
 	</script>

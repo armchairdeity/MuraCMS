@@ -6,23 +6,23 @@ the Free Software Foundation, Version 2 of the License.
 
 Mura CMS is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. ï¿½See the
 GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
-along with Mura CMS.  If not, see <http://www.gnu.org/licenses/>.
+along with Mura CMS. ï¿½If not, see <http://www.gnu.org/licenses/>.
 
 Linking Mura CMS statically or dynamically with other modules constitutes
 the preparation of a derivative work based on Mura CMS. Thus, the terms and 	
-conditions of the GNU General Public License version 2 (“GPL”) cover the entire combined work.
+conditions of the GNU General Public License version 2 (ï¿½GPLï¿½) cover the entire combined work.
 
 However, as a special exception, the copyright holders of Mura CMS grant you permission
 to combine Mura CMS with programs or libraries that are released under the GNU Lesser General Public License version 2.1.
 
-In addition, as a special exception,  the copyright holders of Mura CMS grant you permission
-to combine Mura CMS  with independent software modules that communicate with Mura CMS solely
+In addition, as a special exception, ï¿½the copyright holders of Mura CMS grant you permission
+to combine Mura CMS ï¿½with independent software modules that communicate with Mura CMS solely
 through modules packaged as Mura CMS plugins and deployed through the Mura CMS plugin installation API,
-provided that these modules (a) may only modify the  /trunk/www/plugins/ directory through the Mura CMS
+provided that these modules (a) may only modify the ï¿½/trunk/www/plugins/ directory through the Mura CMS
 plugin installation API, (b) must not alter any default objects in the Mura CMS database
 and (c) must not alter any files in the following directories except in cases where the code contains
 a separately distributed license.
@@ -37,7 +37,7 @@ the source code of that other code when and as the GNU GPL requires distribution
 
 For clarity, if you create a modified version of Mura CMS, you are not obligated to grant this special exception
 for your modified version; it is your choice whether to do so, or to make such modified version available under
-the GNU General Public License version 2  without this exception.  You may, if you choose, apply this exception
+the GNU General Public License version 2 ï¿½without this exception. ï¿½You may, if you choose, apply this exception
 to your own modified versions of Mura CMS.
 --->
 <cfcomponent extends="mura.cfobject" output="false">
@@ -72,6 +72,8 @@ to your own modified versions of Mura CMS.
 	<cfset var thefield = "" />
 	<cfset var f = "" />
 	<cfset var theXml = "" />
+	<cfset var HostContentID=data.currentContentID>
+	<cfset var HostFileName=data.currentFileName>
 	
 	<cfparam name="info.fieldnames" default=""/>
 	
@@ -137,19 +139,30 @@ to your own modified versions of Mura CMS.
 	
 	
 	<cfif not StructIsEmpty(info)>
+		
+		<!--- strip content link failsafe from the form data --->
+		<cfif structKeyExists(info,"HostContentID")>
+			<cfset structDelete(info,"HostContentID")>
+		</cfif>
+		<cfif structKeyExists(info,"HostFileName")>
+			<cfset structDelete(info,"HostFileName")>
+		</cfif>
 	
 		<cfwddx action="cfml2wddx" input="#info#" output="theXml">
 		
-			<cfquery datasource="#variables.dsn#"  username="#variables.configBean.getDBUsername()#" password="#variables.configBean.getDBPassword()#">
-				insert into tformresponsepackets (responseid,formid,siteid,entered,Data,fieldlist)
-				values(
-				<cfqueryparam cfsqltype="cf_sql_varchar" value="#responseID#"/>,
-				<cfqueryparam cfsqltype="cf_sql_varchar" value="#formID#"/>,
-				<cfqueryparam cfsqltype="cf_sql_varchar" value="#siteID#"/>,
-				#createodbcdatetime(entered)#,
-				<cfqueryparam cfsqltype="cf_sql_longvarchar" value="#theXML#">,
-				<cfqueryparam cfsqltype="cf_sql_varchar" value="#info.fieldnames#">)
-			</cfquery>
+		<cfquery datasource="#variables.dsn#"  username="#variables.configBean.getDBUsername()#" password="#variables.configBean.getDBPassword()#">
+			insert into tformresponsepackets (responseid,formid,siteid,entered,Data,fieldlist,HostContentID,HostFilename)
+			values(
+			<cfqueryparam cfsqltype="cf_sql_varchar" value="#responseID#"/>,
+			<cfqueryparam cfsqltype="cf_sql_varchar" value="#formID#"/>,
+			<cfqueryparam cfsqltype="cf_sql_varchar" value="#siteID#"/>,
+			#createodbcdatetime(entered)#,
+			<cfqueryparam cfsqltype="cf_sql_longvarchar" value="#theXML#">,
+			<cfqueryparam cfsqltype="cf_sql_varchar" value="#info.fieldnames#">,
+			<cfqueryparam cfsqltype="cf_sql_varchar" value="#HostContentID#">,
+			<cfqueryparam cfsqltype="cf_sql_varchar" value="#HostFileName#">
+			)
+		</cfquery>
 	
 		</cfif>
 	
@@ -262,6 +275,8 @@ order by tformresponsepackets.entered asc
 <cffunction name="renderForm" access="public" output="false" returntype="string">
 <cfargument name="formid" type="string">
 <cfargument name="siteid" type="string">
+<cfargument name="currentFileName" type="string">
+<cfargument name="currentContentID" type="string">
 <cfargument name="preBody" type="string">
 <cfargument name="responseChart" type="numeric" required="yes" default="0">
 <cfargument name="linkServID" type="string" required="yes" default="">
@@ -269,7 +284,7 @@ order by tformresponsepackets.entered asc
 <cfset var frm=""/>
 <cfset var finder=""/>
 <cfset var frmID="frm" & replace(arguments.formID,"-","","ALL") />
-<cfset var formHTML='<input type="hidden" name="siteid" value="#arguments.siteid#"><input type="hidden" name="formid" value="#arguments.formid#">'>
+<cfset var formHTML='<input type="hidden" name="siteid" value="#arguments.siteid#"><input type="hidden" name="formid" value="#arguments.formid#"><input type="hidden" name="hostFileName" value="#arguments.currentFileName#"><input type="hidden" name="hostFileName" value="#arguments.currentContentID#">'>
 <cfset var body=""/>
 
 <cfif len(arguments.linkServID)>
