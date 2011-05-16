@@ -390,6 +390,8 @@ CREATE TABLE [dbo].[tformresponsepackets] (
 	[FieldList] [nvarchar] (max) NULL ,
 	[Data] [nvarchar] (max) NULL ,
 	[Entered] [smalldatetime] NULL 
+	[HostContentID] [char] (255) NOT NULL ,
+	[HostFilename] [char] (255) NOT NULL
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
 

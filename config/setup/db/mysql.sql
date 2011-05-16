@@ -756,6 +756,8 @@ CREATE TABLE `tformresponsepackets` (
   `FieldList` longtext,
   `Data` longtext,
   `Entered` datetime default NULL,
+  `HostContentID` char(35) NOT NULL,
+  `HostFilename` char(255) NOT NULL,
   PRIMARY KEY  (`ResponseID`),
   KEY `IX_TFormResponsePackets` (`FormID`,`SiteID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
