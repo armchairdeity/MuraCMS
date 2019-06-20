@@ -277,8 +277,11 @@ version 2 without this exception.  You may, if you choose, apply this exception 
 							</cfif>
 						</div>
 						<div id="noBodyContainer" class="no-body-container mura-control-group" style="display:none;">
-							<div class="alert alert-info">
-									<p>This content type does not include a body.</p>
+							<div class="block">
+									<div class="help-block-empty">	
+									This content type does not include a body.
+									</div>
+								</div>	
 							</div>
 						</div>
 					</cfsavecontent>
