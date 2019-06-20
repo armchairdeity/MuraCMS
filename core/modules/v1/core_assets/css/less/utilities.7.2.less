@@ -56,55 +56,77 @@ li .cke_skin_mura {
     padding: 0 20px;
     box-sizing: border-box
 }
+
+.mura-object {
+		width: 100%;
+		box-sizing: border-box;
+		-moz-box-sizing: border-box;
+}
+
+.mura-column:last-child, .mura-object:last-child {
+		margin-right: 0;
+}
+/* Utilities
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+.mura-full-width {
+		width: 100%;
+		box-sizing: border-box;
+}
+.mura-max-full-width {
+		max-width: 100%;
+		box-sizing: border-box;
+}
+.mura-pull-right:not(.mura-expanded), .mura-right:not(.mura-expanded) {
+		float: right;
+		margin-left: auto;
+}
+.mura-pull-left:not(.mura-expanded), .mura-left:not(.mura-expanded) {
+		float: left;
+		margin-right: auto;
+}
+.mura-center {
+		margin: 0 auto;
+}
+
+/* Utilities
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+.mura-full-width {
+		width: 100%;
+		box-sizing: border-box;
+}
+.mura-max-full-width {
+		max-width: 100%;
+		box-sizing: border-box;
+}
+.mura-pull-right, .mura-right {
+		float: right;
+}
+.mura-pull-left, .mura-left {
+		float: left;
+}
+.mura-center {
+		margin: 0 auto;
+}
+.mura-center.mura-object {
+		float: none;
+}
+
 .mura-region-inherited, .mura-region-local {
-    width: 100%;
-    float: left;
-		position: relative;
+		width: 100%;
+		margin-right: 0;
+		display: block; //float: left;
 		box-sizing: border-box;
 
     box-sizing:border-box .svAsset+.mura-region .mura-region-local, .svAsset+.mura-region .mura-region-local {
         float: none;
     }
 
-    .mura-object {
-        width: 100%;
-        box-sizing: border-box;
-				-moz-box-sizing: border-box;
-        float: left;
-        display: block;
-    }
+		.mura-object {
+			float: left;
+			position: relative;
+		}
 
-    .mura-column:last-child, .mura-object:last-child {
-        margin-right: 0;
-    }
-    /* Utilities
-–––––––––––––––––––––––––––––––––––––––––––––––––– */
-    .mura-full-width {
-        width: 100%;
-        box-sizing: border-box;
-    }
-    .mura-max-full-width {
-        max-width: 100%;
-        box-sizing: border-box;
-    }
-    .mura-pull-right:not(.mura-expanded), .mura-right:not(.mura-expanded) {
-        float: right;
-        margin-left: auto;
-    }
-    .mura-pull-left:not(.mura-expanded), .mura-left:not(.mura-expanded) {
-        float: left;
-        margin-right: auto;
-    }
-    .mura-center {
-        margin: 0 auto;
-    }
 
-    .mura-region-local, .mura-region-inherited {
-        width: 100%;
-        margin-right: 0;
-        display: block; //float: left;
-        box-sizing: border-box;
-    }
     /* For devices larger than 400px */
     @media (min-width: 400px) {
         .mura-container {
@@ -142,7 +164,7 @@ li .cke_skin_mura {
 				.mura-two-thirds.mura-object              { width: 66.66%; }
 				.mura-one-half.mura-object                { width: 50%; }
     }
-		
+
 		/* medium */
 		@media (max-width: 992px) {
 				.mura-object.mura-md	{ width: 100%; }
@@ -172,29 +194,9 @@ li .cke_skin_mura {
         overflow: hidden;
     }
 
-    /* Utilities
-–––––––––––––––––––––––––––––––––––––––––––––––––– */
-    .mura-full-width {
-        width: 100%;
-        box-sizing: border-box;
-    }
-    .mura-max-full-width {
-        max-width: 100%;
-        box-sizing: border-box;
-    }
-    .mura-pull-right, .mura-right {
-        float: right;
-    }
-    .mura-pull-left, .mura-left {
-        float: left;
-    }
-    .mura-center {
-        margin: 0 auto;
-    }
-    .mura-center.mura-object {
-        float: none;
-    }
+
 }
+
 
 
 /* Turn off parallax scrolling for all tablets and phones. Increase/decrease the pixels if needed */
@@ -202,13 +204,6 @@ li .cke_skin_mura {
 	.mura-object {
 		background-attachment: scroll !important;
 	}
-}
-
-.mura-object, .mura-object-content, .mura-object-meta-wrapper, .mura-object-meta {
-	position: relative;
-	display: block;
-	box-sizing: border-box;
-	height: 100%;
 }
 
 /* For devices larger than 550px */
@@ -255,6 +250,13 @@ li .cke_skin_mura {
 
 }
 
+.mura-object, .mura-object-content, .mura-object-meta-wrapper, .mura-object-meta {
+	position: relative;
+	display: block;
+	box-sizing: border-box;
+	height: 100%;
+}
+
 .mura-object:not(.mura-object-label-left) > .mura-object-meta-wrapper:after {
   visibility: hidden;
   display: block;
@@ -270,18 +272,6 @@ li .cke_skin_mura {
 .mura-object-meta {
 	display: inline-block;
 }
-
-/*
-	div[data-instanceid=""]:before{
-		content: '';
-		position: absolute;
-		top: 0;
-		right: 0;
-		left: 0;
-		bottom: 0;
-		background: rgba(0,0,0,1);
-	}
-*/
 
 .mura-object.mura-expanded {
 		.mura-object-content {
