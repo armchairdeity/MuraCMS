@@ -748,6 +748,14 @@
 			}
 		},
 		init: function(){
+			if(typeof Mura != 'undefined'){
+				var sheet=Mura.getStyleSheet('mura-inline-editor');
+				sheet.insertRule(
+					'.mura-region-local,	.mura-region-inherited {	min-height: 15px;	}',
+					sheet.cssRules.length
+				);
+			}
+
 			utility(document)
 				.trigger('muraContentEditInit')
 				.trigger('ContentEditInit');
