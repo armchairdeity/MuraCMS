@@ -205,57 +205,14 @@ version 2 without this exception.  You may, if you choose, apply this exception 
 						<!--- set up body content --->
 						<cfsavecontent variable="bodyContent">
 							<div id="bodyContainer" class="body-container mura-control-group" style="display:none;">
-							<label>
-					      		#application.rbFactory.getKeyValue(session.rb,"sitemanager.content.fields.content")#
-					      	</label>
+								<label>
+					      	#application.rbFactory.getKeyValue(session.rb,"sitemanager.content.fields.content")#
+					      </label>
 							<cfif rsPluginEditor.recordcount>
 								#application.pluginManager.renderScripts("onHTMLEdit",rc.siteid,pluginEvent,rsPluginEditor)#
 							<cfelse>
-								<cfif application.configBean.getValue("htmlEditorType") eq "fckeditor">
-									<cfscript>
-										fckEditor = createObject("component", "mura.fckeditor");
-										fckEditor.instanceName	= "body";
-										fckEditor.value			= '#rc.contentBean.getBody()#';
-										fckEditor.basePath		= "#application.configBean.getContext()#/wysiwyg/";
-										fckEditor.config.EditorAreaCSS	= '#application.settingsManager.getSite(rc.siteid).getThemeAssetPath()#/css/editor.css';
-										fckEditor.config.StylesXmlPath = '#application.settingsManager.getSite(rc.siteid).getThemeAssetPath()#/css/fckstyles.xml';
-										fckEditor.width			= "98%";
-										fckEditor.height		= "calc(100vh - 380px)";
-										fckEditor.config.DefaultLanguage=lcase(session.rb);
-										fckEditor.config.AutoDetectLanguage=false;
-										if (rc.moduleID eq "00000000000000000000000000000000000"){
-										fckEditor.config.BodyId		="primary";
-										}
-										if (len(application.settingsManager.getSite(rc.siteID).getGoogleAPIKey())){
-										fckEditor.config.GoogleMaps_Key =application.settingsManager.getSite(rc.siteID).getGoogleAPIKey();
-										} else {
-										fckEditor.config.GoogleMaps_Key ='none';
-										}
-										fckEditor.toolbarset 	= '#iif(rc.type eq "Form",de("Form"),de("Default"))#';
 
-										if(fileExists("#expandPath(application.settingsManager.getSite(rc.siteid).getThemeIncludePath())#/js/fckconfig.js.cfm"))
-										{
-										fckEditor.config["CustomConfigurationsPath"]=esapiEncode('url','#application.settingsManager.getSite(rc.siteid).getThemeAssetPath()#/js/fckconfig.js.cfm?EditorType=#rc.type#');
-										}
-
-										fckEditor.create(); // create the editor.
-									</cfscript>
-									<script type="text/javascript">
-									var loadEditorCount = 0;
-
-									function FCKeditor_OnComplete( editorInstance ) {
-										<cfif rc.preview eq 1>
-									   	preview('#rc.contentBean.getURL(complete=1,queryString="previewid=#rc.contentBean.getcontenthistid()#")#','');
-										</cfif>
-										htmlEditorOnComplete(editorInstance);
-									}
-
-									<cfif rc.contentBean.getSummary() neq '' and rc.contentBean.getSummary() neq "<p></p>">
-									toggleDisplay('editSummary','#application.rbFactory.getKeyValue(session.rb,'sitemanager.content.fields.expand')#','#application.rbFactory.getKeyValue(session.rb,'sitemanager.content.fields.close')#');
-									editSummary();
-									</cfif>
-									</script>
-								<cfelseif application.configBean.getValue("htmlEditorType") eq "none">
+								<cfif application.configBean.getValue("htmlEditorType") eq "none">
 									<textarea name="body" id="body">#esapiEncode('html',rc.contentBean.getBody())#</textarea>
 								<cfelse>
 									<textarea name="body" id="body"><cfif len(rc.contentBean.getBody())>#esapiEncode('html',rc.contentBean.getBody())#<cfelse><p></p></cfif></textarea>
@@ -269,11 +226,13 @@ version 2 without this exception.  You may, if you choose, apply this exception 
 											CKEDITOR.instances.body.destroy();
 										}
 										jQuery(".body-container").hide();
+										jQuery(".no-body-container").show();
 									}
 
 									showBodyEditor=function(){
 										if(typeof CKEDITOR.instances.body == 'undefined'){
 											jQuery(".body-container").show();
+											jQuery(".no-body-container").hide();
 
 											jQuery('##body').ckeditor(
 											{ toolbar:<cfif rc.type eq "Form">'Form'<cfelse>'Default'</cfif>,
@@ -316,6 +275,11 @@ version 2 without this exception.  You may, if you choose, apply this exception 
 									</script>
 								</cfif>
 							</cfif>
+						</div>
+						<div id="noBodyContainer" class="no-body-container mura-control-group" style="display:none;">
+							<div class="alert alert-info">
+									<p>This content type does not include a body.</p>
+							</div>
 						</div>
 					</cfsavecontent>
 
