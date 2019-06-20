@@ -479,7 +479,7 @@ version 2 without this exception.  You may, if you choose, apply this exception 
 								<cfset started=false>
 								<li class="item" data-content-type="custom/#esapiEncode('html_attr','#rc.entitytype#')#" data-contentid="#item.get(item.getPrimaryKey())#">
 									<button class="btn mura-rc-quickoption" type="button" value="#item.get(item.getPrimaryKey())#"><i class="mi-plus"></i></button>
-									<i class="mi-cog"></i> <cfloop array="#sample.getListViewProps()#" index="p"><cfif started>, </cfif>#esapiEncode('html',item.get(p))#<cfset started=true></cfloop>
+									<i class="mi-cube"></i> <cfloop array="#sample.getListViewProps()#" index="p"><cfif started>, </cfif>#esapiEncode('html',item.get(p))#<cfset started=true></cfloop>
 								</li>
 							</cfloop>
 						<cfelse>

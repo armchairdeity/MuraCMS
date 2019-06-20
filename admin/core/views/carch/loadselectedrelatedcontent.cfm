@@ -118,7 +118,7 @@ This file renders the selected related content
 					<div id="rcGroup-#rcsBean.getRelatedContentSetID()#" class="list-table">
 						<div class="list-table-content-set">#esapiEncode('html',rcsBean.getName())#
 							<span class="content-type">#application.rbFactory.getKeyValue(session.rb,'sitemanager.content.relatedcontent.restrictedmessage')#:
-									<a href="##" rel="tooltip" data-original-title="#esapiEncode('html_attr',rcsBean.getDisplayName())#"><i class="mi-cog"></i></a>
+									<a href="##" rel="tooltip" data-original-title="#esapiEncode('html_attr',rcsBean.getDisplayName())#"><i class="mi-cube"></i></a>
 							</span>
 						</div>
 						<ul id="rcSortable-#rcsBean.getRelatedContentSetID()#" class="list-table-items rcSortable" data-accept="custom/#esapiEncode('html_attr',rcsBean.getEntityType())#" data-relatedcontentsetid="#rcsBean.getRelatedContentSetID()#">
@@ -128,7 +128,7 @@ This file renders the selected related content
 									<cfset item=related.next()>
 									<cfset started=false>
 									<li class="item" data-contentid="#item.get(item.getPrimaryKey())#" data-content-type="custom/#item.getEntityName()#">
-									<i class="mi-cog"></i> <cfloop array="#sample.getListViewProps()#" index="p"><cfif started>, </cfif>#esapiEncode('html',item.get(p))#<cfset started=true></cfloop>
+									<i class="mi-cube"></i> <cfloop array="#sample.getListViewProps()#" index="p"><cfif started>, </cfif>#esapiEncode('html',item.get(p))#<cfset started=true></cfloop>
 										<a class="delete"></a>
 									</li>
 								</cfloop>

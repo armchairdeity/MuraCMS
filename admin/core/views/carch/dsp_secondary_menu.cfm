@@ -213,6 +213,36 @@ version 2 without this exception.  You may, if you choose, apply this exception 
 			<cfcase value="edit,update">
 
 				<cfif rc.contentid neq "">
+					<cfsavecontent variable="customEntitiesNav">
+					<cfset started=false>
+					<cfoutput>
+					<div class="btn-group">
+							<a class="btn dropdown-toggle" data-toggle="dropdown" href="##">
+								<i class="mi-cubes"></i> Custom Entities
+								<span class="caret"></span>
+							</a>
+							<ul class="dropdown-menu drop-right">
+						<cfset hasManyArray=rc.contentBean.getHasManyPropArray()>
+						<cfloop array="#hasManyArray#" index="i">
+							<cfif structKeyExists(i,'scaffold') and i.scaffold>
+									<cfset started=true>
+									<cfset beanInstance=rc.$.getBean(i.cfc)>
+									<li><a href="./?muraAction=cArch.list&activeTab=2&entityid=#esapiEncode('url',rc.contentid)#&entityname=content&siteid=#esapiEncode('url',rc.siteid)#&relatesto=#esapiEncode('url',i.cfc)#"><i class="mi-cube"></i> #esapiEncode('html',beanInstance.pluralizeHasRefName(beanInstance.getEntityDisplayName()))#</a></li>
+							</cfif>
+						</cfloop>
+						<cfset hasOneArray=rc.contentBean.getHasOnePropArray()>
+						<cfloop array="#hasOneArray#" index="i">
+							<cfif structKeyExists(i,'scaffold') and i.scaffold>
+								<cfset started=true>
+								<cfset beanInstance=rc.$.getBean(i.cfc)>
+								<li><a href="./?muraAction=cArch.list&activeTab=2&entityid=#esapiEncode('url',rc.contentid)#&entityname=content&siteid=#esapiEncode('url',rc.siteid)#&relatesto=#esapiEncode('url',i.cfc)#"><i class="mi-cube"></i> #esapiEncode('html',beanInstance.pluralizeHasRefName(beanInstance.getEntityDisplayName()))# #beanInstance.getEntityDisplayName()#</a></li>
+							</cfif>
+						</cfloop>
+					</ul>
+					</div>
+				</cfoutput>
+				</cfsavecontent>
+				<cfif started>#customEntitiesNav#</cfif>
 				<div class="btn-group">
 					  <a class="btn dropdown-toggle" data-toggle="dropdown" href="##">
 					    <i class="mi-cogs"></i> Actions
@@ -269,22 +299,6 @@ version 2 without this exception.  You may, if you choose, apply this exception 
 					<li><a href="./?muraAction=cArch.update&action=deleteall&contentid=#esapiEncode('url',rc.contentid)#&type=#esapiEncode('url',rc.type)#&parentid=#esapiEncode('url',rc.parentid)#&topid=#esapiEncode('url',rc.topid)#&siteid=#esapiEncode('url',rc.siteid)#&startrow=#esapiEncode('url',rc.startrow)#&moduleid=#esapiEncode('url',rc.moduleid)##rc.$.renderCSRFTokens(context=rc.contentid & 'deleteall',format='url')#"
 					<cfif listFindNoCase(nodeLevelList,rc.contentBean.getType())>onclick="return confirmDialog('#esapiEncode('javascript',application.rbFactory.getResourceBundle(session.rb).messageFormat(application.rbFactory.getKeyValue(session.rb,'sitemanager.content.deletecontentrecursiveconfirm'),rc.contentBean.getMenutitle()))#',this.href)"<cfelse>onclick="return confirmDialog('#esapiEncode('javascript',application.rbFactory.getKeyValue(session.rb,"sitemanager.content.deletecontentconfirm"))#',this.href)"</cfif>><i class="mi-trash"></i> #application.rbFactory.getKeyValue(session.rb,"sitemanager.content.deletecontent")#</a></li>
 				</cfif>
-
-					<cfset hasManyArray=rc.contentBean.getHasManyPropArray()>
-					<cfloop array="#hasManyArray#" index="i">
-						<cfif structKeyExists(i,'scaffold') and i.scaffold>
-								<cfset beanInstance=rc.$.getBean(i.cfc)>
-								<li><a href="./?muraAction=cArch.list&activeTab=2&entityid=#esapiEncode('url',rc.contentid)#&entityname=content&siteid=#esapiEncode('url',rc.siteid)#&relatesto=#esapiEncode('url',i.cfc)#"><i class="mi-cube"></i> #esapiEncode('html',beanInstance.pluralizeHasRefName(beanInstance.getEntityDisplayName()))#</a></li>
-						</cfif>
-					</cfloop>
-					<cfset hasOneArray=rc.contentBean.getHasOnePropArray()>
-					<cfloop array="#hasOneArray#" index="i">
-						<cfif structKeyExists(i,'scaffold') and i.scaffold>
-							<cfset beanInstance=rc.$.getBean(i.cfc)>
-							<li><a href="./?muraAction=cArch.list&activeTab=2&entityid=#esapiEncode('url',rc.contentid)#&entityname=content&siteid=#esapiEncode('url',rc.siteid)#&relatesto=#esapiEncode('url',i.cfc)#"><i class="mi-cube"></i> #esapiEncode('html',beanInstance.pluralizeHasRefName(beanInstance.getEntityDisplayName()))# #beanInstance.getEntityDisplayName()#</a></li>
-						</cfif>
-					</cfloop>
-				</ul>
 				</div>
 
 
