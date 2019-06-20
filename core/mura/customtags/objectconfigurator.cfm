@@ -117,7 +117,7 @@
 				<div class="mura-panel-heading" role="tab" id="heading-basic">
 					<h4 class="mura-panel-title">
 						<a class="collapse collapsed" role="button" data-toggle="collapse" data-parent="##configurator-panels" href="##panel-basic" aria-expanded="true" aria-controls="panel-basic">
-							<i class="mi-sliders"></i>#application.rbFactory.getKeyValue(session.rb,'sitemanager.content.fields.basic')#
+							<i class="mi-sliders"></i>Settings <!--- #application.rbFactory.getKeyValue(session.rb,'sitemanager.content.fields.basic')# --->
 						</a>
 					</h4>
 				</div>
@@ -147,7 +147,7 @@
 				<h4 class="mura-panel-title">
 					<!--- todo: rbkey for style --->
 					<a class="collapse collapsed" role="button" data-toggle="collapse" data-parent="##configurator-panels" href="##panel-style" aria-expanded="false" aria-controls="panel-style">
-						<i class="mi-gears"></i>Style
+						<i class="mi-tint"></i>Style
 					</a>
 				</h4>
 			</div>
