@@ -16,8 +16,8 @@
 				<div class="mura-panel-heading" role="tab" id="heading-labeling">
 					<h4 class="mura-panel-title">
 						<a class="collapse collapsed" role="button" data-toggle="collapse" data-parent="##configurator-panels" href="##panel-labeling" aria-expanded="false" aria-controls="panel-labeling">
-							<!--- todo: rb key for label --->
-							<i class="mi-sticky-note"></i>Label
+							<!--- todo: rb key for heading --->
+							<i class="mi-font"></i>Heading
 						</a>
 					</h4>
 				</div>
