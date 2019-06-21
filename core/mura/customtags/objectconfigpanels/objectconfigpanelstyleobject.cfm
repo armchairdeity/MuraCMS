@@ -1,5 +1,5 @@
 <!--- todo: document nested configurator panel syntax --->
-<!--- 
+<!---
 <div class="mura-panel-group" id="panels-style-object">
 
 		<!--- panel 1: layout --->
@@ -13,8 +13,8 @@
         <div id="panel-style-object-1" class="panel-collapse collapse in">
             <div class="mura-panel-body">
             <!--- panel contents --->
-            
-            <!--- /end panel contents --->      
+
+            <!--- /end panel contents --->
             </div> <!--- /.mura-panel-body --->
         </div> <!--- /.panel-collapse --->
     </div> <!--- /.mura-panel --->
@@ -36,7 +36,7 @@
         </div> <!--- /.mura-panel-heading --->
         <div id="panel-style-object-1" class="panel-collapse collapse in">
             <div class="mura-panel-body">
-            	<!--- panel contents --->	
+            	<!--- panel contents --->
 
 							<cfif request.haspositionoptions>
 								<div class="mura-control-group">
@@ -54,7 +54,7 @@
 									<select name="alignment" class="classtoggle">
 									<option value="">--</option>
 									<option value="mura-left"<cfif listFind(attributes.params.class,'mura-left',' ')> selected</cfif>>#application.rbFactory.getKeyValue(session.rb,'sitemanager.content.fields.left')#</option>
-									<option value="mura-center"<cfif listFind(attributes.params.class,'mura-center',' ')> selected</cfif>>#application.rbFactory.getKeyValue(session.rb,'sitemanager.content.fields.center')#</option>
+									<!---<option value="mura-center"<cfif listFind(attributes.params.class,'mura-center',' ')> selected</cfif>>#application.rbFactory.getKeyValue(session.rb,'sitemanager.content.fields.center')#</option>--->
 									<option value="mura-right"<cfif listFind(attributes.params.class,'mura-right',' ')> selected</cfif>>#application.rbFactory.getKeyValue(session.rb,'sitemanager.content.fields.right')#</option>
 									</select>
 								</div>
@@ -262,7 +262,7 @@
         </div> <!--- /.mura-panel-heading --->
         <div id="panel-style-object-2" class="panel-collapse collapse in">
             <div class="mura-panel-body">
-         		<!--- panel contents --->	
+         		<!--- panel contents --->
 
          				<!--- theme --->
 								<cfif arrayLen(request.modulethemeoptions)>
@@ -391,8 +391,8 @@
 									</div>
 								</div>
 							</div>
-						</div>            
-            <!--- /end panel contents --->      
+						</div>
+            <!--- /end panel contents --->
             </div> <!--- /.mura-panel-body --->
         </div> <!--- /.panel-collapse --->
     </div> <!--- /.mura-panel --->
@@ -408,7 +408,7 @@
         <div id="panel-style-object-4" class="panel-collapse collapse in">
             <div class="mura-panel-body">
             <!--- panel contents --->
-						            
+
 							<div class="mura-control-group">
 								<label>
 								Z-Index
@@ -435,7 +435,7 @@
 									})
 								</script>
 							</div>
-            <!--- /end panel contents --->      
+            <!--- /end panel contents --->
             </div> <!--- /.mura-panel-body --->
         </div> <!--- /.panel-collapse --->
     </div> <!--- /.mura-panel --->
