@@ -493,10 +493,32 @@ body.configurator-wrapper {
 		} /* /mura-panel-group */
 
 		.mura-ui-inset{
-			box-shadow: inset 0 0 0 2px #565656;
+/*			box-shadow: inset 0 0 0 2px #646464;*/
+	    background-color: #545454;
 			margin: 12px 0;
-			padding: 12px;
+	    padding: 6px 0;
 			width: 100%;
+
+			.ui-inset-icon{
+				color: #333;
+		    display: block;
+		    line-height: 28px;
+		    margin: 0 auto;
+		    text-align: center;
+		    width: 24px;
+			}
+
+			label.mura-serial{
+				width: 100%;
+				display: block;
+
+				&> input{
+					display: block;
+					margin: 0 auto;
+					width: 47px;
+				}
+			}
+
 		}
 
 		.mura-ui-row {
@@ -513,7 +535,6 @@ body.configurator-wrapper {
 					}
 
 				&.mura-serial{
-						width: 52px;
 						margin: 0 auto;
 				}
 
@@ -524,6 +545,12 @@ body.configurator-wrapper {
 
 			} /* /label */
 
+			.mura-ui-link{
+		    font-size: 12px;
+		    margin: 0 0 0 -6px;
+		    display: block;
+		    padding-top: 4px;
+			}
 			.mura-input-group{
 				label{
 					float: left;
