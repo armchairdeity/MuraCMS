@@ -155,23 +155,27 @@
 									</div>
 
 									<div class="row mura-ui-row">
-										<div class="col-xs-1"></div>
-										<div class="col-xs-4">
-											<label class="mura-serial">
-												<input type="text" name="objectMarginLeft" id="objectmarginleft" class="numeric serial" value="<cfif len(trim(attributes.params.stylesupport.objectstyles.marginleft))>#esapiEncode('html_attr',attributes.params.stylesupport.objectstyles.marginleft)#</cfif>">
-											</label>
+										<div class="col-xs-5">
+												<div class="mura-input-group">
+													<label class="mura-serial">
+														<input type="text" name="objectMarginLeft" id="objectmarginleft" class="numeric serial pull-right" value="<cfif len(trim(attributes.params.stylesupport.objectstyles.marginleft))>#esapiEncode('html_attr',attributes.params.stylesupport.objectstyles.marginleft)#</cfif>">
+															<a class="btn pull-right input-auto" data-auto-input="objectmarginleft" href="##"><span>a</span></a>
+														</label>
+												</div>
 											<input type="hidden" name="marginLeft" id="objectmarginleftval" class="objectStyle" value="#esapiEncode('html_attr',attributes.params.stylesupport.objectstyles.marginleft)#">
 										</div>
 										<div class="col-xs-2">
 											<i class="mi-arrows ui-inset-icon"></i>
 										</div>
-										<div class="col-xs-4">
-											<label class="mura-serial">
-												<input type="text" name="objectMarginRight" id="objectmarginright" class="numeric serial" value="<cfif len(trim(attributes.params.stylesupport.objectstyles.marginright))>#esapiEncode('html_attr',attributes.params.stylesupport.objectstyles.marginright)#</cfif>">
-											</label>
+										<div class="col-xs-5">
+											<div class="mura-input-group">
+												<label class="mura-serial">
+													<input type="text" name="objectMarginRight" id="objectmarginright" class="numeric serial pull-left" value="<cfif len(trim(attributes.params.stylesupport.objectstyles.marginright))>#esapiEncode('html_attr',attributes.params.stylesupport.objectstyles.marginright)#</cfif>">
+													<a class="btn pull-left input-auto" data-auto-input="objectmarginright" href="##"><span>a</span></a>
+												</label>
+											</div>
 											<input type="hidden" name="marginRight" id="objectmarginrightval" class="objectStyle" value="#esapiEncode('html_attr',attributes.params.stylesupport.objectstyles.marginright)#">
 										</div>
-										<div class="col-xs-1"></div>
 									</div>
 
 									<div class="row mura-ui-row">
