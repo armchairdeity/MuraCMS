@@ -128,7 +128,7 @@
 									<div class="col-xs-8 center">
 										<div class="mura-input-group">
 											<label class="mura-serial">
-												<input type="text" name="margin" id="objectmarginall" placeholder="All" class="numeric serial" value="<cfif len(trim(attributes.params.stylesupport.objectstyles.marginall))>#val(esapiEncode('html_attr',attributes.params.stylesupport.objectstyles.marginall))#</cfif>">
+												<input type="text" name="margin" id="objectmarginall" class="numeric serial" value="<cfif len(trim(attributes.params.stylesupport.objectstyles.marginall))>#val(esapiEncode('html_attr',attributes.params.stylesupport.objectstyles.marginall))#</cfif>">
 											</label>
 											<select id="objectmarginuom" name="objectmarginuom" class="styleSupport">
 												<cfloop list="px,%,em,rem" index="u">
@@ -192,7 +192,7 @@
 									<div class="col-xs-8 center">
 										<div class="mura-input-group">
 											<label class="mura-serial">
-												<input type="text" name="padding" id="objectpaddingall" placeholder="All" class="numeric serial" value="<cfif len(trim(attributes.params.stylesupport.objectstyles.paddingall))>#val(esapiEncode('html_attr',attributes.params.stylesupport.objectstyles.paddingall))#</cfif>">
+												<input type="text" name="padding" id="objectpaddingall" class="numeric serial" value="<cfif len(trim(attributes.params.stylesupport.objectstyles.paddingall))>#val(esapiEncode('html_attr',attributes.params.stylesupport.objectstyles.paddingall))#</cfif>">
 											</label>
 											<select id="objectpaddinguom" name="objectpaddinguom" class="styleSupport">
 												<cfloop list="px,%,em,rem" index="u">

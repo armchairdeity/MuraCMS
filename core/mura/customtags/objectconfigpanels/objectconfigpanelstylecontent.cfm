@@ -201,7 +201,7 @@
     <div class="panel mura-panel">
         <div class="mura-panel-heading panel-content">
             <h4 class="mura-panel-title">
-                <a class="collapse collapsed" data-toggle="collapse" data-parent="##panels-style-content" href="##panel-style-content-2">Theme
+                <a class="collapse collapsed" data-toggle="collapse" data-parent="##panels-style-content" href="##panel-style-content-2">Text Color
                 </a>
             </h4>
         </div> <!--- /.mura-panel-heading --->
@@ -211,7 +211,7 @@
 							<!--- text color --->
 							<div class="mura-control-group">
 								<!--- todo: rbkey for these labels, options and placeholders--->
-								<label>Text Color</label>
+								<label><!--- Text Color ---></label>
 
 								<div class="input-group mura-colorpicker">
 									<span class="input-group-addon"><i class="mura-colorpicker-swatch"></i></span>

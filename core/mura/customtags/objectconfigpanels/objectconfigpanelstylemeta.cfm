@@ -58,7 +58,7 @@
 										<div class="col-xs-8 center">
 											<div class="mura-input-group">
 												<label class="mura-serial">
-													<input type="text" name="margin" id="metamarginall" placeholder="All" class="numeric serial" value="<cfif len(trim(attributes.params.stylesupport.metastyles.marginall))>#val(esapiEncode('html_attr',attributes.params.stylesupport.metastyles.marginall))#</cfif>">
+													<input type="text" name="margin" id="metamarginall" class="numeric serial" value="<cfif len(trim(attributes.params.stylesupport.metastyles.marginall))>#val(esapiEncode('html_attr',attributes.params.stylesupport.metastyles.marginall))#</cfif>">
 												</label>
 												<select id="metamarginuom" name="metamarginuom" class="styleSupport">
 													<cfloop list="px,%,em,rem" index="u">
@@ -122,7 +122,7 @@
 										<div class="col-xs-8 center">
 											<div class="mura-input-group">
 												<label class="mura-serial">
-													<input type="text" name="padding" id="metapaddingall" placeholder="All" class="numeric serial" value="<cfif len(trim(attributes.params.stylesupport.metastyles.paddingall))>#val(esapiEncode('html_attr',attributes.params.stylesupport.metastyles.paddingall))#</cfif>">
+													<input type="text" name="padding" id="metapaddingall" class="numeric serial" value="<cfif len(trim(attributes.params.stylesupport.metastyles.paddingall))>#val(esapiEncode('html_attr',attributes.params.stylesupport.metastyles.paddingall))#</cfif>">
 												</label>
 												<select id="metapaddinguom" name="metapaddinguom" class="styleSupport">
 													<cfloop list="px,%,em,rem" index="u">
@@ -186,7 +186,7 @@
     <div class="panel mura-panel">
         <div class="mura-panel-heading panel-meta">
             <h4 class="mura-panel-title">
-                <a class="collapse collapsed" data-toggle="collapse" data-parent="##panels-style-meta" href="##panel-style-meta-3">Theme
+                <a class="collapse collapsed" data-toggle="collapse" data-parent="##panels-style-meta" href="##panel-style-meta-3">Text Color
                 </a>
             </h4>
         </div> <!--- /.mura-panel-heading --->
@@ -195,7 +195,7 @@
             <!--- panel contents --->
 							<!--- text color --->
 							<div class="mura-control-group">
-								<label>Text Color</label>
+								<label><!--- ---></label>
 								<div class="input-group mura-colorpicker">
 									<span class="input-group-addon"><i class="mura-colorpicker-swatch"></i></span>
 									<input type="text" id="metatextcolor" name="color" class="metaStyle" placeholder="Select Color" autocomplete="off" value="#esapiEncode('html_attr',attributes.params.stylesupport.metastyles.color)#">
