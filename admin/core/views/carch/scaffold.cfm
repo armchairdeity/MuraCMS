@@ -226,6 +226,7 @@
 			<div class="help-block-inline">*Required</div>
 
 			<template v-for="property in data.properties">
+
 				<span v-if="property.fieldtype == 'id'">
 						<scaffold-field-text-readonly :property=property :model=data.model :entity=data.entity>~</scaffold-field-text-readonly>
 				</span>
@@ -248,7 +249,8 @@
 					<scaffold-field-checkbox v-else-if="property.rendertype === 'checkbox'" :property=property :model=data.model :entity=data.entity></scaffold-field-checkbox>
 					<scaffold-field-dropdown v-else-if="property.rendertype === 'dropdown'" :property=property :model=data.model :entity=data.entity></scaffold-field-dropdown>
 					<scaffold-field-radio v-else-if="property.rendertype === 'radio'" :property=property :model=data.model :entity=data.entity></scaffold-field-radio>
-					<scaffold-field-text v-else="property.rendertype == 'textbox'" :property=property :model=data.model :entity=data.entity>~</scaffold-field-text>
+					<scaffold-field-file v-else-if="property.rendertype == 'file'" :property=property :model=data.model :entity=data.entity>~</scaffold-field-file>
+					<scaffold-field-text v-else :property=property :model=data.model :entity=data.entity>~</scaffold-field-text>
 				</div>
 			</template>
 
@@ -339,6 +341,28 @@
 					:data-validate="property.validate ? property.validate : null"
 					:data-validate-message="property.validatemessage ? property.validatemessage : null"
 					>
+			</div>
+		</div>
+	</template>
+
+	<template id="scaffold-field-file">
+		<div>
+			<div v-if="model.errors && model.errors[property.name]" class="help-block-inline">
+				{{model.errors[property.name]}}
+			</div>
+			<div class="mura-control-group">
+				<label :for="property.name">{{property.displayname ? property.displayname : property.label ? property.label : property.name}}<span v-if="property.required">*</span></label>
+				<input
+					type="text"
+					v-model="model[property.name]"
+					:name="property.name"
+					:id="property.name"
+					:value="model[property.name] ? model[property.name] : property.default"
+					:length="property.length"
+					:data-validate="property.validate ? property.validate : null"
+					:data-validate-message="property.validatemessage ? property.validatemessage : null"
+					>
+					<button type="button" class="btn" :data-target="property.name" data-completepath="false" data-serverpath="false"><i class="mi-image"></i> Select File</button>
 			</div>
 		</div>
 	</template>

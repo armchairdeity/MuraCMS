@@ -499,6 +499,7 @@ $( document ).ready(function() {
 				{name:'dropdown',label: 'Dropdown'},
 				{name:'checkbox',label: 'Checkbox'},
 				{name:'radio',label: 'Radio'},
+				{name:'file',label: 'File'},
 				{name:'hidden',label: 'Hidden'},
 				{name:'null',label: 'Do not render'}
 			];

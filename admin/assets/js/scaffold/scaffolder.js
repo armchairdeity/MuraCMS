@@ -725,6 +725,18 @@ Mura(function() {
 		props: ['property','model','entity','list']
 	});
 
+	Vue.component('scaffold-field-file', {
+		template: '#scaffold-field-file',
+		props: ['property','model','entity','list'],
+		mounted: function() {
+			MuraFileBrowser.config.resourcepath="User_Assets";
+			setFinders(
+				'button[data-target="' + this.$props.property.name + '"]'
+				,{resourcepath:"User_Assets",}
+			);
+		}
+	});
+
 	Vue.component('scaffold-field-htmleditor', {
 		template: '#scaffold-field-htmleditor',
 		props: ['property','model','entity','list'],
@@ -816,7 +828,7 @@ Mura(function() {
 			this.currentView = "";
 			if(initParams.entityname){
 				var coreBean=['content','user','group','category','comment','address','changeset'].indexOf(initParams.entityname) > -1;
-				
+
 				if(initParams.entityid){
 
 					if(initParams.relatesto){
