@@ -104,7 +104,7 @@
 		<div id="panel-style-object" class="panel-collapse collapse" role="tabpanel" aria-labeledby="heading-style-object">
 			<div class="mura-panel-body">
 				<div class="container">
-					<cfinclude template="objectconfigpanelstyleobject.cfm">
+					<cfinclude template="objectconfigpanelstylemodule.cfm">
 				</div> <!--- /end container --->
 			</div> <!--- /end mura-panel-body --->
 		</div> <!--- /end panel-collapse --->
@@ -124,7 +124,7 @@
 		<div id="panel-style-label" class="panel-collapse collapse" role="tabpanel" aria-labeledby="heading-style-label">
 			<div class="mura-panel-body">
 				<div class="container" id="labelContainer">
-					<cfinclude template="objectconfigpanelstylemeta.cfm">
+					<cfinclude template="objectconfigpanelstyleheading.cfm">
 				</div> <!--- /end container --->
 			</div> <!--- /end mura-panel-body --->
 		</div> <!--- /end panel-collapse --->
