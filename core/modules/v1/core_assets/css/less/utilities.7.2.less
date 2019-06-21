@@ -138,8 +138,16 @@ li .cke_skin_mura {
 		/* Extra small doesn't get anything */
 
     /* For devices larger than 550px */
+
+		@media (max-width: 767px) {
+
+				.mura-object.mura-sm > .mura-object-content	{ width: 100% !important; }
+
+		}
+
 		/* small */
     @media (min-width: 768px) {
+
         .mura-container {
             width: 80%;
         }
@@ -168,6 +176,7 @@ li .cke_skin_mura {
 		/* medium */
 		@media (max-width: 992px) {
 				.mura-object.mura-md	{ width: 100%; }
+				.mura-object.mura-md > .mura-object-content	{ width: 100% !important; }
 		}
 
 
@@ -176,12 +185,10 @@ li .cke_skin_mura {
 				.mura-object.mura-lg	{ width: 100%; }
 		}
 
-
-
-		/* large */
-		@media (min-width: 1200px) {
-
+		@media (max-width: 1199px) {
+				.mura-object.mura-lg > .mura-object-content	{ width: 100% !important; }
 		}
+
 
     .mura-expanded {
         width: ~"calc(100vw)" !important;
