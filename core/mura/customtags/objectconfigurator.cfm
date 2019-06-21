@@ -654,6 +654,18 @@
 
 			});
 
+			$('#contentminheightnum,#contentminheightoum').on('change',function(){
+				var el = $('#contentminheightuomval');
+				var str = $('#contentminheightuom').val();
+				var num = $('#contentminheightnum').val();
+				if (num.length > 0){
+					str = num + str;
+				}
+
+				$(el).val(str).trigger('change');
+
+			});
+
 			// background position x/y
 			function updatePositionSelection(sel){
 				var v = $(sel).val();
