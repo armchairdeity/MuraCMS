@@ -32,8 +32,8 @@
 									<option value="none"<cfif attributes.params.stylesupport.metastyles.float eq 'none'> selected</cfif>>#application.rbFactory.getKeyValue(session.rb,'sitemanager.content.fields.center')#</option>
 									<option value="right"<cfif attributes.params.stylesupport.metastyles.float eq 'right'> selected</cfif>>#application.rbFactory.getKeyValue(session.rb,'sitemanager.content.fields.right')#</option>
 								</select>
-							</div>            
-            <!--- /end panel contents --->      
+							</div>
+            <!--- /end panel contents --->
             </div> <!--- /.mura-panel-body --->
         </div> <!--- /.panel-collapse --->
     </div> <!--- /.mura-panel --->
@@ -87,13 +87,13 @@
 										<div class="row mura-ui-row">
 											<div class="col-xs-6">
 												<label class="mura-serial">
-													<input type="text" name="metaMarginLeft" id="metamarginleft" placeholder="Left" class="numeric serial" value="<cfif len(trim(attributes.params.stylesupport.metastyles.marginleft))>#val(esapiEncode('html_attr',attributes.params.stylesupport.metastyles.marginleft))#</cfif>">
+													<input type="text" name="metaMarginLeft" id="metamarginleft" placeholder="Left" class="numeric serial" value="<cfif len(trim(attributes.params.stylesupport.metastyles.marginleft))>#esapiEncode('html_attr',attributes.params.stylesupport.metastyles.marginleft)#</cfif>">
 												</label>
 												<input type="hidden" name="marginLeft" id="metamarginleftval" class="metaStyle" value="#esapiEncode('html_attr',attributes.params.stylesupport.metastyles.marginleft)#">
 											</div>
 											<div class="col-xs-6">
 												<label class="mura-serial">
-													<input type="text" name="metaMarginRight" id="metamarginright" placeholder="Right" class="numeric serial" value="<cfif len(trim(attributes.params.stylesupport.metastyles.marginright))>#val(esapiEncode('html_attr',attributes.params.stylesupport.metastyles.marginright))#</cfif>">
+													<input type="text" name="metaMarginRight" id="metamarginright" placeholder="Right" class="numeric serial" value="<cfif len(trim(attributes.params.stylesupport.metastyles.marginright))>#esapiEncode('html_attr',attributes.params.stylesupport.metastyles.marginright)#</cfif>">
 												</label>
 												<input type="hidden" name="marginRight" id="metamarginrightval" class="metaStyle" value="#esapiEncode('html_attr',attributes.params.stylesupport.metastyles.marginright)#">
 											</div>
@@ -176,8 +176,8 @@
 									</div>
 
 								</div>
-            
-            <!--- /end panel contents --->      
+
+            <!--- /end panel contents --->
             </div> <!--- /.mura-panel-body --->
         </div> <!--- /.panel-collapse --->
     </div> <!--- /.mura-panel --->
@@ -201,7 +201,7 @@
 									<input type="text" id="metatextcolor" name="color" class="metaStyle" placeholder="Select Color" autocomplete="off" value="#esapiEncode('html_attr',attributes.params.stylesupport.metastyles.color)#">
 								</div>
 							</div>
-            <!--- /end panel contents --->      
+            <!--- /end panel contents --->
             </div> <!--- /.mura-panel-body --->
         </div> <!--- /.panel-collapse --->
     </div> <!--- /.mura-panel --->
@@ -305,8 +305,8 @@
 									</div>
 								</div>
 							</div>
-            
-            <!--- /end panel contents --->      
+
+            <!--- /end panel contents --->
             </div> <!--- /.mura-panel-body --->
         </div> <!--- /.panel-collapse --->
     </div> <!--- /.mura-panel --->
@@ -341,11 +341,11 @@
 								<input name="metacssclass" class="objectParam" type="text" value="#esapiEncode('html_attr',attributes.params.metacssclass)#" maxlength="255">
 							</div>
 
-            <!--- /end panel contents --->      
+            <!--- /end panel contents --->
             </div> <!--- /.mura-panel-body --->
         </div> <!--- /.panel-collapse --->
     </div> <!--- /.mura-panel --->
 
 </div> <!--- /.mura-panel-group --->
-	
+
 </cfoutput>

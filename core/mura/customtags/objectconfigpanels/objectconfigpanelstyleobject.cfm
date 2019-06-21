@@ -157,13 +157,13 @@
 									<div class="row mura-ui-row">
 										<div class="col-xs-6">
 											<label class="mura-serial">
-												<input type="text" name="objectMarginLeft" id="objectmarginleft" placeholder="Left" class="numeric serial" value="<cfif len(trim(attributes.params.stylesupport.objectstyles.marginleft))>#val(esapiEncode('html_attr',attributes.params.stylesupport.objectstyles.marginleft))#</cfif>">
+												<input type="text" name="objectMarginLeft" id="objectmarginleft" placeholder="Left" class="numeric serial" value="<cfif len(trim(attributes.params.stylesupport.objectstyles.marginleft))>#esapiEncode('html_attr',attributes.params.stylesupport.objectstyles.marginleft)#</cfif>">
 											</label>
 											<input type="hidden" name="marginLeft" id="objectmarginleftval" class="objectStyle" value="#esapiEncode('html_attr',attributes.params.stylesupport.objectstyles.marginleft)#">
 										</div>
 										<div class="col-xs-6">
 											<label class="mura-serial">
-												<input type="text" name="objectMarginRight" id="objectmarginright" placeholder="Right" class="numeric serial" value="<cfif len(trim(attributes.params.stylesupport.objectstyles.marginright))>#val(esapiEncode('html_attr',attributes.params.stylesupport.objectstyles.marginright))#</cfif>">
+												<input type="text" name="objectMarginRight" id="objectmarginright" placeholder="Right" class="numeric serial" value="<cfif len(trim(attributes.params.stylesupport.objectstyles.marginright))>#esapiEncode('html_attr',attributes.params.stylesupport.objectstyles.marginright)#</cfif>">
 											</label>
 											<input type="hidden" name="marginRight" id="objectmarginrightval" class="objectStyle" value="#esapiEncode('html_attr',attributes.params.stylesupport.objectstyles.marginright)#">
 										</div>

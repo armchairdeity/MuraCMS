@@ -26,6 +26,9 @@
 	param name="attributes.params.stylesupport.contentminheightuom" default="";
 	param name="attributes.params.stylesupport.contentmarginuom" default="";
 	param name="attributes.params.stylesupport.contentpaddinguom" default="";
+	param name="attributes.params.stylesupport.contentwidth" default="";
+	param name="attributes.params.stylesupport.contentwidthuom" default="";
+	param name="attributes.params.stylesupport.contentwidthnum" default="";
 	param name="attributes.params.stylesupport.objectbackgroundpositionx" default="";
 	param name="attributes.params.stylesupport.objectbackgroundpositiony" default="";
 	param name="attributes.params.stylesupport.contentbackgroundpositionx" default="";
@@ -63,6 +66,7 @@
 		,'paddinguom'
 		,'textalign'
 		,'minheight'
+		,'width'
 		,'zindex'];
 
 	for (p in attributes.globalparams){

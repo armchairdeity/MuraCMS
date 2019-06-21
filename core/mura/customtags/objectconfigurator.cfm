@@ -85,21 +85,38 @@
 		</cfif>
 
 		<cfscript>
+		/*
+		.mura-one.mura-object                    { width: 8.33%; }
+		.mura-two.mura-object                    { width: 16.66%; }
+		.mura-three.mura-object                  { width: 25%;  }
+		.mura-four.mura-object                   { width: 33.33%; }
+		.mura-five.mura-object                   { width: 41.66%; }
+		.mura-six.mura-object                    { width: 50%; }
+		.mura-seven.mura-object                  { width: 58.33%; }
+		.mura-eight.mura-object                  { width: 66.66%; }
+		.mura-nine.mura-object                   { width: 75%; }
+		.mura-ten.mura-object                    { width: 83.33%; }
+		.mura-eleven.mura-object                 { width: 91.66%; }
+		.mura-twelve.mura-object                 { width: 100% }
+		.mura-one-third.mura-object               { width: 33.33%; }
+		.mura-two-thirds.mura-object              { width: 66.66%; }
+		.mura-one-half.mura-object                { width: 50%; }
+		*/
 			attributes.positionoptions = [
 					{value='',label='Auto'}
-					,{value='mura-one', label='One Twelfth'}
-					,{value='mura-two', label='One Sixth'}
-					,{value='mura-three', label='One Fourth'}
-					,{value='mura-four', label='One Third'}
-					,{value='mura-five', label='Five Twelfths'}
-					,{value='mura-six', label='One Half'}
-					,{value='mura-seven', label='Seven Twelfths'}
-					,{value='mura-eight', label='Two Thirds'}
-					,{value='mura-nine', label='Three Fourths'}
-					,{value='mura-ten', label='Five Sixths'}
-					,{value='mura-eleven', label='Eleven Twelfths'}
-					,{value='mura-twelve', label='Full'}
-					,{value='mura-expanded', label='Expanded'}
+					,{value='mura-one', label='One Twelfth',percent='8.33%'}
+					,{value='mura-two', label='One Sixth',percent='16.66%'}
+					,{value='mura-three', label='One Fourth',percent='25%'}
+					,{value='mura-four', label='One Third',percent='33.33%'}
+					,{value='mura-five', label='Five Twelfths',percent='41.66%'}
+					,{value='mura-six', label='One Half',percent='50%'}
+					,{value='mura-seven', label='Seven Twelfths',percent='58.33%'}
+					,{value='mura-eight', label='Two Thirds',percent='66.66%'}
+					,{value='mura-nine', label='Three Fourths',percent='75%'}
+					,{value='mura-ten', label='Five Sixths',percent='41.66%'}
+					,{value='mura-eleven', label='Eleven Twelfths',percent='91.66%'}
+					,{value='mura-twelve', label='Full',percent='100%'}
+					,{value='mura-expanded', label='Expanded',percent='100%'}
 				];
 
 		</cfscript>
@@ -328,16 +345,16 @@
 
 			// Begin Object Margin and Padding
 			function updateObjectPadding(){
-				var t = $('#objectpaddingtop').val().replace(/[^0-9/-]/g,'');
-				var r = $('#objectpaddingright').val().replace(/[^0-9/-]/g,'');
-				var b = $('#objectpaddingbottom').val().replace(/[^0-9/-]/g,'');
-				var l =$('#objectpaddingleft').val().replace(/[^0-9/-]/g,'');
+				var t = $('#objectpaddingtop').val().replace(/[^0-9\-]/g,'');
+				var r = $('#objectpaddingright').val().replace(/[^0-9\-]/g,'');
+				var b = $('#objectpaddingbottom').val().replace(/[^0-9\-]/g,'');
+				var l =$('#objectpaddingleft').val().replace(/[^0-9\-]/g,'');
 				var u = $('#objectpaddinguom').val();
 				if (t.length){ $('#objectpaddingtopval').val(t + u); } else { $('#objectpaddingtopval').val(''); }
 				if (r.length){ $('#objectpaddingrightval').val(r + u); } else { $('#objectpaddingrightval').val(''); }
 				if (b.length){ $('#objectpaddingbottomval').val(b + u); } else { $('#objectpaddingbottomval').val(''); }
 				if (l.length){ $('#objectpaddingleftval').val(l + u); } else { $('#objectpaddingleftval').val(''); }
-				if (t == r && r == b & b == l){
+				if (t == r && r == b && b == l){
 					$('#objectpaddingall').val(t);
 				} else {
 					$('#objectpaddingall').val('');
@@ -349,7 +366,7 @@
 			}
 
 			$('#objectpaddingall').on('keyup', function(){
-				var v = $('#objectpaddingall').val().replace(/[^0-9/-]/g,'');
+				var v = $('#objectpaddingall').val().replace(/[^0-9\-]/g,'');
 				$('#objectpaddingadvanced').hide();
 				$('#objectpaddingtop').val(v);
 				$('#objectpaddingleft').val(v);
@@ -369,16 +386,26 @@
 
 			// margin
 			function updateObjectMargin(){
-				var t = $('#objectmargintop').val().replace(/[^0-9/-]/g,'');
-				var r = $('#objectmarginright').val().replace(/[^0-9/-]/g,'');
-				var b = $('#objectmarginbottom').val().replace(/[^0-9/-]/g,'');
-				var l =$('#objectmarginleft').val().replace(/[^0-9/-]/g,'');
+				var t = $('#objectmargintop').val().replace(/[^0-9\-]/g,'');
+				var r = $('#objectmarginright').val();
+				if(r != 'auto'){r=r.replace(/[^0-9\-]/g,'')}
+				var b = $('#objectmarginbottom').val().replace(/[^0-9\-]/g,'');
+				var l =$('#objectmarginleft').val();
+				if(l != 'auto'){l=l.replace(/[^0-9\-]/g,'')}
 				var u = $('#objectmarginuom').val();
 				if (t.length){ $('#objectmargintopval').val(t + u); } else { $('#objectmargintopval').val(''); }
-				if (r.length){ $('#objectmarginrightval').val(r + u); } else { $('#objectmarginrightval').val(''); }
+				if(r=='auto'){
+					$('#objectmarginrightval').val(r);
+				} else {
+					if (r.length){ $('#objectmarginrightval').val(r + u); } else { $('#objectmarginrightval').val(''); }
+				}
 				if (b.length){ $('#objectmarginbottomval').val(b + u); } else { $('#objectmarginbottomval').val(''); }
-				if (l.length){ $('#objectmarginleftval').val(l + u); } else { $('#objectmarginleftval').val(''); }
-				if (t == r && r == b & b == l){
+				if(l=='auto'){
+					$('#objectmarginleftval').val(r);
+				} else {
+					if (l.length){ $('#objectmarginleftval').val(l + u); } else { $('#objectmarginleftval').val(''); }
+				}
+				if (t == r && r == b && b == l){
 					$('#objectmarginall').val(t);
 				} else {
 					$('#objectmarginall').val('');
@@ -391,7 +418,7 @@
 			}
 
 			$('#objectmarginall').on('keyup', function(){
-				var v = $('#objectmarginall').val().replace(/[^0-9/-]/g,'');
+				var v = $('#objectmarginall').val().replace(/[^0-9\-]/g,'');
 				$('#objectmarginadvanced').hide();
 				$('#objectmargintop').val(v);
 				$('#objectmarginleft').val(v);
@@ -400,7 +427,10 @@
 			})
 
 			$('#objectmargintop,#objectmarginright,#objectmarginbottom,#objectmarginleft,#objectmarginall').on('keyup', function(){
-				updateObjectMargin();
+				var val=$(this).val();
+				if(!(val=='a' || val=='au' || val=='aut')){
+					updateObjectMargin();
+				}
 			});
 
 			$('#objectmarginuom').on('change',function(){
@@ -414,16 +444,16 @@
 			<cfif request.hasmetaoptions and not (IsBoolean(attributes.params.isbodyobject) and attributes.params.isbodyobject)>
 			// Begin Meta Margin and Padding
 			function updateMetaPadding(){
-				var t = $('#metapaddingtop').val().replace(/[^0-9/-]/g,'');
-				var r = $('#metapaddingright').val().replace(/[^0-9/-]/g,'');
-				var b = $('#metapaddingbottom').val().replace(/[^0-9/-]/g,'');
-				var l =$('#metapaddingleft').val().replace(/[^0-9/-]/g,'');
+				var t = $('#metapaddingtop').val().replace(/[^0-9\-]/g,'');
+				var r = $('#metapaddingright').val().replace(/[^0-9\-]/g,'');
+				var b = $('#metapaddingbottom').val().replace(/[^0-9\-]/g,'');
+				var l =$('#metapaddingleft').val().replace(/[^0-9\-]/g,'');
 				var u = $('#metapaddinguom').val();
 				if (t.length){ $('#metapaddingtopval').val(t + u); } else { $('#metapaddingtopval').val(''); }
 				if (r.length){ $('#metapaddingrightval').val(r + u); } else { $('#metapaddingrightval').val(''); }
 				if (b.length){ $('#metapaddingbottomval').val(b + u); } else { $('#metapaddingbottomval').val(''); }
 				if (l.length){ $('#metapaddingleftval').val(l + u); } else { $('#metapaddingleftval').val(''); }
-				if (t == r && r == b & b == l){
+				if (t == r && r == b && b == l){
 					$('#metapaddingall').val(t);
 				} else {
 					$('#metapaddingall').val('');
@@ -435,7 +465,7 @@
 			}
 
 			$('#metapaddingall').on('keyup', function(){
-				var v = $('#metapaddingall').val().replace(/[^0-9/-]/g,'');
+				var v = $('#metapaddingall').val().replace(/[^0-9\-]/g,'');
 				$('#metapaddingadvanced').hide();
 				$('#metapaddingtop').val(v);
 				$('#metapaddingleft').val(v);
@@ -455,16 +485,26 @@
 
 			// margin
 			function updateMetaMargin(){
-				var t = $('#metamargintop').val().replace(/[^0-9/-]/g,'');
-				var r = $('#metamarginright').val().replace(/[^0-9/-]/g,'');
-				var b = $('#metamarginbottom').val().replace(/[^0-9/-]/g,'');
-				var l =$('#metamarginleft').val().replace(/[^0-9/-]/g,'');
+				var t = $('#metamargintop').val().replace(/[^0-9\-]/g,'');
+				var r = $('#metamarginright').val();
+				if(r != 'auto'){r=r.replace(/[^0-9\-]/g,'')}
+				var b = $('#metamarginbottom').val().replace(/[^0-9\-]/g,'');
+				var l =$('#metamarginleft').val();
+				if(l != 'auto'){l=l.replace(/[^0-9\-]/g,'')}
 				var u = $('#metamarginuom').val();
 				if (t.length){ $('#metamargintopval').val(t + u); } else { $('#metamargintopval').val(''); }
-				if (r.length){ $('#metamarginrightval').val(r + u); } else { $('#metamarginrightval').val(''); }
+				if(r=='auto'){
+					$('#metamarginrightval').val(r);
+				} else {
+					if (r.length){ $('#metamarginrightval').val(r + u); } else { $('#metamarginrightval').val(''); }
+				}
 				if (b.length){ $('#metamarginbottomval').val(b + u); } else { $('#metamarginbottomval').val(''); }
-				if (l.length){ $('#metamarginleftval').val(l + u); } else { $('#metamarginleftval').val(''); }
-				if (t == r && r == b & b == l){
+				if(l=='auto'){
+					$('#metamarginleftval').val(r);
+				} else {
+					if (l.length){ $('#metamarginleftval').val(l + u); } else { $('#metamarginleftval').val(''); }
+				}
+				if (t == r && r == b && b == l){
 					$('#metamarginall').val(t);
 				} else {
 					$('#metamarginall').val('');
@@ -477,7 +517,7 @@
 			}
 
 			$('#metamarginall').on('keyup', function(){
-				var v = $('#metamarginall').val().replace(/[^0-9/-]/g,'');
+				var v = $('#metamarginall').val().replace(/[^0-9\-]/g,'');
 				$('#metamarginadvanced').hide();
 				$('#metamargintop').val(v);
 				$('#metamarginleft').val(v);
@@ -486,7 +526,10 @@
 			})
 
 			$('#metamargintop,#metamarginright,#metamarginbottom,#metamarginleft,#metamarginall').on('keyup', function(){
-				updateMetaMargin();
+				var val=$(this).val();
+				if(!(val=='a' || val=='au' || val=='aut')){
+					updateMetaMargin();
+				}
 			});
 
 			$('#metamarginuom').on('change',function(){
@@ -500,16 +543,16 @@
 			// Begin Content Content Margin and Padding
 
 			function updateContentPadding(){
-				var t = $('#contentpaddingtop').val().replace(/[^0-9/-]/g,'');
-				var r = $('#contentpaddingright').val().replace(/[^0-9/-]/g,'');
-				var b = $('#contentpaddingbottom').val().replace(/[^0-9/-]/g,'');
-				var l =$('#contentpaddingleft').val().replace(/[^0-9/-]/g,'');
+				var t = $('#contentpaddingtop').val().replace(/[^0-9\-]/g,'');
+				var r = $('#contentpaddingright').val().replace(/[^0-9\-]/g,'');
+				var b = $('#contentpaddingbottom').val().replace(/[^0-9\-]/g,'');
+				var l =$('#contentpaddingleft').val().replace(/[^0-9\-]/g,'');
 				var u = $('#contentpaddinguom').val();
 				if (t.length){ $('#contentpaddingtopval').val(t + u); } else { $('#contentpaddingtopval').val(''); }
 				if (r.length){ $('#contentpaddingrightval').val(r + u); } else { $('#contentpaddingrightval').val(''); }
 				if (b.length){ $('#contentpaddingbottomval').val(b + u); } else { $('#contentpaddingbottomval').val(''); }
 				if (l.length){ $('#contentpaddingleftval').val(l + u); } else { $('#contentpaddingleftval').val(''); }
-				if (t == r && r == b & b == l){
+				if (t == r && r == b && b == l){
 					$('#contentpaddingall').val(t);
 				} else {
 					$('#contentpaddingall').val('');
@@ -520,7 +563,7 @@
 			}
 
 			$('#contentpaddingall').on('keyup', function(){
-				var v = $('#contentpaddingall').val().replace(/[^0-9/-]/g,'');
+				var v = $('#contentpaddingall').val().replace(/[^0-9\-]/g,'');
 				$('#contentpaddingadvanced').hide();
 				$('#contentpaddingtop').val(v);
 				$('#contentpaddingleft').val(v);
@@ -540,20 +583,32 @@
 
  			// margin
 			function updateContentMargin(){
-				var t = $('#contentmargintop').val().replace(/[^0-9/-]/g,'');
-				var r = $('#contentmarginright').val().replace(/[^0-9/-]/g,'');
-				var b = $('#contentmarginbottom').val().replace(/[^0-9/-]/g,'');
-				var l =$('#contentmarginleft').val().replace(/[^0-9/-]/g,'');
+				var t = $('#contentmargintop').val().replace(/[^0-9\-]/g,'');
+				var r = $('#contentmarginright').val();
+				if(r != 'auto'){r=r.replace(/[^0-9\-]/g,'')}
+				var b = $('#contentmarginbottom').val().replace(/[^0-9\-]/g,'');
+				var l =$('#contentmarginleft').val();
+				if(l != 'auto'){l=l.replace(/[^0-9\-]/g,'')}
 				var u = $('#contentmarginuom').val();
 				if (t.length){ $('#contentmargintopval').val(t + u); } else { $('#contentmargintopval').val(''); }
-				if (r.length){ $('#contentmarginrightval').val(r + u); } else { $('#contentmarginrightval').val(''); }
+				if(r=='auto'){
+					$('#contentmarginrightval').val(r);
+				} else {
+					if (r.length){ $('#contentmarginrightval').val(r + u); } else { $('#contentmarginrightval').val(''); }
+				}
 				if (b.length){ $('#contentmarginbottomval').val(b + u); } else { $('#contentmarginbottomval').val(''); }
-				if (l.length){ $('#contentmarginleftval').val(l + u); } else { $('#contentmarginleftval').val(''); }
-				if (t == r && r == b & b == l){
+				if(l=='auto'){
+					$('#contentmarginleftval').val(r);
+				} else {
+					if (l.length){ $('#contentmarginleftval').val(l + u); } else { $('#contentmarginleftval').val(''); }
+				}
+
+				if (t == r && r == b && b == l){
 					$('#contentmarginall').val(t);
 				} else {
 					$('#contentmarginall').val('');
 					$('#contentmarginadvanced').show();
+
 				}
 
 				$('#contentmargintopval').trigger('change');
@@ -561,7 +616,7 @@
 			}
 
 			$('#contentmarginall').on('keyup', function(){
-				var v = $('#contentmarginall').val().replace(/[^0-9/-]/g,'');
+				var v = $('#contentmarginall').val().replace(/[^0-9\-]/g,'');
 				$('#contentmarginadvanced').hide();
 				$('#contentmargintop').val(v);
 				$('#contentmarginleft').val(v);
@@ -574,7 +629,10 @@
 			});
 
 			$('#contentmarginuom').on('change',function(){
-				updateContentMargin();
+				var val=$(this).val();
+				if(!(val=='a' || val=='au' || val=='aut')){
+					updateContentMargin();
+				}
 			});
 
 			updateContentMargin();
@@ -790,14 +848,29 @@
 
 			//End Object Background
 
+			$('#contentwidthnum,#contentwidthuom').on('change',function(){
+				var el = $('#contentwidthuomval');
+				var str = $('#contentwidthuom').val();
+				var num = $('#contentwidthnum').val();
+				if (num.length > 0){
+					str = num + str;
+				}
+
+				$(el).val(str).trigger('change');
+
+			});
+
 			// numeric input - select on focus
 			$('#configuratorContainer input.numeric').on('click', function(){
 				$(this).select();
 			});
 			// numeric input - restrict value
 			$('#configuratorContainer input.numeric').on('keyup', function(){
-				var v = $(this).val().replace(/[^0-9/-]/g,'');
-				$(this).val(v);
+				var v = $(this).val();
+				if(!(v=='a' || v=='au' || v=='aut'|| v=='auto')){
+					v=v.replace(/[^0-9\-]/g,'');
+					$(this).val(v);
+				}
 			});
 
 			// range sliders

@@ -25,6 +25,26 @@
 								</select>
 							</div>
 
+							<div class="mura-control-group">
+								<!--- todo: rbkey for margin and placeholders --->
+								<label>Width</label>
+
+								<div class="row mura-ui-row">
+
+										<div class="mura-input-group">
+											<label class="mura-serial">
+												<input type="text" name="contentwidth" id="contentwidthnum" placeholder="100" class="numeric serial" value="<cfif len(trim(attributes.params.stylesupport.contentstyles.width))>#val(esapiEncode('html_attr',attributes.params.stylesupport.contentstyles.width))#</cfif>">
+											</label>
+											<select id="contentwidthuom" name="contentwidthuom" class="styleSupport">
+												<cfloop list="%,px,em,rem" index="u">
+													<option value="#u#"<cfif attributes.params.stylesupport.contentwidthuom eq u> selected</cfif>>#u#</option>
+												</cfloop>
+											</select>
+										</div>
+										<input type="hidden" name="width" id="contentwidthuomval" class="contentStyle" value="#esapiEncode('html_attr',attributes.params.stylesupport.contentstyles.width)#">
+								</div>
+							</div>
+
 							<!--- margin --->
 							<div class="mura-control-group mura-ui-grid">
 								<!--- todo: rbkey for margin and placeholders --->
@@ -63,13 +83,13 @@
 									<div class="row mura-ui-row">
 										<div class="col-xs-6">
 											<label class="mura-serial">
-												<input type="text" name="contentMarginLeft" id="contentmarginleft" placeholder="Left" class="numeric serial" value="<cfif len(trim(attributes.params.stylesupport.contentstyles.marginleft))>#val(esapiEncode('html_attr',attributes.params.stylesupport.contentstyles.marginleft))#</cfif>">
+												<input type="text" name="contentMarginLeft" id="contentmarginleft" placeholder="Left" class="numeric serial" value="<cfif len(trim(attributes.params.stylesupport.contentstyles.marginleft))>#esapiEncode('html_attr',attributes.params.stylesupport.contentstyles.marginleft)#</cfif>">
 											</label>
 											<input type="hidden" name="marginLeft" id="contentmarginleftval" class="contentStyle" value="#esapiEncode('html_attr',attributes.params.stylesupport.contentstyles.marginleft)#">
 										</div>
 										<div class="col-xs-6">
 											<label class="mura-serial">
-												<input type="text" name="contentMarginRight" id="contentmarginright" placeholder="Right" class="numeric serial" value="<cfif len(trim(attributes.params.stylesupport.contentstyles.marginright))>#val(esapiEncode('html_attr',attributes.params.stylesupport.contentstyles.marginright))#</cfif>">
+												<input type="text" name="contentMarginRight" id="contentmarginright" placeholder="Right" class="numeric serial" value="<cfif len(trim(attributes.params.stylesupport.contentstyles.marginright))>#esapiEncode('html_attr',attributes.params.stylesupport.contentstyles.marginright)#</cfif>">
 											</label>
 											<input type="hidden" name="marginRight" id="contentmarginrightval" class="contentStyle" value="#esapiEncode('html_attr',attributes.params.stylesupport.contentstyles.marginright)#">
 										</div>
@@ -152,7 +172,7 @@
 
 							</div>
 
-            <!--- /end panel contents --->      
+            <!--- /end panel contents --->
             </div> <!--- /.mura-panel-body --->
         </div> <!--- /.panel-collapse --->
     </div> <!--- /.mura-panel --->
@@ -178,8 +198,8 @@
 									<input type="text" id="contenttextcolor" name="color" class="contentStyle" placeholder="Select Color" autocomplete="off" value="#esapiEncode('html_attr',attributes.params.stylesupport.contentstyles.color)#">
 								</div>
 
-							</div>            
-            <!--- /end panel contents --->      
+							</div>
+            <!--- /end panel contents --->
             </div> <!--- /.mura-panel-body --->
         </div> <!--- /.panel-collapse --->
     </div> <!--- /.mura-panel --->
@@ -285,8 +305,8 @@
 									</div>
 								</div>
 							</div>
-          
-            <!--- /end panel contents --->      
+
+            <!--- /end panel contents --->
             </div> <!--- /.mura-panel-body --->
         </div> <!--- /.panel-collapse --->
     </div> <!--- /.mura-panel --->
@@ -319,8 +339,8 @@
 									CSS Class
 								</label>
 								<input name="contentcssclass" class="objectParam" type="text" value="#esapiEncode('html_attr',attributes.params.contentcssclass)#" maxlength="255">
-							</div>            
-            <!--- /end panel contents --->      
+							</div>
+            <!--- /end panel contents --->
             </div> <!--- /.mura-panel-body --->
         </div> <!--- /.panel-collapse --->
     </div> <!--- /.mura-panel --->
