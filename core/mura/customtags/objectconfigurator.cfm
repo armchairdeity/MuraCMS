@@ -420,7 +420,7 @@
 
 			$('a.input-auto').on('click',function(){
 				var ai = '#' + $(this).attr('data-auto-input');
-				$(ai).val('auto');
+				$(ai).val('auto').trigger('keyup');
 				return false;
 			})
 
