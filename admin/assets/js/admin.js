@@ -227,7 +227,7 @@ function testEmail( e ){
 
     $("#emailTestDialog").remove();
     $("body").append('<div id="emailTestDialog" title="Loading..." style="display:none"></div>');
-    
+
     // get current email form element values
     let mailSettings = {};
 
@@ -249,7 +249,7 @@ function testEmail( e ){
         position: getDialogPosition(),
         open: function() {
             $("#emailTestDialog").html('<div class="ui-dialog-content ui-widget-content"><div class="load-inline"></div></div>');
-            
+
             $("#emailTestDialog .load-inline").spin(spinnerArgs2);
 
             $.post( modalUrl, mailSettings, function( data ) {
@@ -712,7 +712,7 @@ function setLowerCaseKeys(e) {
     return e;
 }
 
-function setFinders(e) {
+function setFinders(e,config) {
     if (window.self !== window.top) {
         Mura.getQueryStringParams(location.search);
         Mura(e).click(function() {
@@ -730,7 +730,10 @@ function setFinders(e) {
             width: 1e3,
             open: function(e, t) {
                 var i = this;
-                MuraFileBrowser.config.height = 600, MuraFileBrowser.config.selectMode = 2, MuraFileBrowser.config.resourcepath = "Application_Root",
+                MuraFileBrowser.config.height = 600, MuraFileBrowser.config.selectMode = 2, MuraFileBrowser.config.resourcepath = "Application_Root";
+								if(typeof config != 'undefined'){
+									Mura.extend(MuraFileBrowser.config,config);
+								}
                 MuraFileBrowser.config.selectCallback = function(e) {
                     var t = $('input[name="' + a.data("target") + '"]');
 										var serverpath=a.attr('data-serverpath');
@@ -739,6 +742,7 @@ function setFinders(e) {
 										} else {
 											t.val(e.url);
 										}
+										console.log(e)
 										t.trigger("change");
 										$(i).dialog("close");
                 }, MuraFileBrowser.render();
