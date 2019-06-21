@@ -188,16 +188,18 @@
 			window.configuratorInited=false;
 
 			$('#panel-gds-object,.mura-panel-heading').click(function(){
-				currentPanel="";
-				frontEndProxy.post(
-				{
-					cmd:'setCurrentPanel',
-					instanceid:instanceid,
-					currentPanel:currentPanel
-				});
+				if(!$(this).is('.panel-content, .panel-meta')){
+					currentPanel="";
+					frontEndProxy.post(
+					{
+						cmd:'setCurrentPanel',
+						instanceid:instanceid,
+						currentPanel:currentPanel
+					});
+				}
 			});
 
-			$('#panel-gds-content').click(function(){
+			$('#panel-gds-content, .panel-content').click(function(){
 				currentPanel="content";
 				frontEndProxy.post(
 				{
@@ -207,17 +209,7 @@
 				});
 			});
 
-			$('#panel-gds-custom').click(function(){
-				currentPanel="custom";
-				frontEndProxy.post(
-				{
-					cmd:'setCurrentPanel',
-					instanceid:instanceid,
-					currentPanel:currentPanel
-				});
-			});
-
-			$('#panel-gds-meta').click(function(){
+			$('#panel-gds-meta,.panel-meta').click(function(){
 				currentPanel="meta";
 				frontEndProxy.post(
 				{

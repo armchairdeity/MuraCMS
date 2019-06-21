@@ -4,7 +4,7 @@
 
 		<!--- panel 1: layout --->
     <div class="panel mura-panel">
-        <div class="mura-panel-heading">
+        <div class="mura-panel-heading panel-content">
             <h4 class="mura-panel-title">
                 <a class="collapse collapsed" data-toggle="collapse" data-parent="##panels-style-content" href="##panel-style-content-1">Layout
                 </a>
@@ -199,7 +199,7 @@
 
 		<!--- panel 2: theme --->
     <div class="panel mura-panel">
-        <div class="mura-panel-heading">
+        <div class="mura-panel-heading panel-content">
             <h4 class="mura-panel-title">
                 <a class="collapse collapsed" data-toggle="collapse" data-parent="##panels-style-content" href="##panel-style-content-2">Theme
                 </a>
@@ -227,7 +227,7 @@
 
 		<!--- panel 3: background --->
     <div class="panel mura-panel">
-        <div class="mura-panel-heading">
+        <div class="mura-panel-heading panel-content">
             <h4 class="mura-panel-title">
                 <a class="collapse collapsed" data-toggle="collapse" data-parent="##panels-style-content" href="##panel-style-content-3">Background
                 </a>
@@ -333,7 +333,7 @@
 
 		<!--- panel 4: custom --->
     <div class="panel mura-panel">
-        <div class="mura-panel-heading">
+        <div class="mura-panel-heading panel-content">
             <h4 class="mura-panel-title">
                 <a class="collapse collapsed" data-toggle="collapse" data-parent="##panels-style-content" href="##panel-style-content-4">Custom
                 </a>
