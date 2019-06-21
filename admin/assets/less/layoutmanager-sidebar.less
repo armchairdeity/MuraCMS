@@ -281,6 +281,17 @@ body.configurator-wrapper {
 			color: lighten(@mura-red, 12%) !important;
 		}
 
+		a.btn.mura-ui-link{
+			color: #646464;
+		}
+
+		a.btn.mura-ui-link:link,
+		a.btn.mura-ui-link:visited,
+		a.btn.mura-ui-link:hover,
+		a.btn.mura-ui-link:active{
+			color: lighten(#646464, 12%) !important;
+		}
+
 		.clearfix {
 			clear: both !important;
 		}
@@ -493,7 +504,6 @@ body.configurator-wrapper {
 		} /* /mura-panel-group */
 
 		.mura-ui-inset{
-/*			box-shadow: inset 0 0 0 2px #646464;*/
 	    background-color: #545454;
 			margin: 12px 0;
 	    padding: 6px 0;
@@ -508,20 +518,19 @@ body.configurator-wrapper {
 		    width: 24px;
 			}
 
+			input.pull-left{
+					border-top-right-radius: 0;
+					border-bottom-right-radius: 0;	
+					margin-left: 4px !important;									
+			}
+
+			input.pull-right{
+					border-top-left-radius: 0;
+					border-bottom-left-radius: 0;										
+					margin-right: 3px !important;
+			}
+
 			.mura-input-group{
-
-				input.pull-left{
-						border-top-right-radius: 0;
-						border-bottom-right-radius: 0;	
-						margin-left: 4px;									
-				}
-	
-				input.pull-right{
-						border-top-left-radius: 0;
-						border-bottom-left-radius: 0;										
-						margin-right: 3px;
-				}
-
 				a.btn{
  					margin-bottom: 0 !important;
  					color: #646464;
@@ -583,7 +592,18 @@ body.configurator-wrapper {
 		    margin: 0 0 0 -6px;
 		    display: block;
 		    padding-top: 4px;
+			
+				&.btn.ui-advanced{
+						margin: 0 0 0 3px;
+					}
 			}
+
+
+			a.ui-inset-reveal{
+				color: #868686;
+				margin: 0 !important;
+			}
+
 			.mura-input-group{
 				label{
 					float: left;

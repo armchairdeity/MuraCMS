@@ -125,7 +125,7 @@
 								<label>Margin</label>
 
 								<div class="row mura-ui-row">
-									<div class="col-xs-8 center">
+									<div class="col-xs-12 center">
 										<div class="mura-input-group">
 											<label class="mura-serial">
 												<input type="text" name="margin" id="objectmarginall" class="numeric serial" value="<cfif len(trim(attributes.params.stylesupport.objectstyles.marginall))>#val(esapiEncode('html_attr',attributes.params.stylesupport.objectstyles.marginall))#</cfif>">
@@ -135,13 +135,10 @@
 													<option value="#u#"<cfif attributes.params.stylesupport.objectmarginuom eq u> selected</cfif>>#u#</option>
 												</cfloop>
 											</select>
+										<a class="btn ui-advanced mura-ui-link" data-reveal="objectmarginadvanced" href="##"><i class="mi-arrows"></i></a>
 										</div>
 									</div>
-									<div class="col-xs-4">
-										<a class="mura-ui-link" data-reveal="objectmarginadvanced" href="##">Advanced</a>
-									</div>
 								</div>
-
 								<div id="objectmarginadvanced" class="mura-ui-inset" style="display: none;">
 									<div class="row mura-ui-row">
 										<div class="col-xs-3"></div>
@@ -198,7 +195,7 @@
 								<label>Padding</label>
 
 								<div class="row mura-ui-row">
-									<div class="col-xs-8 center">
+									<div class="col-xs-12 center">
 										<div class="mura-input-group">
 											<label class="mura-serial">
 												<input type="text" name="padding" id="objectpaddingall" class="numeric serial" value="<cfif len(trim(attributes.params.stylesupport.objectstyles.paddingall))>#val(esapiEncode('html_attr',attributes.params.stylesupport.objectstyles.paddingall))#</cfif>">
@@ -209,9 +206,7 @@
 												</cfloop>
 											</select>
 										</div>
-									</div>
-									<div class="col-xs-4">
-										<a class="mura-ui-link" data-reveal="objectpaddingadvanced" href="##">Advanced</a>
+										<a class="btn ui-advanced mura-ui-link" data-reveal="objectpaddingadvanced" href="##"><i class="mi-arrows"></i></a>
 									</div>
 								</div>
 
@@ -231,7 +226,7 @@
 										<div class="col-xs-1"></div>
 										<div class="col-xs-4">
 											<label class="mura-serial">
-												<input type="text" name="objectPaddingLeft" id="objectpaddingleft" class="numeric serial" value="<cfif len(trim(attributes.params.stylesupport.objectstyles.paddingleft))>#val(esapiEncode('html_attr',attributes.params.stylesupport.objectstyles.paddingleft))#</cfif>">
+												<input type="text" name="objectPaddingLeft" id="objectpaddingleft" class="numeric serial pull-right" value="<cfif len(trim(attributes.params.stylesupport.objectstyles.paddingleft))>#val(esapiEncode('html_attr',attributes.params.stylesupport.objectstyles.paddingleft))#</cfif>">
 											</label>
 											<input type="hidden" name="paddingLeft" id="objectpaddingleftval" class="objectStyle" value="#esapiEncode('html_attr',attributes.params.stylesupport.objectstyles.paddingleft)#">
 										</div>
@@ -240,7 +235,7 @@
 										</div>
 										<div class="col-xs-4">
 											<label class="mura-serial">
-												<input type="text" name="objectPaddingRight" id="objectpaddingright" class="numeric serial" value="<cfif len(trim(attributes.params.stylesupport.objectstyles.paddingright))>#val(esapiEncode('html_attr',attributes.params.stylesupport.objectstyles.paddingright))#</cfif>">
+												<input type="text" name="objectPaddingRight" id="objectpaddingright" class="numeric serial pull-left" value="<cfif len(trim(attributes.params.stylesupport.objectstyles.paddingright))>#val(esapiEncode('html_attr',attributes.params.stylesupport.objectstyles.paddingright))#</cfif>">
 											</label>
 											<input type="hidden" name="paddingRight" id="objectpaddingrightval" class="objectStyle" value="#esapiEncode('html_attr',attributes.params.stylesupport.objectstyles.paddingright)#">
 										</div>
