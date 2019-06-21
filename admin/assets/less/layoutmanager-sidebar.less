@@ -281,6 +281,17 @@ body.configurator-wrapper {
 			color: lighten(@mura-red, 12%) !important;
 		}
 
+		a.btn.mura-ui-link{
+			color: #646464;
+		}
+
+		a.btn.mura-ui-link:link,
+		a.btn.mura-ui-link:visited,
+		a.btn.mura-ui-link:hover,
+		a.btn.mura-ui-link:active{
+			color: lighten(#646464, 12%) !important;
+		}
+
 		.clearfix {
 			clear: both !important;
 		}
@@ -314,6 +325,10 @@ body.configurator-wrapper {
 				min-width: 24px;
 			}
 
+		}
+
+		#configurator-panels{
+			margin-bottom: 0;
 		}
 
 		.mura-close {
@@ -386,7 +401,7 @@ body.configurator-wrapper {
 				border: none;
 				border-radius: 0;
 				margin: 0;
-				margin-bottom: 2px;
+				margin-bottom: 1px;
 				background-color: inherit !important;
 
 				.mura-panel-heading {
@@ -402,10 +417,8 @@ body.configurator-wrapper {
 
 				.mura-panel-body {
 					border-radius: 0;
-					padding-top: 18px;
-					padding-left: 18px;
-					padding-right: 18px;
-					margin-bottom: 2px;
+					padding: 18px 18px 0;
+					margin-bottom: 0;
 				}
 
 				.mura-panel-title {
@@ -491,10 +504,63 @@ body.configurator-wrapper {
 		} /* /mura-panel-group */
 
 		.mura-ui-inset{
-			box-shadow: inset 0 0 0 2px #565656;
+	    background-color: #545454;
 			margin: 12px 0;
-			padding: 12px;
+	    padding: 6px 0;
 			width: 100%;
+
+			.ui-inset-icon{
+				color: #333;
+		    display: block;
+		    line-height: 28px;
+		    margin: 0 auto;
+		    text-align: center;
+		    width: 24px;
+			}
+
+			input.pull-left{
+					border-top-right-radius: 0;
+					border-bottom-right-radius: 0;	
+					margin-left: 4px !important;									
+			}
+
+			input.pull-right{
+					border-top-left-radius: 0;
+					border-bottom-left-radius: 0;										
+					margin-right: 3px !important;
+			}
+
+			.mura-input-group{
+				a.btn{
+ 					margin-bottom: 0 !important;
+ 					color: #646464;
+					
+					&.pull-left{
+						border-top-left-radius: 0;
+						border-bottom-left-radius: 0;		
+				    border-left: 1px solid #454545;			
+					}
+					
+					&.pull-right{
+						border-top-right-radius: 0;
+						border-bottom-right-radius: 0;					
+				    border-right: 1px solid #454545;			
+					}				
+	
+				}
+			}
+
+			label.mura-serial{
+				width: 100%;
+				display: block;
+
+				&> input{
+					display: block;
+					margin: 0 auto;
+					width: 42px;
+				}
+			}
+
 		}
 
 		.mura-ui-row {
@@ -511,7 +577,7 @@ body.configurator-wrapper {
 					}
 
 				&.mura-serial{
-						width: 52px;
+						margin: 0 auto;
 				}
 
 				&.ui-nested{
@@ -520,6 +586,23 @@ body.configurator-wrapper {
 				}
 
 			} /* /label */
+
+			.mura-ui-link{
+		    font-size: 12px;
+		    margin: 0 0 0 -6px;
+		    display: block;
+		    padding-top: 4px;
+			
+				&.btn.ui-advanced{
+						margin: 0 0 0 3px;
+					}
+			}
+
+
+			a.ui-inset-reveal{
+				color: #868686;
+				margin: 0 !important;
+			}
 
 			.mura-input-group{
 				label{
@@ -755,6 +838,8 @@ body.configurator-wrapper {
 				&.mura-delete {
 					background-color: #6f6f6f;
 					float: right !important;
+			    margin: 36px -15px 0 0;
+			    padding: 6px 12px;
 				}
 
 			}

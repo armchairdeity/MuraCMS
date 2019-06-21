@@ -418,6 +418,12 @@
 				$('#objectmarginbottom').val(v);
 			})
 
+			$('a.input-auto').on('click',function(){
+				var ai = '#' + $(this).attr('data-auto-input');
+				$(ai).val('auto');
+				return false;
+			})
+
 			$('#objectmargintop,#objectmarginright,#objectmarginbottom,#objectmarginleft,#objectmarginall').on('keyup', function(){
 				var val=$(this).val();
 				if(!(val=='a' || val=='au' || val=='aut')){

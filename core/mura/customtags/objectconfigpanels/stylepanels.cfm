@@ -84,7 +84,7 @@
 <cfoutput>
 	<div class="panel-gds-box active" id="panel-gds-object" data-gdsel="panel-style-object"><span>Module</span> .mura-object
 		<cfif request.hasmetaoptions>
-			<div class="panel-gds-box" id="panel-gds-meta" data-gdsel="panel-style-label"<cfif not len(attributes.params.label)> style="display:none"</cfif>><span>#application.rbFactory.getKeyValue(session.rb,'sitemanager.content.fields.heading')#</span>  .mura-object-meta</div>
+			<div class="panel-gds-box" id="panel-gds-meta" data-gdsel="panel-style-label"<cfif not len(attributes.params.label)> style="display:none"</cfif>><span>Heading</span>  .mura-object-meta</div>
 		</cfif>
 		<div class="panel-gds-box" id="panel-gds-content" data-gdsel="panel-style-content"><span>Content</span> .mura-object-content</div>
 	</div>
@@ -104,7 +104,7 @@
 		<div id="panel-style-object" class="panel-collapse collapse" role="tabpanel" aria-labeledby="heading-style-object">
 			<div class="mura-panel-body">
 				<div class="container">
-					<cfinclude template="objectconfigpanelstyleobject.cfm">
+					<cfinclude template="objectconfigpanelstylemodule.cfm">
 				</div> <!--- /end container --->
 			</div> <!--- /end mura-panel-body --->
 		</div> <!--- /end panel-collapse --->
@@ -124,7 +124,7 @@
 		<div id="panel-style-label" class="panel-collapse collapse" role="tabpanel" aria-labeledby="heading-style-label">
 			<div class="mura-panel-body">
 				<div class="container" id="labelContainer">
-					<cfinclude template="objectconfigpanelstylemeta.cfm">
+					<cfinclude template="objectconfigpanelstyleheading.cfm">
 				</div> <!--- /end container --->
 			</div> <!--- /end mura-panel-body --->
 		</div> <!--- /end panel-collapse --->
