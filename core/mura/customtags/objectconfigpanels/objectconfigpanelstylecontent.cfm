@@ -71,7 +71,7 @@
 								<label>Margin</label>
 
 								<div class="row mura-ui-row">
-									<div class="col-xs-8 center">
+									<div class="col-xs-12 center">
 										<div class="mura-input-group">
 											<label class="mura-serial">
 												<input type="text" name="margin" id="contentmarginall" placeholder="All" class="numeric serial" value="<cfif len(trim(attributes.params.stylesupport.contentstyles.marginall))>#val(esapiEncode('html_attr',attributes.params.stylesupport.contentstyles.marginall))#</cfif>">
@@ -82,9 +82,7 @@
 												</cfloop>
 											</select>
 										</div>
-									</div>
-									<div class="col-xs-4">
-										<a class="mura-ui-link" data-reveal="contentmarginadvanced" href="##">Advanced</a>
+										<a class="btn ui-advanced mura-ui-link" data-reveal="contentmarginadvanced" href="##"><i class="mi-arrows"></i></a>
 									</div>
 								</div>
 
@@ -93,7 +91,7 @@
 										<div class="col-xs-3"></div>
 										<div class="col-xs-6">
 											<label class="mura-serial">
-												<input type="text" name="contentMarginTop" id="contentmargintop" placeholder="Top" class="numeric serial" value="<cfif len(trim(attributes.params.stylesupport.contentstyles.margintop))>#val(esapiEncode('html_attr',attributes.params.stylesupport.contentstyles.margintop))#</cfif>">
+												<input type="text" name="contentMarginTop" id="contentmargintop" class="numeric serial" value="<cfif len(trim(attributes.params.stylesupport.contentstyles.margintop))>#val(esapiEncode('html_attr',attributes.params.stylesupport.contentstyles.margintop))#</cfif>">
 											</label>
 											<input type="hidden" name="marginTop" id="contentmargintopval" class="contentStyle" value="#esapiEncode('html_attr',attributes.params.stylesupport.contentstyles.margintop)#">
 										</div>
@@ -101,16 +99,25 @@
 									</div>
 
 									<div class="row mura-ui-row">
-										<div class="col-xs-6">
-											<label class="mura-serial">
-												<input type="text" name="contentMarginLeft" id="contentmarginleft" placeholder="Left" class="numeric serial" value="<cfif len(trim(attributes.params.stylesupport.contentstyles.marginleft))>#esapiEncode('html_attr',attributes.params.stylesupport.contentstyles.marginleft)#</cfif>">
-											</label>
+										<div class="col-xs-5">
+											<div class="mura-input-group">											
+												<label class="mura-serial">
+													<input type="text" name="contentMarginLeft" id="contentmarginleft" class="numeric serial pull-right" value="<cfif len(trim(attributes.params.stylesupport.contentstyles.marginleft))>#esapiEncode('html_attr',attributes.params.stylesupport.contentstyles.marginleft)#</cfif>">
+													<a class="btn pull-right input-auto" data-auto-input="contentmarginleft" href="##"><span>a</span></a>
+												</label>
+											</div>
 											<input type="hidden" name="marginLeft" id="contentmarginleftval" class="contentStyle" value="#esapiEncode('html_attr',attributes.params.stylesupport.contentstyles.marginleft)#">
 										</div>
-										<div class="col-xs-6">
-											<label class="mura-serial">
-												<input type="text" name="contentMarginRight" id="contentmarginright" placeholder="Right" class="numeric serial" value="<cfif len(trim(attributes.params.stylesupport.contentstyles.marginright))>#esapiEncode('html_attr',attributes.params.stylesupport.contentstyles.marginright)#</cfif>">
-											</label>
+										<div class="col-xs-2">
+											<i class="mi-arrows ui-inset-icon"></i>
+										</div>
+										<div class="col-xs-5">
+											<div class="mura-input-group">											
+												<label class="mura-serial">
+													<input type="text" name="contentMarginRight" id="contentmarginright" class="numeric serial pull-left" value="<cfif len(trim(attributes.params.stylesupport.contentstyles.marginright))>#esapiEncode('html_attr',attributes.params.stylesupport.contentstyles.marginright)#</cfif>">
+													<a class="btn pull-left input-auto" data-auto-input="contentmarginright" href="##"><span>a</span></a>
+												</label>
+											</div>
 											<input type="hidden" name="marginRight" id="contentmarginrightval" class="contentStyle" value="#esapiEncode('html_attr',attributes.params.stylesupport.contentstyles.marginright)#">
 										</div>
 									</div>
@@ -119,7 +126,7 @@
 										<div class="col-xs-3"></div>
 										<div class="col-xs-6">
 											<label class="mura-serial">
-												<input type="text" name="contentMarginBottom" id="contentmarginbottom" placeholder="Bottom" class="numeric serial" value="<cfif len(trim(attributes.params.stylesupport.contentstyles.marginbottom))>#val(esapiEncode('html_attr',attributes.params.stylesupport.contentstyles.marginbottom))#</cfif>">
+												<input type="text" name="contentMarginBottom" id="contentmarginbottom" class="numeric serial" value="<cfif len(trim(attributes.params.stylesupport.contentstyles.marginbottom))>#val(esapiEncode('html_attr',attributes.params.stylesupport.contentstyles.marginbottom))#</cfif>">
 											</label>
 											<input type="hidden" name="marginBottom" id="contentmarginbottomval" class="contentStyle" value="#esapiEncode('html_attr',attributes.params.stylesupport.contentstyles.marginbottom)#">
 										</div>
@@ -135,7 +142,7 @@
 								<label>Padding</label>
 
 								<div class="row mura-ui-row">
-									<div class="col-xs-8 center">
+									<div class="col-xs-12 center">
 										<div class="mura-input-group">
 											<label class="mura-serial">
 												<input type="text" name="padding" id="contentpaddingall" placeholder="All" class="numeric serial" value="<cfif len(trim(attributes.params.stylesupport.contentstyles.paddingall))>#val(esapiEncode('html_attr',attributes.params.stylesupport.contentstyles.paddingall))#</cfif>">
@@ -146,9 +153,7 @@
 												</cfloop>
 											</select>
 										</div>
-									</div>
-									<div class="col-xs-4">
-										<a class="mura-ui-link" data-reveal="contentpaddingadvanced" href="##">Advanced</a>
+										<a class="btn ui-advanced mura-ui-link" data-reveal="contentpaddingadvanced" href="##"><i class="mi-arrows"></i></a>
 									</div>
 								</div>
 
@@ -157,7 +162,7 @@
 										<div class="col-xs-3"></div>
 										<div class="col-xs-6">
 											<label class="mura-serial">
-												<input type="text" name="contentPaddingTop" id="contentpaddingtop" placeholder="Top" class="numeric serial" value="<cfif len(trim(attributes.params.stylesupport.contentstyles.paddingtop))>#val(esapiEncode('html_attr',attributes.params.stylesupport.contentstyles.paddingtop))#</cfif>">
+												<input type="text" name="contentPaddingTop" id="contentpaddingtop"s class="numeric serial" value="<cfif len(trim(attributes.params.stylesupport.contentstyles.paddingtop))>#val(esapiEncode('html_attr',attributes.params.stylesupport.contentstyles.paddingtop))#</cfif>">
 											</label>
 											<input type="hidden" name="paddingTop" id="contentpaddingtopval" class="contentStyle" value="#esapiEncode('html_attr',attributes.params.stylesupport.contentstyles.paddingtop)#">
 										</div>
@@ -165,24 +170,29 @@
 									</div>
 
 									<div class="row mura-ui-row">
-										<div class="col-xs-6">
+										<div class="col-xs-1"></div>
+										<div class="col-xs-4">
 											<label class="mura-serial">
-												<input type="text" name="contentPaddingLeft" id="contentpaddingleft" placeholder="Left" class="numeric serial" value="<cfif len(trim(attributes.params.stylesupport.contentstyles.paddingleft))>#val(esapiEncode('html_attr',attributes.params.stylesupport.contentstyles.paddingleft))#</cfif>">
+												<input type="text" name="contentPaddingLeft" id="contentpaddingleft" class="numeric serial pull-right" value="<cfif len(trim(attributes.params.stylesupport.contentstyles.paddingleft))>#val(esapiEncode('html_attr',attributes.params.stylesupport.contentstyles.paddingleft))#</cfif>">
 											</label>
 											<input type="hidden" name="paddingLeft" id="contentpaddingleftval" class="contentStyle" value="#esapiEncode('html_attr',attributes.params.stylesupport.contentstyles.paddingleft)#">
 										</div>
-										<div class="col-xs-6">
+										<div class="col-xs-2">
+											<i class="mi-arrows ui-inset-icon"></i>
+										</div>
+										<div class="col-xs-4">
 											<label class="mura-serial">
-												<input type="text" name="contentPaddingRight" id="contentpaddingright" placeholder="Right" class="numeric serial" value="<cfif len(trim(attributes.params.stylesupport.contentstyles.paddingright))>#val(esapiEncode('html_attr',attributes.params.stylesupport.contentstyles.paddingright))#</cfif>">
+												<input type="text" name="contentPaddingRight" id="contentpaddingright"s class="numeric serial pull-left" value="<cfif len(trim(attributes.params.stylesupport.contentstyles.paddingright))>#val(esapiEncode('html_attr',attributes.params.stylesupport.contentstyles.paddingright))#</cfif>">
 											</label>
 											<input type="hidden" name="paddingRight" id="contentpaddingrightval" class="contentStyle" value="#esapiEncode('html_attr',attributes.params.stylesupport.contentstyles.paddingright)#">
 										</div>
+										<div class="col-xs-1"></div>										
 									</div>
 									<div class="row mura-ui-row">
 										<div class="col-xs-3"></div>
 										<div class="col-xs-6">
 											<label class="mura-serial">
-												<input type="text" name="contentPaddingBottom" id="contentpaddingbottom" placeholder="Bottom" class="numeric serial" value="<cfif len(trim(attributes.params.stylesupport.contentstyles.paddingbottom))>#val(esapiEncode('html_attr',attributes.params.stylesupport.contentstyles.paddingbottom))#</cfif>">
+												<input type="text" name="contentPaddingBottom" id="contentpaddingbottom"s class="numeric serial" value="<cfif len(trim(attributes.params.stylesupport.contentstyles.paddingbottom))>#val(esapiEncode('html_attr',attributes.params.stylesupport.contentstyles.paddingbottom))#</cfif>">
 											</label>
 											<input type="hidden" name="paddingBottom" id="contentpaddingbottomval" class="contentStyle" value="#esapiEncode('html_attr',attributes.params.stylesupport.contentstyles.paddingbottom)#">
 										</div>
