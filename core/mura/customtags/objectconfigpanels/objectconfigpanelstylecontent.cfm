@@ -100,9 +100,9 @@
 
 									<div class="row mura-ui-row">
 										<div class="col-xs-5">
-											<div class="mura-input-group">											
+											<div class="mura-input-group">
 												<label class="mura-serial">
-													<input type="text" name="contentMarginLeft" id="contentmarginleft" class="numeric serial pull-right" value="<cfif len(trim(attributes.params.stylesupport.contentstyles.marginleft))>#esapiEncode('html_attr',attributes.params.stylesupport.contentstyles.marginleft)#</cfif>">
+													<input type="text" name="contentMarginLeft" id="contentmarginleft" class="numeric serial pull-right" value="<cfif attributes.params.stylesupport.contentstyles.marginleft eq 'auto'>auto<cfelseif len(trim(attributes.params.stylesupport.contentstyles.marginleft))>#val(esapiEncode('html_attr',attributes.params.stylesupport.contentstyles.marginleft))#</cfif>">
 													<a class="btn pull-right input-auto" data-auto-input="contentmarginleft" href="##"><span>a</span></a>
 												</label>
 											</div>
@@ -112,9 +112,9 @@
 											<i class="mi-arrows ui-inset-icon"></i>
 										</div>
 										<div class="col-xs-5">
-											<div class="mura-input-group">											
+											<div class="mura-input-group">
 												<label class="mura-serial">
-													<input type="text" name="contentMarginRight" id="contentmarginright" class="numeric serial pull-left" value="<cfif len(trim(attributes.params.stylesupport.contentstyles.marginright))>#esapiEncode('html_attr',attributes.params.stylesupport.contentstyles.marginright)#</cfif>">
+													<input type="text" name="contentMarginRight" id="contentmarginright" class="numeric serial pull-left" value="<cfif attributes.params.stylesupport.contentstyles.marginright eq 'auto'>auto<cfelseif len(trim(attributes.params.stylesupport.contentstyles.marginright))>#val(esapiEncode('html_attr',attributes.params.stylesupport.contentstyles.marginright))#</cfif>">
 													<a class="btn pull-left input-auto" data-auto-input="contentmarginright" href="##"><span>a</span></a>
 												</label>
 											</div>
@@ -186,7 +186,7 @@
 											</label>
 											<input type="hidden" name="paddingRight" id="contentpaddingrightval" class="contentStyle" value="#esapiEncode('html_attr',attributes.params.stylesupport.contentstyles.paddingright)#">
 										</div>
-										<div class="col-xs-1"></div>										
+										<div class="col-xs-1"></div>
 									</div>
 									<div class="row mura-ui-row">
 										<div class="col-xs-3"></div>

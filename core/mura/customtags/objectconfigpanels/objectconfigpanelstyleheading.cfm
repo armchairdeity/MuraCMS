@@ -85,7 +85,7 @@
 										<div class="row mura-ui-row">
 											<div class="col-xs-5">
 												<label class="mura-serial">
-													<input type="text" name="metaMarginLeft" id="metamarginleft" class="numeric serial pull-right" value="<cfif len(trim(attributes.params.stylesupport.metastyles.marginleft))>#esapiEncode('html_attr',attributes.params.stylesupport.metastyles.marginleft)#</cfif>">
+													<input type="text" name="metaMarginLeft" id="metamarginleft" class="numeric serial pull-right" value="<cfif attributes.params.stylesupport.metastyles.marginleft eq 'auto'>auto<cfelseif len(trim(attributes.params.stylesupport.metastyles.marginleft))>#val(esapiEncode('html_attr',attributes.params.stylesupport.metastyles.marginleft))#</cfif>">
 													<a class="btn pull-right input-auto" data-auto-input="metamarginleft" href="##"><span>a</span></a>
 												</label>
 												<input type="hidden" name="marginLeft" id="metamarginleftval" class="metaStyle" value="#esapiEncode('html_attr',attributes.params.stylesupport.metastyles.marginleft)#">
@@ -95,7 +95,7 @@
 											</div>
 											<div class="col-xs-5">
 												<label class="mura-serial">
-													<input type="text" name="metaMarginRight" id="metamarginright" class="numeric serial pull-left" value="<cfif len(trim(attributes.params.stylesupport.metastyles.marginright))>#esapiEncode('html_attr',attributes.params.stylesupport.metastyles.marginright)#</cfif>">
+													<input type="text" name="metaMarginRight" id="metamarginright" class="numeric serial pull-left" value="<cfif attributes.params.stylesupport.metastyles.marginright eq 'auto'>auto<cfelseif len(trim(attributes.params.stylesupport.metastyles.marginright))>#val(esapiEncode('html_attr',attributes.params.stylesupport.metastyles.marginright))#</cfif>">
 													<a class="btn pull-left input-auto" data-auto-input="metamarginright" href="##"><span>a</span></a>
 												</label>
 												<input type="hidden" name="marginRight" id="metamarginrightval" class="metaStyle" value="#esapiEncode('html_attr',attributes.params.stylesupport.metastyles.marginright)#">
@@ -150,7 +150,7 @@
 										</div>
 
 										<div class="row mura-ui-row">
-											<div class="col-xs-1"></div>											
+											<div class="col-xs-1"></div>
 												<div class="col-xs-4">
 													<label class="mura-serial">
 														<input type="text" name="metaPaddingLeft" id="metapaddingleft" class="numeric serial pull-right" value="<cfif len(trim(attributes.params.stylesupport.metastyles.paddingleft))>#val(esapiEncode('html_attr',attributes.params.stylesupport.metastyles.paddingleft))#</cfif>">
@@ -166,7 +166,7 @@
 													</label>
 													<input type="hidden" name="paddingRight" id="metapaddingrightval" class="metaStyle" value="#esapiEncode('html_attr',attributes.params.stylesupport.metastyles.paddingright)#">
 												</div>
-											<div class="col-xs-1"></div>	
+											<div class="col-xs-1"></div>
 										</div>
 
 										<div class="row mura-ui-row">
