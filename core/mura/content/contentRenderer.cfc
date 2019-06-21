@@ -3039,6 +3039,41 @@ Display Objects
 	<cfreturn variables.contentRendererUtility.renderEditableAttribute(argumentCollection=arguments)>
 </cffunction>
 
+<cffunction name="renderMinifiedJs" output="true">
+	<cfargument name="filepath">
+
+	<cfset dir = GetDirectoryFromPath(arguments.filepath) />
+	<cfset filename = getFileFromPath(arguments.filepath) />
+	<cfset filenameArray = filename.listToArray(".") />
+	<cfset minifiedFilepath = dir & "dist/" & "#filenameArray[1]#.min.js" />
+	
+	<cfif !StructKeyExists(application, "jsFileLookup")>
+		<!--- Is the application scope the right place for this? --->
+		<cfset application.jsFileLookup = {}>
+	</cfif>
+
+	<cfset filepathArray = arguments.filepath.listToArray(".")/>
+
+	<cfoutput>
+		<!--- If key is in cache --->
+		<cfif structKeyExists(application.jsFileLookup,'#arguments.filepath#')>
+			<script src="#minifiedFilepath#"></script>
+		<!--- Else if minified file exists --->
+		<cfelseif fileExists(server.coldfusion.rootdir & minifiedFilepath)>
+			<!--- Add record to cache --->
+			<cfset application.jsFileLookup[arguments.filepath] = 1 />
+			<script src="#minifiedFilepath#"></script>
+		<!--- Else serve the unminified file --->
+		<cfelse>
+			<script src="#arguments.filepath#"></script>
+		</cfif>
+	</cfoutput>
+</cffunction>
+
+<!--- <cffunction name="renderMinifiedCss" output="true">
+
+</cffunction> --->
+
 <cffunction name="renderClassOption" output="false">
 	<cfargument name="object">
 	<cfargument name="objectid" default="">
