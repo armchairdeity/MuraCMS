@@ -679,7 +679,7 @@
 			$('#objectbackgroundimageurl').on('change',function(){
 				var v = $(this).val();
 				var str = "";
-				if (v.length > 3){
+				if (typeof v !='undefined' && v.length > 3){
 					str = "url('" + v + "')";
 					$('.object-css-bg-option').show();
 				} else {
@@ -692,7 +692,7 @@
 
 			var v = $('#objectbackgroundimageurl').val();
 			var str = "";
-			if (v.length > 3){
+			if (typeof v !='undefined' && v.length > 3){
 				str = "url('" + v + "')";
 				$('.object-css-bg-option').show();
 			} else {
@@ -740,7 +740,7 @@
 			$('#metabackgroundimageurl').on('change',function(){
 				var v = $(this).val();
 				var str = "";
-				if (typeof v.length != 'undefined' && v.length > 3){
+				if (typeof v != 'undefined' && v.length > 3){
 					str = "url('" + v + "')";
 					$('.meta-css-bg-option').show();
 				} else {
@@ -753,7 +753,7 @@
 
 			var v = $('#metabackgroundimageurl').val();
 			var str = "";
-			if (typeof v.length != 'undefined' && v.length > 3){
+			if (typeof v != 'undefined' && v.length > 3){
 				str = "url('" + v + "')";
 				$('.meta-css-bg-option').show();
 			} else {
@@ -801,7 +801,7 @@
 			$('#contentbackgroundimageurl').on('change',function(){
 				var v = $(this).val();
 				var str = "";
-				if (v.length > 3){
+				if (typeof v !='undefined' && v.length > 3){
 					str = "url('" + v + "')";
 					$('.content-css-bg-option').show();
 				} else {
@@ -814,7 +814,7 @@
 
 			var v = $('#contentbackgroundimageurl').val();
 			var str = "";
-			if (v.length > 3){
+			if (typeof v !='undefined' && v.length > 3){
 				str = "url('" + v + "')";
 				$('.content-css-bg-option').show();
 			} else {
