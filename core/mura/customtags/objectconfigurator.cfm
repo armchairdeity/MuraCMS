@@ -740,7 +740,7 @@
 			$('#metabackgroundimageurl').on('change',function(){
 				var v = $(this).val();
 				var str = "";
-				if (v.length > 3){
+				if (typeof v.length != 'undefined' && v.length > 3){
 					str = "url('" + v + "')";
 					$('.meta-css-bg-option').show();
 				} else {
@@ -753,7 +753,7 @@
 
 			var v = $('#metabackgroundimageurl').val();
 			var str = "";
-			if (v.length > 3){
+			if (typeof v.length != 'undefined' && v.length > 3){
 				str = "url('" + v + "')";
 				$('.meta-css-bg-option').show();
 			} else {
