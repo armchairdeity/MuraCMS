@@ -156,7 +156,7 @@
 												<div class="mura-input-group">
 													<label class="mura-serial">
 														<input type="text" name="objectMarginLeft" id="objectmarginleft" class="numeric serial pull-right" value="<cfif  attributes.params.stylesupport.objectstyles.marginleft eq 'auto'>auto<cfelseif len(trim(attributes.params.stylesupport.objectstyles.marginleft))>#val(esapiEncode('html_attr',attributes.params.stylesupport.objectstyles.marginleft))#</cfif>">
-															<a class="btn pull-right input-auto" data-auto-input="objectmarginleft" href="##"><span>a</span></a>
+															<!---<a class="btn pull-right input-auto" data-auto-input="objectmarginleft" href="##"><span>a</span></a>--->
 														</label>
 												</div>
 											<input type="hidden" name="marginLeft" id="objectmarginleftval" class="objectStyle" value="#esapiEncode('html_attr',attributes.params.stylesupport.objectstyles.marginleft)#">
@@ -168,7 +168,7 @@
 											<div class="mura-input-group">
 												<label class="mura-serial">
 													<input type="text" name="objectMarginRight" id="objectmarginright" class="numeric serial pull-left" value="<cfif  attributes.params.stylesupport.objectstyles.marginright eq 'auto'>auto<cfelseif len(trim(attributes.params.stylesupport.objectstyles.marginright))>#val(esapiEncode('html_attr',attributes.params.stylesupport.objectstyles.marginright))#</cfif>">
-													<a class="btn pull-left input-auto" data-auto-input="objectmarginright" href="##"><span>a</span></a>
+													<!---<a class="btn pull-left input-auto" data-auto-input="objectmarginright" href="##"><span>a</span></a>--->
 												</label>
 											</div>
 											<input type="hidden" name="marginRight" id="objectmarginrightval" class="objectStyle" value="#esapiEncode('html_attr',attributes.params.stylesupport.objectstyles.marginright)#">
