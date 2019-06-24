@@ -3039,7 +3039,36 @@ Display Objects
 	<cfreturn variables.contentRendererUtility.renderEditableAttribute(argumentCollection=arguments)>
 </cffunction>
 
-<cffunction name="renderMinifiedJsOrCss" output="true">
+<cffunction name="renderMinJSFile" output="true">
+	<cfargument name="filepath">
+	<cfargument name="siteid" default="">
+	<cfargument name="attrs">
+
+	<cfset var processedFilepath = this.getMinifiedFile(filepath=arguments.filepath, siteid=arguments.siteid) />
+	<cfoutput>
+		<script src="#processedFilepath#" 
+			<cfloop collection="#arguments.attrs#" item=attr>
+				#attr#=#arguments.attrs[attr]#
+			</cfloop>
+		>
+		</script>
+	</cfoutput>
+</cffunction>
+
+<cffunction name="renderMinCSSFile" output="true">
+	<cfargument name="filepath">
+	<cfargument name="siteid" default="">
+	<cfset var processedFilepath = this.getMinifiedFile(filepath=arguments.filepath, siteid=arguments.siteid) />
+	<cfoutput>
+		<link href="#processedFilepath#" 
+			<cfloop collection="#arguments.attrs#" item=attr>
+				#attr#=#arguments.attrs[attr]#
+			</cfloop>
+		>
+	</cfoutput>
+</cffunction>
+
+<cffunction name="getMinifiedFile" output="true">
 	<cfargument name="filepath">
 	<cfargument name="siteid" default="">
 
@@ -3067,15 +3096,7 @@ Display Objects
 	<cfelse>
 		<cfset processedFilepath = arguments.filepath />
 	</cfif>
-
-	<cfoutput>
-		<cfif fileExtension EQ "js">
-			<script src="#processedFilepath#"></script>
-		<cfelseif fileExtension EQ "css">
-			<link rel="stylesheet" href="#processedFilepath#">
-		</cfif>
-	</cfoutput>
-
+	<cfreturn processedFilepath />
 </cffunction>
 
 <cffunction name="renderClassOption" output="false">
