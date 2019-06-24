@@ -139,13 +139,25 @@ li .cke_skin_mura {
 
     /* For devices larger than 550px */
 
+		/* small  < 768 If less than force 100%*/
 		@media (max-width: 767px) {
 
-				.mura-object > .mura-object-content	{ width: 100% !important; }
+			.mura-object	{ width: 100% !important; }
+
+			.mura-object > .mura-object-content		{
+				width: 100% !important;
+				margin-left: 0px !important;
+				margin-right: 0px !important;
+			}
+
+			.mura-object > .mura-object-meta	{
+				margin-left: 0px !important;
+				margin-right: 0px !important;
+			}
 
 		}
 
-		/* small */
+		/* default: small 768 - 991 */
     @media (min-width: 768px) {
 
         .mura-container {
@@ -173,20 +185,34 @@ li .cke_skin_mura {
 				.mura-one-half.mura-object                { width: 50%; }
     }
 
-		/* medium */
-		@media (max-width: 992px) {
-				.mura-object.mura-md	{ width: 100%; }
-				.mura-object.mura-md > .mura-object-content	{ width: 100% !important; }
+		/* medium 992 - 1199  If less than force 100% */
+		@media (max-width: 991px) {
+				.mura-object.mura-md	{ width: 100% !important; }
+				.mura-object.mura-md > .mura-object-content {
+					width: 100%;
+					margin-left: 0px !important;
+					margin-right: 0px !important;
+				}
+				.mura-object.mura-md > .mura-object-meta {
+					margin-left: 0px !important;
+					margin-right: 0px !important;
+				}
 		}
 
-
-			/* medium */
-		@media (max-width: 1200px) {
-				.mura-object.mura-lg	{ width: 100%; }
-		}
-
+		/* large  1200+ If less than force 100%*/
 		@media (max-width: 1199px) {
-				.mura-object.mura-lg > .mura-object-content	{ width: 100% !important; }
+				.mura-object.mura-lg	{ width: 100% !important; }
+
+				.mura-object.mura-lg > .mura-object-content		{
+					width: 100% !important;
+					margin-left: 0px !important;
+					margin-right: 0px !important;
+				}
+
+				.mura-object.mura-lg > .mura-object-meta	{
+					margin-left: 0px !important;
+					margin-right: 0px !important;
+				}
 		}
 
 
