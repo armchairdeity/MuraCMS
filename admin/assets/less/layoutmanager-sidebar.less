@@ -143,6 +143,20 @@ body.configurator-wrapper #mura-content {
 		margin-top: 12px;
 	}
 
+	> h1{
+		color: #f3f3f3;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 1.2;
+    margin: 0 0 15px;
+    padding: 0;
+
+    i{
+    	min-width: 32px;
+    }
+
+	}
+
 	> .btn {
 		float: right;
 	}
@@ -162,9 +176,14 @@ body.configurator-wrapper #mura-content {
 	padding: 0;
 	background: none;
 
+	+ #mura-objects-openregions-btn{
+		width: 100%;
+	}
+
 	+ .btn,
 	+ .btn + .btn {
 		margin-top: 10px;
+
 
 		&:not([class*=btn-]) {
 			.btn-secondary;
@@ -179,9 +198,11 @@ body.configurator-wrapper #mura-content {
 			margin-top: 10px;
 		}
 
+
 	}
 
 }
+
 
 .mura-sidebar__object-group-items {
 	padding: 0;
