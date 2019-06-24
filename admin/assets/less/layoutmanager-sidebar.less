@@ -134,7 +134,7 @@ body.configurator-wrapper #mura-content {
 }
 
 .mura-sidebar__objects-list__object-group-heading {
-	font-size: 14px;
+	font-size: 13px;
 	font-weight: normal;
 	color: #f3f3f3;
 	line-height: 1.2;
@@ -407,11 +407,21 @@ body.configurator-wrapper {
 				.mura-panel-heading {
 					border-radius: 0;
 					background-color: #565656;
+					color: #d8d8d8;
 					padding: 0;
+
+					a{
+						i{
+							text-align: center;
+							width: 16px;
+						}
+					}
+
 				}
 
 				.mura-panel-heading:hover {
 					background-color: #6f6f6f;
+					color: #f5f5f5;
 					cursor: pointer;
 				}
 
@@ -422,20 +432,19 @@ body.configurator-wrapper {
 				}
 
 				.mura-panel-title {
-					color: #fff;
 					font-size: 14px;
 				}
 
 				.mura-panel-title a {
 					display: block;
-					color: inherit;
+					color: #d8d8d8 !important; 
 					padding: 10px 16px;
 				}
 
 				.mura-panel-title a:hover,
 				.mura-panel-title a:active,
 				.mura-panel-title a:focus {
-					color: inherit !important;
+					color: #F5F5F5 !important;
 				}
 
 			}
@@ -464,6 +473,13 @@ body.configurator-wrapper {
 				    padding: 16px 16px 12px 16px !important;
 				    background-color: #4e4e4e;
 					}
+
+					.mura-panel-title{
+						font-size: 13px;
+						color: #BDBDBD;
+
+					}
+
 				}
 
 			}
@@ -486,6 +502,9 @@ body.configurator-wrapper {
 				padding: 6px 10px;
 			}
 
+			#panel-gds-object{
+				margin: 2px auto 12px;
+			}
 			.panel-gds-box span {
 				font-size: 12px;
 				font-weight: 400;
@@ -863,7 +882,7 @@ body.configurator-wrapper {
 			background-color: #565656;
 			text-shadow: none;
 			box-shadow: none;
-			font-size: 14px;
+			font-size: 13px;
 			padding: 8px 12px;
 			color: #d8d8d8;
 		}
