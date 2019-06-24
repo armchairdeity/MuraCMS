@@ -3043,18 +3043,18 @@ Display Objects
 	<cfargument name="filepath">
 	<cfargument name="siteid" default="">
 
-	<cfset dir = GetDirectoryFromPath(arguments.filepath) />
-	<cfset filename = getFileFromPath(arguments.filepath) />
-	<cfset filenameArray = filename.listToArray(".") />
-	<cfset fileExtension = filenameArray[2] />
-	<cfset minifiedFilepath = dir & "dist/" & "#filenameArray[1]#.min.#fileExtension#" />
+	<cfset var dir = GetDirectoryFromPath(arguments.filepath) />
+	<cfset var filename = getFileFromPath(arguments.filepath) />
+	<cfset var filenameArray = filename.listToArray(".") />
+	<cfset var fileExtension = filenameArray[2] />
+	<cfset var minifiedFilepath = dir & "dist/" & "#filenameArray[1]#.min.#fileExtension#" />
 
-	<cfset site = application.settingsManager.getSite(arguments.siteid)/> 
-	<cfset cacheFactory = site.getCacheFactory(name="jsAndCssFileLookup")>
+	<cfset var site = application.settingsManager.getSite(arguments.siteid)/> 
+	<cfset var cacheFactory = site.getCacheFactory(name="jsAndCssFileLookup")>
 	
-	<cfset filepathArray = arguments.filepath.listToArray(".")/>
+	<cfset var filepathArray = arguments.filepath.listToArray(".")/>
 
-	<cfset processedFilepath = "" />
+	<cfset var processedFilepath = "" />
 	<!--- If key is in cache --->
 	<cfif cacheFactory.has(arguments.filepath)>
 		<cfset processedFilepath = cacheFactory.get(arguments.filepath) />
