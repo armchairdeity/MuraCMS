@@ -120,12 +120,12 @@ component extends="mura.bean.beanORM" table='tfiles' entityName="file" hint="Thi
 			} else if(listLast(get('filename'),'.') == 'js'){
 				set({
 					contentType="application",
-					contentSubType="javascript",
+					contentSubType="javascript"
 					});
 			}	 else if(listFindNoCase('html,htm',listLast(get('filename'),'.'))){
 				set({
 					contentType="text",
-					contentSubType="html",
+					contentSubType="html"
 					});
 			}
 
