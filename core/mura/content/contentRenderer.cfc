@@ -3039,40 +3039,44 @@ Display Objects
 	<cfreturn variables.contentRendererUtility.renderEditableAttribute(argumentCollection=arguments)>
 </cffunction>
 
-<cffunction name="renderMinifiedJs" output="true">
+<cffunction name="renderMinifiedJsOrCss" output="true">
 	<cfargument name="filepath">
+	<cfargument name="siteid" default="">
 
 	<cfset dir = GetDirectoryFromPath(arguments.filepath) />
 	<cfset filename = getFileFromPath(arguments.filepath) />
 	<cfset filenameArray = filename.listToArray(".") />
-	<cfset minifiedFilepath = dir & "dist/" & "#filenameArray[1]#.min.js" />
-	
-	<cfif !StructKeyExists(application, "jsFileLookup")>
-		<!--- Is the application scope the right place for this? --->
-		<cfset application.jsFileLookup = {}>
-	</cfif>
+	<cfset fileExtension = filenameArray[2] />
+	<cfset minifiedFilepath = dir & "dist/" & "#filenameArray[1]#.min.#fileExtension#" />
 
+	<cfset site = application.settingsManager.getSite(arguments.siteid)/> 
+	<cfset cacheFactory = site.getCacheFactory(name="jsAndCssFileLookup")>
+	
 	<cfset filepathArray = arguments.filepath.listToArray(".")/>
 
+	<cfset processedFilepath = "" />
+	<!--- If key is in cache --->
+	<cfif cacheFactory.has(arguments.filepath)>
+		<cfset processedFilepath = cacheFactory.get(arguments.filepath) />
+	<!--- Else if minified file exists --->
+	<cfelseif fileExists(server.coldfusion.rootdir & minifiedFilepath)>
+		<!--- Add record to cache --->
+		<cfset cacheFactory.set(arguments.filepath, minifiedFilepath) />
+		<cfset processedFilepath = cacheFactory.get(arguments.filepath) />
+	<!--- Else use the original unminified file --->
+	<cfelse>
+		<cfset processedFilepath = arguments.filepath />
+	</cfif>
+
 	<cfoutput>
-		<!--- If key is in cache --->
-		<cfif structKeyExists(application.jsFileLookup,'#arguments.filepath#')>
-			<script src="#minifiedFilepath#"></script>
-		<!--- Else if minified file exists --->
-		<cfelseif fileExists(server.coldfusion.rootdir & minifiedFilepath)>
-			<!--- Add record to cache --->
-			<cfset application.jsFileLookup[arguments.filepath] = 1 />
-			<script src="#minifiedFilepath#"></script>
-		<!--- Else serve the unminified file --->
-		<cfelse>
-			<script src="#arguments.filepath#"></script>
+		<cfif fileExtension EQ "js">
+			<script src="#processedFilepath#"></script>
+		<cfelseif fileExtension EQ "css">
+			<link rel="stylesheet" href="#processedFilepath#">
 		</cfif>
 	</cfoutput>
+
 </cffunction>
-
-<!--- <cffunction name="renderMinifiedCss" output="true">
-
-</cffunction> --->
 
 <cffunction name="renderClassOption" output="false">
 	<cfargument name="object">
