@@ -185,6 +185,7 @@
 		$(function(){
 
 			currentPanel="";
+			numRE="/[^0-9\-]/g";
 			window.configuratorInited=false;
 
 			$('#panel-gds-object,.mura-panel-heading').click(function(){
@@ -337,10 +338,10 @@
 
 			// Begin Object Margin and Padding
 			function updateObjectPadding(){
-				var t = $('#objectpaddingtop').val().replace(/[^0-9\-]/g,'');
-				var r = $('#objectpaddingright').val().replace(/[^0-9\-]/g,'');
-				var b = $('#objectpaddingbottom').val().replace(/[^0-9\-]/g,'');
-				var l =$('#objectpaddingleft').val().replace(/[^0-9\-]/g,'');
+				var t = $('#objectpaddingtop').val().replace(numRE,'');
+				var r = $('#objectpaddingright').val().replace(numRE,'');
+				var b = $('#objectpaddingbottom').val().replace(numRE,'');
+				var l =$('#objectpaddingleft').val().replace(numRE,'');
 				var u = $('#objectpaddinguom').val();
 				if (t.length){ $('#objectpaddingtopval').val(t + u); } else { $('#objectpaddingtopval').val(''); }
 				if (r.length){ $('#objectpaddingrightval').val(r + u); } else { $('#objectpaddingrightval').val(''); }
@@ -358,7 +359,7 @@
 			}
 
 			$('#objectpaddingall').on('keyup', function(){
-				var v = $('#objectpaddingall').val().replace(/[^0-9\-]/g,'');
+				var v = $('#objectpaddingall').val().replace(numRE,'');
 				$('#objectpaddingadvanced').hide();
 				$('#objectpaddingtop').val(v);
 				$('#objectpaddingleft').val(v);
@@ -378,12 +379,12 @@
 
 			// margin
 			function updateObjectMargin(){
-				var t = $('#objectmargintop').val().replace(/[^0-9\-]/g,'');
+				var t = $('#objectmargintop').val().replace(numRE,'');
 				var r = $('#objectmarginright').val();
-				if(r != 'auto'){r=r.replace(/[^0-9\-]/g,'')}
-				var b = $('#objectmarginbottom').val().replace(/[^0-9\-]/g,'');
+				if(r != 'auto'){r=r.replace(numRE,'')}
+				var b = $('#objectmarginbottom').val().replace(numRE,'');
 				var l =$('#objectmarginleft').val();
-				if(l != 'auto'){l=l.replace(/[^0-9\-]/g,'')}
+				if(l != 'auto'){l=l.replace(numRE,'')}
 				var u = $('#objectmarginuom').val();
 				if (t.length){ $('#objectmargintopval').val(t + u); } else { $('#objectmargintopval').val(''); }
 				if(r=='auto'){
@@ -410,7 +411,7 @@
 			}
 
 			$('#objectmarginall').on('keyup', function(){
-				var v = $('#objectmarginall').val().replace(/[^0-9\-]/g,'');
+				var v = $('#objectmarginall').val().replace(numRE,'');
 				$('#objectmarginadvanced').hide();
 				$('#objectmargintop').val(v);
 				$('#objectmarginleft').val(v);
@@ -442,10 +443,10 @@
 			<cfif request.hasmetaoptions and not (IsBoolean(attributes.params.isbodyobject) and attributes.params.isbodyobject)>
 			// Begin Meta Margin and Padding
 			function updateMetaPadding(){
-				var t = $('#metapaddingtop').val().replace(/[^0-9\-]/g,'');
-				var r = $('#metapaddingright').val().replace(/[^0-9\-]/g,'');
-				var b = $('#metapaddingbottom').val().replace(/[^0-9\-]/g,'');
-				var l =$('#metapaddingleft').val().replace(/[^0-9\-]/g,'');
+				var t = $('#metapaddingtop').val().replace(numRE,'');
+				var r = $('#metapaddingright').val().replace(numRE,'');
+				var b = $('#metapaddingbottom').val().replace(numRE,'');
+				var l =$('#metapaddingleft').val().replace(numRE,'');
 				var u = $('#metapaddinguom').val();
 				if (t.length){ $('#metapaddingtopval').val(t + u); } else { $('#metapaddingtopval').val(''); }
 				if (r.length){ $('#metapaddingrightval').val(r + u); } else { $('#metapaddingrightval').val(''); }
@@ -463,7 +464,7 @@
 			}
 
 			$('#metapaddingall').on('keyup', function(){
-				var v = $('#metapaddingall').val().replace(/[^0-9\-]/g,'');
+				var v = $('#metapaddingall').val().replace(numRE,'');
 				$('#metapaddingadvanced').hide();
 				$('#metapaddingtop').val(v);
 				$('#metapaddingleft').val(v);
@@ -483,12 +484,12 @@
 
 			// margin
 			function updateMetaMargin(){
-				var t = $('#metamargintop').val().replace(/[^0-9\-]/g,'');
+				var t = $('#metamargintop').val().replace(numRE,'');
 				var r = $('#metamarginright').val();
-				if(r != 'auto'){r=r.replace(/[^0-9\-]/g,'')}
-				var b = $('#metamarginbottom').val().replace(/[^0-9\-]/g,'');
+				if(r != 'auto'){r=r.replace(numRE,'')}
+				var b = $('#metamarginbottom').val().replace(numRE,'');
 				var l =$('#metamarginleft').val();
-				if(l != 'auto'){l=l.replace(/[^0-9\-]/g,'')}
+				if(l != 'auto'){l=l.replace(numRE,'')}
 				var u = $('#metamarginuom').val();
 				if (t.length){ $('#metamargintopval').val(t + u); } else { $('#metamargintopval').val(''); }
 				if(r=='auto'){
@@ -515,7 +516,7 @@
 			}
 
 			$('#metamarginall').on('keyup', function(){
-				var v = $('#metamarginall').val().replace(/[^0-9\-]/g,'');
+				var v = $('#metamarginall').val().replace(numRE,'');
 				$('#metamarginadvanced').hide();
 				$('#metamargintop').val(v);
 				$('#metamarginleft').val(v);
@@ -541,10 +542,10 @@
 			// Begin Content Content Margin and Padding
 
 			function updateContentPadding(){
-				var t = $('#contentpaddingtop').val().replace(/[^0-9\-]/g,'');
-				var r = $('#contentpaddingright').val().replace(/[^0-9\-]/g,'');
-				var b = $('#contentpaddingbottom').val().replace(/[^0-9\-]/g,'');
-				var l =$('#contentpaddingleft').val().replace(/[^0-9\-]/g,'');
+				var t = $('#contentpaddingtop').val().replace(numRE,'');
+				var r = $('#contentpaddingright').val().replace(numRE,'');
+				var b = $('#contentpaddingbottom').val().replace(numRE,'');
+				var l =$('#contentpaddingleft').val().replace(numRE,'');
 				var u = $('#contentpaddinguom').val();
 				if (t.length){ $('#contentpaddingtopval').val(t + u); } else { $('#contentpaddingtopval').val(''); }
 				if (r.length){ $('#contentpaddingrightval').val(r + u); } else { $('#contentpaddingrightval').val(''); }
@@ -561,7 +562,7 @@
 			}
 
 			$('#contentpaddingall').on('keyup', function(){
-				var v = $('#contentpaddingall').val().replace(/[^0-9\-]/g,'');
+				var v = $('#contentpaddingall').val().replace(numRE,'');
 				$('#contentpaddingadvanced').hide();
 				$('#contentpaddingtop').val(v);
 				$('#contentpaddingleft').val(v);
@@ -581,12 +582,12 @@
 
  			// margin
 			function updateContentMargin(){
-				var t = $('#contentmargintop').val().replace(/[^0-9\-]/g,'');
+				var t = $('#contentmargintop').val().replace(numRE,'');
 				var r = $('#contentmarginright').val();
-				if(r != 'auto'){r=r.replace(/[^0-9\-]/g,'')}
-				var b = $('#contentmarginbottom').val().replace(/[^0-9\-]/g,'');
+				if(r != 'auto'){r=r.replace(numRE,'')}
+				var b = $('#contentmarginbottom').val().replace(numRE,'');
 				var l =$('#contentmarginleft').val();
-				if(l != 'auto'){l=l.replace(/[^0-9\-]/g,'')}
+				if(l != 'auto'){l=l.replace(numRE,'')}
 				var u = $('#contentmarginuom').val();
 				if (t.length){ $('#contentmargintopval').val(t + u); } else { $('#contentmargintopval').val(''); }
 				if(r=='auto'){
@@ -614,7 +615,7 @@
 			}
 
 			$('#contentmarginall').on('keyup', function(){
-				var v = $('#contentmarginall').val().replace(/[^0-9\-]/g,'');
+				var v = $('#contentmarginall').val().replace(numRE,'');
 				$('#contentmarginadvanced').hide();
 				$('#contentmargintop').val(v);
 				$('#contentmarginleft').val(v);
@@ -878,7 +879,7 @@
 			$('#configuratorContainer input.numeric').on('keyup', function(){
 				var v = $(this).val();
 				if(!(v=='a' || v=='au' || v=='aut'|| v=='auto')){
-					v=v.replace(/[^0-9\-]/g,'');
+					v=v.replace(numRE,'');
 					$(this).val(v);
 				}
 			});
