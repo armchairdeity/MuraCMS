@@ -57,6 +57,8 @@
 
 				<cfif rc.sourceFrame eq 'modal'>
 					<a href="##" class="btn mura-primary" id="saveConfigDraft"><i class="mi-check"></i> #esapiEncode('html_attr',application.rbFactory.getKeyValue(session.rb,"sitemanager.content.apply"))#</a>
+				<cfelse>	
+					<a href="##" class="btn mura-primary" id="closeConfigurator" onclick="frontEndProxy.post({cmd:'showobjects'});"><i class="mi-check"></i> Done</a>
 				</cfif>
 
 				<a href="##" class="btn mura-delete" id="deleteObject"><i class="mi-trash"></i> #esapiEncode('html_attr',application.rbFactory.getKeyValue(session.rb,"sitemanager.content.delete"))#</a>
