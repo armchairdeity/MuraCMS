@@ -9,7 +9,9 @@
 			<div id="mura-sidebar-objects" class="mura-sidebar__objects-list">
 			 	<div class="mura-sidebar__objects-list__object-group">
 					<div class="mura-sidebar__objects-list__object-group-heading">
-						<div class="mura-sidebar__objects-list__object-group-instruction">#application.rbFactory.getKeyValue(session.rb,'sitemanager.dragtopage')#:</div>
+						<!--- todo: rb key --->
+						<h1><i class="mi-th"></i>Modules</h1>
+<!--- 						<div class="mura-sidebar__objects-list__object-group-instruction">#application.rbFactory.getKeyValue(session.rb,'sitemanager.dragtopage')#:</div> --->
 					</div>
 					<div class="mura-sidebar__objects-list__object-group-items">
 						<cfset contentRendererUtility=$.getBean('contentRendererUtility')>

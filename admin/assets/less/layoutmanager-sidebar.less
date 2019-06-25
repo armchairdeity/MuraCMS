@@ -20,7 +20,7 @@
 		-moz-user-select: none;
 		-khtml-user-drag: element;
 		cursor: move;
-	} 
+	}
 
 	.btn {
 		border: 1px solid transparent !important;
@@ -134,13 +134,27 @@ body.configurator-wrapper #mura-content {
 }
 
 .mura-sidebar__objects-list__object-group-heading {
-	font-size: 14px;
+	font-size: 13px;
 	font-weight: normal;
 	color: #f3f3f3;
 	line-height: 1.2;
 
 	+ .mura-sidebar__object-group-items {
 		margin-top: 12px;
+	}
+
+	> h1 {
+		color: #f3f3f3;
+		font-size: 20px;
+		font-weight: 400;
+		line-height: 1.2;
+		margin: 0 0 15px;
+		padding: 0;
+
+		i {
+			min-width: 32px;
+		}
+
 	}
 
 	> .btn {
@@ -161,6 +175,10 @@ body.configurator-wrapper #mura-content {
 .mura-sidebar__objects-list__object-group-items {
 	padding: 0;
 	background: none;
+
+	+ #mura-objects-openregions-btn {
+		width: 100%;
+	}
 
 	+ .btn,
 	+ .btn + .btn {
@@ -270,25 +288,25 @@ body.configurator-wrapper {
 			text-transform: none;
 		}
 
-		a.mura-ui-link{
+		a.mura-ui-link {
 			color: @mura-red;
 		}
 
 		a.mura-ui-link:link,
 		a.mura-ui-link:visited,
 		a.mura-ui-link:hover,
-		a.mura-ui-link:active{
+		a.mura-ui-link:active {
 			color: lighten(@mura-red, 12%) !important;
 		}
 
-		a.btn.mura-ui-link{
+		a.btn.mura-ui-link {
 			color: #646464;
 		}
 
 		a.btn.mura-ui-link:link,
 		a.btn.mura-ui-link:visited,
 		a.btn.mura-ui-link:hover,
-		a.btn.mura-ui-link:active{
+		a.btn.mura-ui-link:active {
 			color: lighten(#646464, 12%) !important;
 		}
 
@@ -296,16 +314,16 @@ body.configurator-wrapper {
 			clear: both !important;
 		}
 
-		.container{
+		.container {
 			padding-left: 0;
 			padding-right: 0;
 		}
 
-		.right{
+		.right {
 			text-align: right;
 		}
 
-		label.right{
+		label.right {
 			padding-right: 1em;
 		}
 
@@ -327,7 +345,7 @@ body.configurator-wrapper {
 
 		}
 
-		#configurator-panels{
+		#configurator-panels {
 			margin-bottom: 0;
 		}
 
@@ -336,6 +354,7 @@ body.configurator-wrapper {
 				color: #808080;
 				cursor: pointer;
 				font-size: 18px;
+				font-weight: 100;
 				top: 20px;
 				position: absolute;
 				right: 20px;
@@ -350,7 +369,7 @@ body.configurator-wrapper {
 			-webkit-box-shadow: none;
 			-moz-box-shadow: none;
 			font-size: 13px;
-	    padding: 3px 12px;
+			padding: 3px 12px;
 			text-shadow: none;
 		}
 
@@ -407,11 +426,22 @@ body.configurator-wrapper {
 				.mura-panel-heading {
 					border-radius: 0;
 					background-color: #565656;
+					color: #d8d8d8;
 					padding: 0;
+
+					a {
+						i {
+							text-align: center;
+							width: 16px;
+						}
+
+					}
+
 				}
 
 				.mura-panel-heading:hover {
 					background-color: #6f6f6f;
+					color: #f5f5f5;
 					cursor: pointer;
 				}
 
@@ -422,20 +452,19 @@ body.configurator-wrapper {
 				}
 
 				.mura-panel-title {
-					color: #fff;
 					font-size: 14px;
 				}
 
 				.mura-panel-title a {
 					display: block;
-					color: inherit;
+					color: #d8d8d8 !important;
 					padding: 10px 16px;
 				}
 
 				.mura-panel-title a:hover,
 				.mura-panel-title a:active,
 				.mura-panel-title a:focus {
-					color: inherit !important;
+					color: #F5F5F5 !important;
 				}
 
 			}
@@ -457,13 +486,19 @@ body.configurator-wrapper {
 				}
 
 				/* third level e.g. style panels */
-				.mura-panel-group{
-						margin-top: 6px !important;
+				.mura-panel-group {
+					margin-top: 6px !important;
 
-					.mura-panel-body{
-				    padding: 16px 16px 12px 16px !important;
-				    background-color: #4e4e4e;
+					.mura-panel-body {
+						padding: 16px 16px 12px 16px !important;
+						background-color: #4e4e4e;
 					}
+
+					.mura-panel-title {
+						font-size: 13px;
+						color: #BDBDBD;
+					}
+
 				}
 
 			}
@@ -486,6 +521,10 @@ body.configurator-wrapper {
 				padding: 6px 10px;
 			}
 
+			#panel-gds-object {
+				margin: 2px auto 12px;
+			}
+
 			.panel-gds-box span {
 				font-size: 12px;
 				font-weight: 400;
@@ -501,64 +540,67 @@ body.configurator-wrapper {
 				margin-top: 10px;
 			}
 
-		} /* /mura-panel-group */
+		}
 
-		.mura-ui-inset{
-	    background-color: #545454;
+		/* /mura-panel-group */
+		.mura-ui-inset {
+			background-color: #545454;
 			margin: 12px 0;
-	    padding: 6px 0;
+			padding: 6px 0;
 			width: 100%;
 
-			.ui-inset-icon{
+			.ui-inset-icon {
 				color: #333;
-		    display: block;
-		    line-height: 28px;
-		    margin: 0 auto;
-		    text-align: center;
-		    width: 24px;
+				display: block;
+				line-height: 28px;
+				margin: 0 auto;
+				text-align: center;
+				width: 24px;
 			}
 
-			input.pull-left{
-					border-top-right-radius: 0;
-					border-bottom-right-radius: 0;	
-					margin-left: 4px !important;									
+			input.pull-left {
+				border-top-right-radius: 0;
+				border-bottom-right-radius: 0;
+				margin-left: 4px !important;
 			}
 
-			input.pull-right{
-					border-top-left-radius: 0;
-					border-bottom-left-radius: 0;										
-					margin-right: 3px !important;
+			input.pull-right {
+				border-top-left-radius: 0;
+				border-bottom-left-radius: 0;
+				margin-right: 3px !important;
 			}
 
-			.mura-input-group{
-				a.btn{
- 					margin-bottom: 0 !important;
- 					color: #646464;
-					
-					&.pull-left{
+			.mura-input-group {
+				a.btn {
+					margin-bottom: 0 !important;
+					color: #646464;
+
+					&.pull-left {
 						border-top-left-radius: 0;
-						border-bottom-left-radius: 0;		
-				    border-left: 1px solid #454545;			
+						border-bottom-left-radius: 0;
+						border-left: 1px solid #454545;
 					}
-					
-					&.pull-right{
+
+					&.pull-right {
 						border-top-right-radius: 0;
-						border-bottom-right-radius: 0;					
-				    border-right: 1px solid #454545;			
-					}				
-	
+						border-bottom-right-radius: 0;
+						border-right: 1px solid #454545;
+					}
+
 				}
+
 			}
 
-			label.mura-serial{
+			label.mura-serial {
 				width: 100%;
 				display: block;
 
-				&> input{
+				&> input {
 					display: block;
 					margin: 0 auto;
 					width: 42px;
 				}
+
 			}
 
 		}
@@ -573,55 +615,60 @@ body.configurator-wrapper {
 				margin-bottom: 0;
 
 				input[type=text] {
-						height: @configInputH;
-					}
-
-				&.mura-serial{
-						margin: 0 auto;
+					height: @configInputH;
 				}
 
-				&.ui-nested{
+				&.mura-serial {
+					margin: 0 auto;
+				}
+
+				&.ui-nested {
 					font-size: 13px;
 					margin-top: 4px;
 				}
 
-			} /* /label */
-
-			.mura-ui-link{
-		    font-size: 12px;
-		    margin: 0 0 0 -6px;
-		    display: block;
-		    padding-top: 4px;
-			
-				&.btn.ui-advanced{
-						margin: 0 0 0 3px;
-					}
 			}
 
+			/* /label */
+			.mura-ui-link {
+				font-size: 12px;
+				margin: 0 0 0 -6px;
+				display: block;
+				padding-top: 4px;
 
-			a.ui-inset-reveal{
+				&.btn.ui-advanced {
+					margin: 0 0 0 3px;
+				}
+
+			}
+
+			a.ui-inset-reveal {
 				color: #868686;
 				margin: 0 !important;
 			}
 
-			.mura-input-group{
-				label{
+			.mura-input-group {
+				label {
 					float: left;
 				}
-				*+.nice-select{
+
+				*+.nice-select {
 					border-left: 1px solid #454545;
 					clear: none;
 					float: left;
 					min-width: 72px;
 				}
-			} /* .mura-input-group */
 
-			.center{
+			}
+
+			/* .mura-input-group */
+			.center {
 				text-align: center;
 
-				.mura-input-group{
+				.mura-input-group {
 					margin: 0;
 				}
+
 			}
 
 			input.numeric {
@@ -639,7 +686,7 @@ body.configurator-wrapper {
 
 			}
 
-			.nice-select{
+			.nice-select {
 				margin-bottom: 0;
 				width: auto;
 			}
@@ -653,21 +700,22 @@ body.configurator-wrapper {
 				padding: 0;
 			}
 
-		}		/* /.mura-ui-row */
+		}
 
-		.css-bg-option{
-
-			.mura-ui-row{
+		/* /.mura-ui-row */
+		.css-bg-option {
+			.mura-ui-row {
 				padding-top: 4px;
 
-				.mura-input-group .nice-select{
+				.mura-input-group .nice-select {
 					min-width: 102px;
 				}
 
 			}
 
-		} /* /.css-bg-option */
+		}
 
+		/* /.css-bg-option */
 		.mura-control-group {
 			margin-bottom: 8px;
 
@@ -705,8 +753,9 @@ body.configurator-wrapper {
 				width: 16px;
 			}
 
-		} /* .mura-control-group */
+		}
 
+		/* .mura-control-group */
 		label,
 		.control-label,
 		.mura-control-label {
@@ -740,19 +789,20 @@ body.configurator-wrapper {
 			padding: 8px 12px;
 			width: 100%;
 
-			&+.btn{
+			&+.btn {
 				margin: 0 0 4px 0;
 			}
+
 		}
 
 		.nice-select {
 			height: @configInputH;
-	    line-height: @configInputH;
-	    margin-bottom: 7px;
+			line-height: @configInputH;
+			margin-bottom: 7px;
 
-	     &+.btn{
-	     	margin-top: -2px;
-	     }
+			&+.btn {
+				margin-top: -2px;
+			}
 
 		}
 
@@ -816,6 +866,16 @@ body.configurator-wrapper {
 		textarea {
 			max-width: 230px;
 			min-height: 85px;
+			resize: vertical;
+
+			&.textarea-lg {
+				min-height: 265px;
+			}
+
+		}
+
+		textarea + .btn {
+			margin-top: -2px !important;
 		}
 
 		.form-actions {
@@ -833,13 +893,16 @@ body.configurator-wrapper {
 
 				&.mura-primary {
 					background-color: @mura-blue !important;
+					float: right !important;
+					margin: 36px -15px 0 26px;
+					padding: 6px 12px;
 				}
 
 				&.mura-delete {
 					background-color: #6f6f6f;
 					float: right !important;
-			    margin: 36px -15px 0 0;
-			    padding: 6px 12px;
+					margin: 36px -15px 0 0;
+					padding: 6px 12px;
 				}
 
 			}
@@ -863,7 +926,7 @@ body.configurator-wrapper {
 			background-color: #565656;
 			text-shadow: none;
 			box-shadow: none;
-			font-size: 14px;
+			font-size: 13px;
 			padding: 8px 12px;
 			color: #d8d8d8;
 		}

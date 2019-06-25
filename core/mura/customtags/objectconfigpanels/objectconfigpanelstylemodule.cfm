@@ -10,7 +10,7 @@
                 </a>
             </h4>
         </div> <!--- /.mura-panel-heading --->
-        <div id="panel-style-object-1" class="panel-collapse collapse in">
+        <div id="panel-style-object-1" class="panel-collapse collapse">
             <div class="mura-panel-body">
             <!--- panel contents --->
 
@@ -34,18 +34,18 @@
                 </a>
             </h4>
         </div> <!--- /.mura-panel-heading --->
-        <div id="panel-style-object-1" class="panel-collapse collapse in">
+        <div id="panel-style-object-1" class="panel-collapse collapse">
             <div class="mura-panel-body">
             	<!--- panel contents --->
-
 							<cfif request.haspositionoptions>
 								<div class="mura-control-group">
-									<label>Target Device</label>
+									<!--- todo: rbkeys for label and options --->
+									<label>Full-width Breakpoint</label>
 									<select name="breakpoint" class="classtoggle">
-									<option value="">--</option>
-									<option value="mura-sm"<cfif listFind(attributes.params.class,'mura-sm',' ')> selected</cfif>>Tablet (768px+)</option>
-									<option value="mura-md"<cfif listFind(attributes.params.class,'mura-md',' ')> selected</cfif>>Laptop (992px+)</option>
-									<option value="mura-lg"<cfif listFind(attributes.params.class,'mura-lg',' ')> selected</cfif>> Desktop (1200px+)</option>
+									<option value="">None</option>
+									<option value="mura-sm"<cfif listFind(attributes.params.class,'mura-sm',' ')> selected</cfif>>768px (Tablet)</option>
+									<option value="mura-md"<cfif listFind(attributes.params.class,'mura-md',' ')> selected</cfif>>992px (Laptop)</option>
+									<option value="mura-lg"<cfif listFind(attributes.params.class,'mura-lg',' ')> selected</cfif>> 1200px (Desktop)</option>
 									</select>
 								</div>
 
@@ -269,7 +269,7 @@
                 </a>
             </h4>
         </div> <!--- /.mura-panel-heading --->
-        <div id="panel-style-object-2" class="panel-collapse collapse in">
+        <div id="panel-style-object-2" class="panel-collapse collapse">
             <div class="mura-panel-body">
          		<!--- panel contents --->
 
@@ -309,7 +309,7 @@
                 </a>
             </h4>
         </div> <!--- /.mura-panel-heading --->
-        <div id="panel-style-object-3" class="panel-collapse collapse in">
+        <div id="panel-style-object-3" class="panel-collapse collapse">
             <div class="mura-panel-body">
             <!--- panel contents --->
 						<!--- background --->
@@ -414,7 +414,7 @@
                 </a>
             </h4>
         </div> <!--- /.mura-panel-heading --->
-        <div id="panel-style-object-4" class="panel-collapse collapse in">
+        <div id="panel-style-object-4" class="panel-collapse collapse">
             <div class="mura-panel-body">
             <!--- panel contents --->
 
@@ -435,9 +435,10 @@
 									Custom CSS Styles
 								</label>
 								<cfoutput>
-								<textarea id="customstylesedit" style="min-height: 250px">#esapiEncode('html',attributes.params.stylesupport.css)#</textarea>
+								<textarea class="textarea-lg" id="customstylesedit">#esapiEncode('html',attributes.params.stylesupport.css)#</textarea>
 								</cfoutput>
-								<button class="btn" id="applystyles">Apply</button>
+								<!--- todo: rb key --->
+								<a class="btn" id="applystyles"><i class="mi-check"></i>Apply Custom Styles</a>
 								<script>
 									Mura('##applystyles').click(function(){
 										jQuery('##csscustom').val(Mura('##customstylesedit').val()).trigger('change');
