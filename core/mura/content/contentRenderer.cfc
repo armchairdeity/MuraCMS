@@ -3045,6 +3045,8 @@ Display Objects
 	<cfargument name="attrs" type="struct" default="#structNew()#">
 
 	<cfset var processedFilepath = this.getMinifiedFile(filepath=arguments.filepath, siteid=arguments.siteid) />
+	<cfset var attr = "" />
+	
 	<cfoutput>
 		<script src="#processedFilepath#" 
 			<cfloop collection="#arguments.attrs#" item=attr>
@@ -3060,6 +3062,8 @@ Display Objects
 	<cfargument name="siteid" default="">
 	<cfargument name="attrs" type="struct" default="#structNew()#">
 	<cfset var processedFilepath = this.getMinifiedFile(filepath=arguments.filepath, siteid=arguments.siteid) />
+	<cfset var attr = "" />
+
 	<cfoutput>
 		<link href="#processedFilepath#" 
 			<cfloop collection="#arguments.attrs#" item=attr>
