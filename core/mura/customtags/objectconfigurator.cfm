@@ -213,28 +213,62 @@
 				$('.panel-gds-box').removeClass('active');
 				$(this).addClass('active');
 				$('#style-panels > .mura-panel > .panel-collapse.in').removeClass('in');
-				$(gdstarget).addClass('in')
-
+				$(gdstarget).addClass('in');
 				return false;
 			})
 
+			function setActiveGDSpanel(){
+				var visiblekids = $('#style-panels > .mura-panel > .panel-collapse.in');
+				if (!visiblekids.length){
+					$('#panel-gds-object').trigger('click');
+				} else {
+					$('.panel-gds-box[data-gdsel="' + visiblekids[0].id + '"]').trigger('click');
+				}				
+			}
+
 			// set panel state cookie
 			function setConfigPanelState(){
+				setTimeout(function(){
 				 	var openPanels = $('#configurator-panels').find('.panel-collapse.in').map(function(){
 				 			return this.id;
 				 	}).get();
-				 	Mura.createCookie('mura_configpanelstate',encodeURIComponent(JSON.stringify(openPanels)));
+				 	var arr = ['123456789',openPanels];
+				 	var str = JSON.stringify(arr);
+				 	Mura.createCookie('mura_configpanelstate',encodeURIComponent(str));
+				 	// console.log('Creating cookie: ' + arr);
 				 	// console.log(openPanels);
+				},500);
 			}
 
 			// get panel state cookie
 			function getConfigPanelState(){
 					var cps = Mura.readCookie('mura_configpanelstate');
-					return cps;
+					// console.log('Reading cookie: ' + cps);
+					return JSON.parse(cps);
 			}	
 
+			// apply open panels
+			function applyConfigPanelState(){
+					var cps = getConfigPanelState();
+					var panelids = cps[1];
+					// console.log('Applying panel state: ' + cps);
+					// console.log('Length: ' + panelids.length);
+					// console.log('panelids: ' + panelids);
+					if (panelids.length){
+						$('#configurator-panels').find('.panel-collapse.in').removeClass('in');
+						$('#configurator-panels').find('.mura-panel-title a.collapse').addClass('collapsed');
+						for (i in panelids){
+							// console.log('Opening panel: ' + panelids[i]);
+							$('#'+ panelids[i]).addClass('in').siblings('.mura-panel-heading').find('a.collapse').removeClass('collapsed');
+						}
+					}
+			}
+
+			// run on load
 			$('#style-panels').addClass('no-header');
-			$('#panel-gds-object').trigger('click');
+			$('#panel-style-object').addClass('in');
+			applyConfigPanelState();
+			setActiveGDSpanel();
 
 			$('#labelText').change(function(item){
 				if(Mura.trim(Mura(this).val())){
@@ -359,7 +393,6 @@
 
 			$('#objectpaddingall').on('keyup', function(){
 				var v = $('#objectpaddingall').val().replace(numRE,'');
-				console.log(v);
 				$('#objectpaddingadvanced').hide();
 				$('#objectpaddingtop').val(v);
 				$('#objectpaddingleft').val(v);
@@ -836,7 +869,6 @@
 						v=v.replace(numRE,'');
 					}
 				} else {
-					console.log(n);
 					v=v.replace(numRE,'');
 				}
 				$(this).val(v);
