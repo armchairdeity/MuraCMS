@@ -185,7 +185,8 @@
 		$(function(){
 
 			currentPanel="";
-			numRE="/[^0-9\-]/g";
+			re="[^0-9\\-\\.]";
+			numRE = new RegExp(re,"g")
 			window.configuratorInited=false;
 
 			$('#panel-gds-object,.mura-panel-heading').click(function(){
@@ -360,6 +361,7 @@
 
 			$('#objectpaddingall').on('keyup', function(){
 				var v = $('#objectpaddingall').val().replace(numRE,'');
+				console.log(v);
 				$('#objectpaddingadvanced').hide();
 				$('#objectpaddingtop').val(v);
 				$('#objectpaddingleft').val(v);
@@ -878,10 +880,21 @@
 			// numeric input - restrict value
 			$('#configuratorContainer input.numeric').on('keyup', function(){
 				var v = $(this).val();
-				if(!(v=='a' || v=='au' || v=='aut'|| v=='auto')){
+				var n = $(this).attr('name').toLowerCase();
+				if (n == 'contentmarginleft' || n == 'contentmarginright' || n == 'metamarginleft' || n == 'metamarginright'){
+					if (v == 'a'){
+						v = 'auto';
+					}
+					if(!(v=='a' || v=='au' || v=='aut'|| v=='auto')){
+						v=v.replace(numRE,'');
+					}
+
+				} else {
+					console.log(n);
 					v=v.replace(numRE,'');
-					$(this).val(v);
 				}
+
+				$(this).val(v);
 			});
 
 			// range sliders
