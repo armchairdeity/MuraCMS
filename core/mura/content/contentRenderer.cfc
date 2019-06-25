@@ -3039,6 +3039,71 @@ Display Objects
 	<cfreturn variables.contentRendererUtility.renderEditableAttribute(argumentCollection=arguments)>
 </cffunction>
 
+<cffunction name="renderMinJSFile" output="true">
+	<cfargument name="filepath">
+	<cfargument name="siteid" default="">
+	<cfargument name="attrs" type="struct" default="#structNew()#">
+
+	<cfset var processedFilepath = this.getMinifiedFile(filepath=arguments.filepath, siteid=arguments.siteid) />
+	<cfset var attr = "" />
+	
+	<cfoutput>
+		<script src="#processedFilepath#" 
+			<cfloop collection="#arguments.attrs#" item=attr>
+				#attr#=#arguments.attrs[attr]#
+			</cfloop>
+		>
+		</script>
+	</cfoutput>
+</cffunction>
+
+<cffunction name="renderMinCSSFile" output="true">
+	<cfargument name="filepath">
+	<cfargument name="siteid" default="">
+	<cfargument name="attrs" type="struct" default="#structNew()#">
+	<cfset var processedFilepath = this.getMinifiedFile(filepath=arguments.filepath, siteid=arguments.siteid) />
+	<cfset var attr = "" />
+
+	<cfoutput>
+		<link href="#processedFilepath#" 
+			<cfloop collection="#arguments.attrs#" item=attr>
+				#attr#=#arguments.attrs[attr]#
+			</cfloop>
+		>
+	</cfoutput>
+</cffunction>
+
+<cffunction name="getMinifiedFile" output="true">
+	<cfargument name="filepath">
+	<cfargument name="siteid" default="">
+
+	<cfset var dir = GetDirectoryFromPath(arguments.filepath) />
+	<cfset var filename = getFileFromPath(arguments.filepath) />
+	<cfset var filenameArray = filename.listToArray(".") />
+	<cfset var fileExtension = filenameArray[2] />
+	<cfset var minifiedFilepath = dir & "dist/" & "#filenameArray[1]#.min.#fileExtension#" />
+
+	<cfset var site = application.settingsManager.getSite(arguments.siteid)/> 
+	<cfset var cacheFactory = site.getCacheFactory(name="jsAndCssFileLookup")>
+	
+	<cfset var filepathArray = arguments.filepath.listToArray(".")/>
+
+	<cfset var processedFilepath = "" />
+	<!--- If key is in cache --->
+	<cfif cacheFactory.has(arguments.filepath)>
+		<cfset processedFilepath = cacheFactory.get(arguments.filepath) />
+	<!--- Else if minified file exists --->
+	<cfelseif fileExists(server.coldfusion.rootdir & minifiedFilepath)>
+		<!--- Add record to cache --->
+		<cfset cacheFactory.set(arguments.filepath, minifiedFilepath) />
+		<cfset processedFilepath = cacheFactory.get(arguments.filepath) />
+	<!--- Else use the original unminified file --->
+	<cfelse>
+		<cfset processedFilepath = arguments.filepath />
+	</cfif>
+	<cfreturn processedFilepath />
+</cffunction>
+
 <cffunction name="renderClassOption" output="false">
 	<cfargument name="object">
 	<cfargument name="objectid" default="">
