@@ -85,40 +85,22 @@
 		</cfif>
 
 		<cfscript>
-		/*
-		.mura-one.mura-object                    { width: 8.33%; }
-		.mura-two.mura-object                    { width: 16.66%; }
-		.mura-three.mura-object                  { width: 25%;  }
-		.mura-four.mura-object                   { width: 33.33%; }
-		.mura-five.mura-object                   { width: 41.66%; }
-		.mura-six.mura-object                    { width: 50%; }
-		.mura-seven.mura-object                  { width: 58.33%; }
-		.mura-eight.mura-object                  { width: 66.66%; }
-		.mura-nine.mura-object                   { width: 75%; }
-		.mura-ten.mura-object                    { width: 83.33%; }
-		.mura-eleven.mura-object                 { width: 91.66%; }
-		.mura-twelve.mura-object                 { width: 100% }
-		.mura-one-third.mura-object               { width: 33.33%; }
-		.mura-two-thirds.mura-object              { width: 66.66%; }
-		.mura-one-half.mura-object                { width: 50%; }
-		*/
 			attributes.positionoptions = [
 					{value='',label='Auto'}
-					,{value='mura-one', label='One Twelfth',percent='8.33%'}
-					,{value='mura-two', label='One Sixth',percent='16.66%'}
-					,{value='mura-three', label='One Fourth',percent='25%'}
-					,{value='mura-four', label='One Third',percent='33.33%'}
-					,{value='mura-five', label='Five Twelfths',percent='41.66%'}
-					,{value='mura-six', label='One Half',percent='50%'}
-					,{value='mura-seven', label='Seven Twelfths',percent='58.33%'}
-					,{value='mura-eight', label='Two Thirds',percent='66.66%'}
-					,{value='mura-nine', label='Three Fourths',percent='75%'}
-					,{value='mura-ten', label='Five Sixths',percent='41.66%'}
-					,{value='mura-eleven', label='Eleven Twelfths',percent='91.66%'}
+					,{value='mura-one', label='1/12',percent='8.33%'}
+					,{value='mura-two', label='1/6',percent='16.66%'}
+					,{value='mura-three', label='1/4',percent='25%'}
+					,{value='mura-four', label='1/3',percent='33.33%'}
+					,{value='mura-five', label='5/12',percent='41.66%'}
+					,{value='mura-six', label='1/2',percent='50%'}
+					,{value='mura-seven', label='7/12',percent='58.33%'}
+					,{value='mura-eight', label='2/3',percent='66.66%'}
+					,{value='mura-nine', label='3/4',percent='75%'}
+					,{value='mura-ten', label='5/6',percent='41.66%'}
+					,{value='mura-eleven', label='11/12',percent='91.66%'}
 					,{value='mura-twelve', label='Full',percent='100%'}
 					,{value='mura-expanded', label='Expanded',percent='100%'}
 				];
-
 		</cfscript>
 
 	</cfsilent>
