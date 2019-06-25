@@ -207,6 +207,8 @@
 				setConfigPanelState();
 			})
 
+			console.log('instanceid: ' + instanceid);
+
 			$('.panel-gds-box').on('click',function(){
 				var gdspanel = $(this).attr('data-gdsel');
 				var gdstarget = $('#' + gdspanel);
@@ -232,34 +234,30 @@
 				 	var openPanels = $('#configurator-panels').find('.panel-collapse.in').map(function(){
 				 			return this.id;
 				 	}).get();
-				 	var arr = ['123456789',openPanels];
+				 	var arr = [instanceid,openPanels];
 				 	var str = JSON.stringify(arr);
 				 	Mura.createCookie('mura_configpanelstate',encodeURIComponent(str));
-				 	// console.log('Creating cookie: ' + arr);
-				 	// console.log(openPanels);
 				},500);
 			}
 
 			// get panel state cookie
 			function getConfigPanelState(){
 					var cps = Mura.readCookie('mura_configpanelstate');
-					// console.log('Reading cookie: ' + cps);
 					return JSON.parse(cps);
 			}	
 
 			// apply open panels
 			function applyConfigPanelState(){
 					var cps = getConfigPanelState();
-					var panelids = cps[1];
-					// console.log('Applying panel state: ' + cps);
-					// console.log('Length: ' + panelids.length);
-					// console.log('panelids: ' + panelids);
-					if (panelids.length){
+					var savedinstanceid = cps[0];
+					var panelarr = cps[1];
+
+					if (panelarr.length && savedinstanceid == instanceid){
 						$('#configurator-panels').find('.panel-collapse.in').removeClass('in');
 						$('#configurator-panels').find('.mura-panel-title a.collapse').addClass('collapsed');
-						for (i in panelids){
-							// console.log('Opening panel: ' + panelids[i]);
-							$('#'+ panelids[i]).addClass('in').siblings('.mura-panel-heading').find('a.collapse').removeClass('collapsed');
+						for (i in panelarr){
+							// console.log('Opening panel: ' + panelarr[i]);
+							$('#'+ panelarr[i]).addClass('in').siblings('.mura-panel-heading').find('a.collapse').removeClass('collapsed');
 						}
 					}
 			}
@@ -269,6 +267,7 @@
 			$('#panel-style-object').addClass('in');
 			applyConfigPanelState();
 			setActiveGDSpanel();
+			setConfigPanelState();
 
 			$('#labelText').change(function(item){
 				if(Mura.trim(Mura(this).val())){
