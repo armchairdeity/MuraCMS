@@ -1,1 +1,1 @@
-<mura name="Container" contenttypes="*" iconclass="mi-trello"/>
+<mura name="Container" contenttypes="*" iconclass="mi-square-o"/>
