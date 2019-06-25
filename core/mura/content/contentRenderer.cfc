@@ -3042,7 +3042,7 @@ Display Objects
 <cffunction name="renderMinJSFile" output="true">
 	<cfargument name="filepath">
 	<cfargument name="siteid" default="">
-	<cfargument name="attrs">
+	<cfargument name="attrs" type="struct" default="#structNew()#">
 
 	<cfset var processedFilepath = this.getMinifiedFile(filepath=arguments.filepath, siteid=arguments.siteid) />
 	<cfoutput>
@@ -3058,6 +3058,7 @@ Display Objects
 <cffunction name="renderMinCSSFile" output="true">
 	<cfargument name="filepath">
 	<cfargument name="siteid" default="">
+	<cfargument name="attrs" type="struct" default="#structNew()#">
 	<cfset var processedFilepath = this.getMinifiedFile(filepath=arguments.filepath, siteid=arguments.siteid) />
 	<cfoutput>
 		<link href="#processedFilepath#" 
