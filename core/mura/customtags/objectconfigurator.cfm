@@ -203,6 +203,39 @@
 				});
 			});
 
+			$('.mura-panel-heading, .panel-gds-box').on('click',function(){
+				setConfigPanelState();
+			})
+
+			$('.panel-gds-box').on('click',function(){
+				var gdspanel = $(this).attr('data-gdsel');
+				var gdstarget = $('#' + gdspanel);
+				$('.panel-gds-box').removeClass('active');
+				$(this).addClass('active');
+				$('#style-panels > .mura-panel > .panel-collapse.in').removeClass('in');
+				$(gdstarget).addClass('in')
+
+				return false;
+			})
+
+			// set panel state cookie
+			function setConfigPanelState(){
+				 	var openPanels = $('#configurator-panels').find('.panel-collapse.in').map(function(){
+				 			return this.id;
+				 	}).get();
+				 	Mura.createCookie('mura_configpanelstate',encodeURIComponent(JSON.stringify(openPanels)));
+				 	// console.log(openPanels);
+			}
+
+			// get panel state cookie
+			function getConfigPanelState(){
+					var cps = Mura.readCookie('mura_configpanelstate');
+					return cps;
+			}	
+
+			$('#style-panels').addClass('no-header');
+			$('#panel-gds-object').trigger('click');
+
 			$('#labelText').change(function(item){
 				if(Mura.trim(Mura(this).val())){
 					Mura('#panel-gds-meta').show();
@@ -213,18 +246,6 @@
 					$('#panel-gds-object').addClass('active');
 				}
 			});
-
-			$('.panel-gds-box').on('click',function(){
-				var gdspanel = $(this).attr('data-gdsel');
-				var gdstarget = $('#' + gdspanel);
-				$('.panel-gds-box').removeClass('active');
-				$(this).addClass('active');
-				$('#style-panels').find('.panel-collapse.in').removeClass('in');
-				$(gdstarget).addClass('in');
-				return false;
-			})
-			$('#style-panels').addClass('no-header');
-			$('#panel-gds-object').trigger('click');
 
 			function updateDynamicClasses(){
 				var classInput=$('input[name="class"]');

@@ -9,7 +9,7 @@
                 </a>
             </h4>
         </div> <!--- /.mura-panel-heading --->
-        <div id="panel-style-meta-1" class="panel-collapse collapse in">
+        <div id="panel-style-meta-1" class="panel-collapse collapse">
             <div class="mura-panel-body">
             <!--- panel contents --->
 							<!--- label position --->
@@ -46,7 +46,7 @@
                 </a>
             </h4>
         </div> <!--- /.mura-panel-heading --->
-        <div id="panel-style-meta-2" class="panel-collapse collapse in">
+        <div id="panel-style-meta-2" class="panel-collapse collapse">
             <div class="mura-panel-body">
             <!--- panel contents --->
 								<!--- margin --->
@@ -196,7 +196,7 @@
                 </a>
             </h4>
         </div> <!--- /.mura-panel-heading --->
-        <div id="panel-style-meta-3" class="panel-collapse collapse in">
+        <div id="panel-style-meta-3" class="panel-collapse collapse">
             <div class="mura-panel-body">
             <!--- panel contents --->
 							<!--- text color --->
@@ -220,7 +220,7 @@
                 </a>
             </h4>
         </div> <!--- /.mura-panel-heading --->
-        <div id="panel-style-meta-4" class="panel-collapse collapse in">
+        <div id="panel-style-meta-4" class="panel-collapse collapse">
             <div class="mura-panel-body">
             <!--- panel contents --->
 							<!--- background --->
@@ -325,7 +325,7 @@
                 </a>
             </h4>
         </div> <!--- /.mura-panel-heading --->
-        <div id="panel-style-meta-5" class="panel-collapse collapse in">
+        <div id="panel-style-meta-5" class="panel-collapse collapse">
             <div class="mura-panel-body">
             <!--- panel contents --->
 							<div class="mura-control-group">

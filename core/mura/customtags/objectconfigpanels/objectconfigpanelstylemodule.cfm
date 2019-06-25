@@ -10,7 +10,7 @@
                 </a>
             </h4>
         </div> <!--- /.mura-panel-heading --->
-        <div id="panel-style-object-1" class="panel-collapse collapse in">
+        <div id="panel-style-object-1" class="panel-collapse collapse">
             <div class="mura-panel-body">
             <!--- panel contents --->
 
@@ -34,7 +34,7 @@
                 </a>
             </h4>
         </div> <!--- /.mura-panel-heading --->
-        <div id="panel-style-object-1" class="panel-collapse collapse in">
+        <div id="panel-style-object-1" class="panel-collapse collapse">
             <div class="mura-panel-body">
             	<!--- panel contents --->
 							<cfif request.haspositionoptions>
@@ -269,7 +269,7 @@
                 </a>
             </h4>
         </div> <!--- /.mura-panel-heading --->
-        <div id="panel-style-object-2" class="panel-collapse collapse in">
+        <div id="panel-style-object-2" class="panel-collapse collapse">
             <div class="mura-panel-body">
          		<!--- panel contents --->
 
@@ -309,7 +309,7 @@
                 </a>
             </h4>
         </div> <!--- /.mura-panel-heading --->
-        <div id="panel-style-object-3" class="panel-collapse collapse in">
+        <div id="panel-style-object-3" class="panel-collapse collapse">
             <div class="mura-panel-body">
             <!--- panel contents --->
 						<!--- background --->
@@ -414,7 +414,7 @@
                 </a>
             </h4>
         </div> <!--- /.mura-panel-heading --->
-        <div id="panel-style-object-4" class="panel-collapse collapse in">
+        <div id="panel-style-object-4" class="panel-collapse collapse">
             <div class="mura-panel-body">
             <!--- panel contents --->
 
