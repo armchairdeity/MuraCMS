@@ -287,7 +287,6 @@
 								}
 							}
 							contentcssclass.val(contentcssclassArray.join(' '));
-
 						}
 					} else {
 						$('.constraincontentcontainer').hide();
@@ -300,10 +299,8 @@
 						}
 						contentcssclass.val(contentcssclassArray.join(' '));
 					}
-
 					contentcssclass.val($.trim(contentcssclass.val()));
 				}
-
 				if(typeof updateDraft == 'function'){
 					updateDraft();
 				}
@@ -354,9 +351,7 @@
 					$('#objectpaddingall').val('');
 					$('#objectpaddingadvanced').show();
 				}
-
 				$('#objectpaddingtopval').trigger('change');
-
 			}
 
 			$('#objectpaddingall').on('keyup', function(){
@@ -405,11 +400,8 @@
 				} else {
 					$('#objectmarginall').val('');
 					$('#objectmarginadvanced').show();
-
 				}
-
 				$('#objectmargintopval').trigger('change');
-
 			}
 
 			$('#objectmarginall').on('keyup', function(){
@@ -439,11 +431,10 @@
 			});
 
 			updateObjectMargin();
-
 			//End Object Margin and Padding
 
-			<cfif request.hasmetaoptions and not (IsBoolean(attributes.params.isbodyobject) and attributes.params.isbodyobject)>
 			// Begin Meta Margin and Padding
+			<cfif request.hasmetaoptions and not (IsBoolean(attributes.params.isbodyobject) and attributes.params.isbodyobject)>
 			function updateMetaPadding(){
 				var t = $('#metapaddingtop').val().replace(numRE,'');
 				var r = $('#metapaddingright').val().replace(numRE,'');
@@ -460,9 +451,7 @@
 					$('#metapaddingall').val('');
 					$('#metapaddingadvanced').show();
 				}
-
 				$('#metapaddingtopval').trigger('change');
-
 			}
 
 			$('#metapaddingall').on('keyup', function(){
@@ -510,11 +499,8 @@
 				} else {
 					$('#metamarginall').val('');
 					$('#metamarginadvanced').show();
-
 				}
-
 				$('#metamargintopval').trigger('change');
-
 			}
 
 			$('#metamarginall').on('keyup', function(){
@@ -538,11 +524,10 @@
 			});
 
 			updateMetaMargin();
-			// End Meta Margin and Padding
 			</cfif>
+			// End Meta Margin and Padding
 
 			// Begin Content Content Margin and Padding
-
 			function updateContentPadding(){
 				var t = $('#contentpaddingtop').val().replace(numRE,'');
 				var r = $('#contentpaddingright').val().replace(numRE,'');
@@ -559,7 +544,6 @@
 					$('#contentpaddingall').val('');
 					$('#contentpaddingadvanced').show();
 				}
-
 				$('#contentpaddingtopval').trigger('change');
 			}
 
@@ -603,17 +587,13 @@
 				} else {
 					if (l.length){ $('#contentmarginleftval').val(l + u); } else { $('#contentmarginleftval').val(''); }
 				}
-
 				if (t == r && r == b && b == l){
 					$('#contentmarginall').val(t);
 				} else {
 					$('#contentmarginall').val('');
 					$('#contentmarginadvanced').show();
-
 				}
-
 				$('#contentmargintopval').trigger('change');
-
 			}
 
 			$('#contentmarginall').on('keyup', function(){
@@ -637,12 +617,9 @@
 			});
 
 			updateContentMargin();
-
 			// End Content Content Margin and Padding
 
 			// Begin Object background
-
-
 			$('#objectminheightnum,#objectminheightoum').on('change',function(){
 				var el = $('#objectminheightuomval');
 				var str = $('#objectminheightuom').val();
@@ -650,9 +627,7 @@
 				if (num.length > 0){
 					str = num + str;
 				}
-
 				$(el).val(str).trigger('change');
-
 			});
 
 			$('#contentminheightnum,#contentminheightoum').on('change',function(){
@@ -662,9 +637,7 @@
 				if (num.length > 0){
 					str = num + str;
 				}
-
 				$(el).val(str).trigger('change');
-
 			});
 
 			// background position x/y
@@ -688,9 +661,7 @@
 				} else {
 					$('.object-css-bg-option').hide();
 				}
-
 				$('#objectbackgroundimage').val(str).trigger('change');
-
 			});
 
 			var v = $('#objectbackgroundimageurl').val();
@@ -711,9 +682,7 @@
 				if (num.length > 0){
 					str = num + str;
 				}
-
 				$(el).val(str).trigger('change');
-
 			});
 
 			$('#objectbackgroundpositionx,#objectbackgroundpositionxnum').on('change',function(){
@@ -723,9 +692,7 @@
 				if (num.length > 0){
 					str = num + str;
 				}
-
 				$(el).val(str).trigger('change');
-
 			});
 
 			$('#objectbackgroundpositionx,#objectbackgroundpositiony').on('change',function(){
@@ -735,9 +702,7 @@
 			$('#objectbackgroundpositionx,#objectbackgroundpositiony').each(function(){
 				updatePositionSelection($(this));
 			});
-
 			//End Object Background
-
 
 			// background image
 			$('#metabackgroundimageurl').on('change',function(){
@@ -749,9 +714,7 @@
 				} else {
 					$('.meta-css-bg-option').hide();
 				}
-
 				$('#metabackgroundimage').val(str).trigger('change');
-
 			});
 
 			var v = $('#metabackgroundimageurl').val();
@@ -763,9 +726,6 @@
 				$('.meta-css-bg-option').hide();
 			}
 
-			//$('#metabackgroundimageurl').trigger('change');
-
-
 			$('#metabackgroundpositiony,#metabackgroundpositionynum').on('change',function(){
 				var el = $('#metabackgroundpositionyval');
 				var str = $('#metabackgroundpositiony').val();
@@ -773,9 +733,7 @@
 				if (num.length > 0){
 					str = num + str;
 				}
-
 				$(el).val(str).trigger('change');
-
 			});
 
 			$('#metabackgroundpositionx,#metabackgroundpositionxnum').on('change',function(){
@@ -785,9 +743,7 @@
 				if (num.length > 0){
 					str = num + str;
 				}
-
 				$(el).val(str).trigger('change');
-
 			});
 
 			$('#metabackgroundpositionx,#metabackgroundpositiony').on('change',function(){
@@ -797,7 +753,6 @@
 			$('#metabackgroundpositionx,#metabackgroundpositiony').each(function(){
 				updatePositionSelection($(this));
 			});
-
 			//End Meta Background
 
 			// background image
@@ -810,9 +765,7 @@
 				} else {
 					$('.content-css-bg-option').hide();
 				}
-
 				$('#contentbackgroundimage').val(str).trigger('change');
-
 			});
 
 			var v = $('#contentbackgroundimageurl').val();
@@ -824,9 +777,6 @@
 				$('.content-css-bg-option').hide();
 			}
 
-		//	$('#contentbackgroundimageurl').trigger('change');
-
-
 			$('#contentbackgroundpositiony,#contentbackgroundpositionynum').on('change',function(){
 				var el = $('#contentbackgroundpositionyval');
 				var str = $('#contentbackgroundpositiony').val();
@@ -834,9 +784,7 @@
 				if (num.length > 0){
 					str = num + str;
 				}
-
 				$(el).val(str).trigger('change');
-
 			});
 
 			$('#contentbackgroundpositionx,#contentbackgroundpositionxnum').on('change',function(){
@@ -846,9 +794,7 @@
 				if (num.length > 0){
 					str = num + str;
 				}
-
 				$(el).val(str).trigger('change');
-
 			});
 
 			$('#contentbackgroundpositionx,#contentbackgroundpositiony').on('change',function(){
@@ -858,7 +804,6 @@
 			$('#contentbackgroundpositionx,#contentbackgroundpositiony').each(function(){
 				updatePositionSelection($(this));
 			});
-
 			//End Object Background
 
 			$('#contentwidthnum,#contentwidthuom').on('change',function(){
@@ -868,15 +813,14 @@
 				if (num.length > 0){
 					str = num + str;
 				}
-
 				$(el).val(str).trigger('change');
-
 			});
 
 			// numeric input - select on focus
 			$('#configuratorContainer input.numeric').on('click', function(){
 				$(this).select();
 			});
+
 			// numeric input - restrict value
 			$('#configuratorContainer input.numeric').on('keyup', function(){
 				var v = $(this).val();
@@ -888,12 +832,10 @@
 					if(!(v=='a' || v=='au' || v=='aut'|| v=='auto')){
 						v=v.replace(numRE,'');
 					}
-
 				} else {
 					console.log(n);
 					v=v.replace(numRE,'');
 				}
-
 				$(this).val(v);
 			});
 
@@ -914,7 +856,7 @@
 					$(this).parents('.mura-colorpicker').find('.mura-colorpicker-swatch').css('background-color','transparent');
 				}
 			})
-
+			
 			window.configuratorInited=true;
 		});
 	</script>
