@@ -435,9 +435,10 @@
 									Custom CSS Styles
 								</label>
 								<cfoutput>
-								<textarea id="customstylesedit" style="min-height: 250px">#esapiEncode('html',attributes.params.stylesupport.css)#</textarea>
+								<textarea id="customstylesedit">#esapiEncode('html',attributes.params.stylesupport.css)#</textarea>
 								</cfoutput>
-								<button class="btn" id="applystyles">Apply</button>
+								<!--- todo: rb key --->
+								<a class="btn" id="applystyles"><i class="mi-check"></i>Apply Custom Styles</a>
 								<script>
 									Mura('##applystyles').click(function(){
 										jQuery('##csscustom').val(Mura('##customstylesedit').val()).trigger('change');
