@@ -435,7 +435,7 @@
 									Custom CSS Styles
 								</label>
 								<cfoutput>
-								<textarea id="customstylesedit">#esapiEncode('html',attributes.params.stylesupport.css)#</textarea>
+								<textarea class="textarea-lg" id="customstylesedit">#esapiEncode('html',attributes.params.stylesupport.css)#</textarea>
 								</cfoutput>
 								<!--- todo: rb key --->
 								<a class="btn" id="applystyles"><i class="mi-check"></i>Apply Custom Styles</a>

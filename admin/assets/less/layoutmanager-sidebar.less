@@ -856,6 +856,15 @@ body.configurator-wrapper {
 		textarea {
 			max-width: 230px;
 			min-height: 85px;
+			resize: vertical;
+
+			&.textarea-lg{
+				min-height: 265px;
+			}
+		}
+
+		textarea + .btn{
+			margin-top: -2px !important;
 		}
 
 		.form-actions {
