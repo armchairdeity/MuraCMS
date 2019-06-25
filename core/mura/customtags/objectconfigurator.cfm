@@ -204,10 +204,8 @@
 			});
 
 			$('.mura-panel-heading, .panel-gds-box').on('click',function(){
-				setConfigPanelState();
+				setConfigPanelStates();
 			})
-
-			console.log('instanceid: ' + instanceid);
 
 			$('.panel-gds-box').on('click',function(){
 				var gdspanel = $(this).attr('data-gdsel');
@@ -229,35 +227,54 @@
 			}
 
 			// set panel state cookie
-			function setConfigPanelState(){
+			function setConfigPanelStates(){
+				var savedStates = JSON.parse(getConfigPanelStates());
+				var newStates = [];
+
+				for (i in savedStates){
+					if (newStates.length <= 10){					
+						var item = savedStates[i];
+						if (item[0] != instanceid){
+							newStates.push(item);
+						}
+					}
+				}
+
 				setTimeout(function(){
 				 	var openPanels = $('#configurator-panels').find('.panel-collapse.in').map(function(){
 				 			return this.id;
 				 	}).get();
-				 	var arr = [instanceid,openPanels];
-				 	var str = JSON.stringify(arr);
+				 	var thisArr = [instanceid,openPanels];
+				 	newStates.unshift(thisArr);
+				 	var str = JSON.stringify(newStates);
 				 	Mura.createCookie('mura_configpanelstate',encodeURIComponent(str));
+				
 				},500);
 			}
 
 			// get panel state cookie
-			function getConfigPanelState(){
+			function getConfigPanelStates(){
 					var cps = Mura.readCookie('mura_configpanelstate');
-					return JSON.parse(cps);
+					if (cps == ''){
+						return JSON.stringify([]);
+					} else {
+						return cps;
+					}
 			}	
 
 			// apply open panels
-			function applyConfigPanelState(){
-					var cps = getConfigPanelState();
-					var savedinstanceid = cps[0];
-					var panelarr = cps[1];
+			function applyConfigPanelStates(){
+					var cps = JSON.parse(getConfigPanelStates());
 
-					if (panelarr.length && savedinstanceid == instanceid){
-						$('#configurator-panels').find('.panel-collapse.in').removeClass('in');
-						$('#configurator-panels').find('.mura-panel-title a.collapse').addClass('collapsed');
-						for (i in panelarr){
-							// console.log('Opening panel: ' + panelarr[i]);
-							$('#'+ panelarr[i]).addClass('in').siblings('.mura-panel-heading').find('a.collapse').removeClass('collapsed');
+					for (i in cps){
+						var savedinstanceid = cps[i][0];
+						var panelarr = cps[i][1];
+						if (panelarr.length && savedinstanceid == instanceid){
+							$('#configurator-panels').find('.panel-collapse.in').removeClass('in');
+							$('#configurator-panels').find('.mura-panel-title a.collapse').addClass('collapsed');
+							for (i in panelarr){
+								$('#'+ panelarr[i]).addClass('in').siblings('.mura-panel-heading').find('a.collapse').removeClass('collapsed');
+							}
 						}
 					}
 			}
@@ -265,9 +282,8 @@
 			// run on load
 			$('#style-panels').addClass('no-header');
 			$('#panel-style-object').addClass('in');
-			applyConfigPanelState();
+			applyConfigPanelStates();
 			setActiveGDSpanel();
-			setConfigPanelState();
 
 			$('#labelText').change(function(item){
 				if(Mura.trim(Mura(this).val())){
