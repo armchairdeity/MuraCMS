@@ -89,12 +89,11 @@
 		          #$.getBean('dataCollectionBean')
 		            .set($.event().getAllValues())
 		            .render($)#
-			</cfif>
-        <cfelseif listFindNoCase('author,editor',variables.$.event('r').perm)>
-        <p>#application.rbFactory.getKeyValue(session.rb,'sitemanager.content.objectnotconfigured')#</p>
-        <cfelse>
-          <cfset request.muraValidObject=false>
-        </cfif>
+					</cfif>
+
+		  <cfelse>
+		    <cfset request.muraValidObject=false>
+		  </cfif>
     </cfif>
 	</cfoutput>
 </cfif>
