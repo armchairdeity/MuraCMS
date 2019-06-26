@@ -208,10 +208,11 @@ input.filebrowser-filter {
 }
 
 .fileviewer-droptarget p {
+  color: #bdbdbd;
   font-size: 14px;
-  text-align: center;
-  margin-top: 25px;
   font-weight: bold;
+  margin-top: 25px;
+  text-align: center;
 }
 
 .fileviewer-uploadedfiles {
