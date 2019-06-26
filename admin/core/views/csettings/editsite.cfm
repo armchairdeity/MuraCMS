@@ -1243,8 +1243,10 @@ to your own modified versions of Mura CMS.
 						</span>
 					</label>
 					<div class="mura-control justify">
-						<input class="text" type="text" name="serverBundlePath" id="serverBundlePath" value="">
-						<input type="button" value="Browse Server" class="mura-ckfinder" data-serverpath="true" data-resourcetype="root" data-target="serverBundlePath"/>
+						<div class="mura-input-set">
+							<input class="text" type="text" name="serverBundlePath" id="serverBundlePath" value="">
+							<input type="button" value="Browse Server" class="mura-ckfinder btn" data-serverpath="true" data-resourcetype="root" data-target="serverBundlePath"/>
+						</div>
 					</div>
 					<cfif application.configBean.getPostBundles()>
 						<p class="help-block">
