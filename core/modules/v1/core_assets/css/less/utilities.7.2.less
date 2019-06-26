@@ -142,7 +142,10 @@ li .cke_skin_mura {
 		/* small  < 768 If less than force 100%*/
 		@media (max-width: 767px) {
 
-			.mura-object	{ width: 100% !important; }
+			.mura-object	{
+				width: 100% !important;
+				min-height: 0px !important;
+			}
 
 			.mura-object > .mura-object-content		{
 				width: 100% !important;
