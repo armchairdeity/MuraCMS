@@ -1,7 +1,16 @@
+/* hide modal only elements outside modal-wrapper */
+.mura-modal-only{
+	display: none;
+}
+
 /* for styling of iframe itself, see admin-frontend.less */
 body.modal-wrapper{	
-
+	background-color: #FFF;
 	.regular-font;
+
+	.mura-modal-only{
+		display: block;
+	}
 	
 	.mura-header{
 		padding-bottom: 12px;
@@ -33,6 +42,11 @@ body.modal-wrapper{
 
 	.block-bordered{
 		border:none;
+		margin: 0 !important; 
+	}
+
+	.block-constrain{
+		margin-bottom: 0;
 	}
 
 

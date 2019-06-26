@@ -505,7 +505,7 @@
 				    return false;
 				});
 
-				utility("##frontEndToolsModalBody").css("top",(utility(document).scrollTop()+48) + "px")
+				utility("##frontEndToolsModalBody").css("top",(utility(document).scrollTop()+48) + "px");
 				resizeFrontEndToolsModal(frontEndModalHeight);
 			} else {
 
@@ -563,20 +563,32 @@
 			var frame = document.getElementById("frontEndToolsModaliframe");
 			var frameContainer = document.getElementById("frontEndToolsModalContainer");
 			var framesrc = frame.getAttribute('src');
+			var appliedHeight = 0;
+
+
+			// mark: finding size of ckeditor in modal 
+
+			var isEditText = framesrc.includes('cArch.edittext');
 			var isFullHeight = framesrc.includes('cArch.editLive') || framesrc.includes('cArch.edit');
 			var windowHeight = Math.max(frameHeight, utility(window).height());
 
 			utility('##frontEndToolsModalContainer ##frontEndToolsModalBody,##frontEndToolsModalContainer ##frontEndToolsModaliframe').width(frontEndModalWidth);
-
-			if (isFullHeight){
-				frame.style.height = utility(window).height()-96 + "px";
+			
+			if (isEditText){
+				appliedHeight = Math.min(760, utility(window).height()-96);
+			} else if(isFullHeight) {
+				appliedHeight = utility(window).height()-96;
 			} else {
-				frame.style.height = frameHeight + "px";
+				appliedHeight = frameHeight;
 			}
 
+			frame.style.height = appliedHeight + "px";
 			frameContainer.style.position = "absolute";
 			document.overflow = "auto";
 
+//			console.log('appliedHeight: ' + appliedHeight);
+//			console.log('frameHeight: ' + frameHeight);
+//			console.log('isEditText: ' + isEditText);
 //			console.log('framesrc: ' + framesrc);
 //			console.log('isFullHeight: ' + isFullHeight);
 //			console.log('windowHeight: ' + windowHeight);

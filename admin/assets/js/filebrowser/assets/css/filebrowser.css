@@ -200,19 +200,19 @@ input.filebrowser-filter {
 }
 
 .fileviewer-droptarget {
-  background-color: #e8e8e8;
+  background-color: #fafafa;
   margin: 8px 0 18px 0;
   overflow: hidden;
   position: relative;
   height: 150px;
-  border: 1px solid #dbdbdb;
 }
 
 .fileviewer-droptarget p {
+  color: #bdbdbd;
   font-size: 14px;
-  text-align: center;
-  margin-top: 25px;
   font-weight: bold;
+  margin-top: 25px;
+  text-align: center;
 }
 
 .fileviewer-uploadedfiles {
