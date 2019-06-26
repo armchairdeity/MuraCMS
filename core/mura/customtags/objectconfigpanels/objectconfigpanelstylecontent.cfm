@@ -263,39 +263,10 @@
 								<button type="button" class="btn mura-ckfinder" data-target="contentbackgroundimageurl" data-completepath="false"><i class="mi-image"></i> Select Image</button>
 							</div>
 
-							<div class="mura-control-group content-css-bg-option" style="display:none;">
-								<label>Background Size</label>
-								<select id="contentbackgroundsize" name="backgroundSize" class="contentStyle">
-									<option value="auto"<cfif attributes.params.stylesupport.contentstyles.backgroundsize eq 'auto'>
-									selected</cfif>>Auto</option>
-									<option value="contain"<cfif attributes.params.stylesupport.contentstyles.backgroundsize eq 'contain'> selected</cfif>>Contain</option>
-									<option value="cover"<cfif attributes.params.stylesupport.contentstyles.backgroundsize eq 'cover'> selected</cfif>>Cover</option>
-								</select>
-							</div>
-
-							<div class="mura-control-group content-css-bg-option" style="display:none;">
-								<label>Background Repeat</label>
-								<select id="contentbackgroundrepeat" name="backgroundRepeat" class="contentStyle">
-									<option value="no-repeat"<cfif attributes.params.stylesupport.contentstyles.backgroundrepeat eq 'norepeat'> selected</cfif>>No-repeat</option>
-									<option value="repeat"<cfif attributes.params.stylesupport.contentstyles.backgroundrepeat eq 'repeat'> selected</cfif>>Repeat</option>
-									<option value="repeat-x"<cfif attributes.params.stylesupport.contentstyles.backgroundrepeat eq 'repeatx'> selected</cfif>>Repeat-X</option>
-									<option value="repeat-y"<cfif attributes.params.stylesupport.contentstyles.backgroundrepeat eq 'repeaty'> selected</cfif>>Repeat-Y</option>
-								</select>
-							</div>
-
-							<div class="mura-control-group content-css-bg-option" style="display:none;">
-								<label>Background Attachment</label>
-								<select name="backgroundAttachment" class="contentStyle">
-									<option value="scroll"<cfif attributes.params.stylesupport.contentstyles.backgroundAttachment eq 'scroll'>
-									selected</cfif>>Scroll</option>
-									<option value="Fixed"<cfif attributes.params.stylesupport.contentstyles.backgroundAttachment eq 'fixed'> selected</cfif>>Fixed</option>
-								</select>
-							</div>
-
-							<div class="mura-control-group mura-ui-grid content-css-bg-option" style="display:none;">
+					<div class="mura-control-group mura-ui-grid content-css-bg-option bg-position" style="display:none;">
 								<label>Background Position</label>
 
-								<div class="mura-ui-row">
+								<div class="row mura-ui-row">
 									<div class="col-xs-4"><label class="right ui-nested">Vertical</label></div>
 									<div class="col-xs-8">
 										<div class="mura-input-group">
@@ -334,6 +305,35 @@
 										</div>
 									</div>
 								</div>
+							</div>
+							
+							<div class="mura-control-group content-css-bg-option" style="display:none;">
+								<label>Background Repeat</label>
+								<select id="contentbackgroundrepeat" name="backgroundRepeat" class="contentStyle">
+									<option value="no-repeat"<cfif attributes.params.stylesupport.contentstyles.backgroundrepeat eq 'norepeat'> selected</cfif>>No-repeat</option>
+									<option value="repeat"<cfif attributes.params.stylesupport.contentstyles.backgroundrepeat eq 'repeat'> selected</cfif>>Repeat</option>
+									<option value="repeat-x"<cfif attributes.params.stylesupport.contentstyles.backgroundrepeat eq 'repeatx'> selected</cfif>>Repeat-X</option>
+									<option value="repeat-y"<cfif attributes.params.stylesupport.contentstyles.backgroundrepeat eq 'repeaty'> selected</cfif>>Repeat-Y</option>
+								</select>
+							</div>
+
+							<div class="mura-control-group content-css-bg-option" style="display:none;">
+								<label>Background Size</label>
+								<select id="contentbackgroundsize" name="backgroundSize" class="contentStyle">
+									<option value="auto"<cfif attributes.params.stylesupport.contentstyles.backgroundsize eq 'auto'>
+									selected</cfif>>Auto</option>
+									<option value="contain"<cfif attributes.params.stylesupport.contentstyles.backgroundsize eq 'contain'> selected</cfif>>Contain</option>
+									<option value="cover"<cfif attributes.params.stylesupport.contentstyles.backgroundsize eq 'cover'> selected</cfif>>Cover</option>
+								</select>
+							</div>
+
+							<div class="mura-control-group content-css-bg-option" style="display:none;">
+								<label>Background Attachment</label>
+								<select name="backgroundAttachment" class="contentStyle">
+									<option value="scroll"<cfif attributes.params.stylesupport.contentstyles.backgroundAttachment eq 'scroll'>
+									selected</cfif>>Scroll</option>
+									<option value="Fixed"<cfif attributes.params.stylesupport.contentstyles.backgroundAttachment eq 'fixed'> selected</cfif>>Fixed</option>
+								</select>
 							</div>
 
             <!--- /end panel contents --->
