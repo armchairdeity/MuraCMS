@@ -724,13 +724,17 @@ function setFinders(e,config) {
         });
     } else $(e).unbind("click").on("click", function() {
         var a = Mura(this);
-        $("#alertDialogMessage").html('<div id="MuraFileBrowserContainer"></div>'), $("#alertDialog").attr("title", "Select File"),
+        var w = parseInt(Mura('#mura-content').width()) - 120;
+        $("#alertDialogMessage").html('<div id="MuraFileBrowserContainer"></div>'), 
+        $("#alertDialog").attr("title", "Select File"),
         $("#alertDialog").dialog({
             resizable: !1,
-            width: 1e3,
+            width: w,
             open: function(e, t) {
                 var i = this;
-                MuraFileBrowser.config.height = 600, MuraFileBrowser.config.selectMode = 2, MuraFileBrowser.config.resourcepath = "Application_Root";
+                MuraFileBrowser.config.height = 600, 
+                MuraFileBrowser.config.selectMode = 2, 
+                MuraFileBrowser.config.resourcepath = "Application_Root";
 								if(typeof config != 'undefined'){
 									Mura.extend(MuraFileBrowser.config,config);
 								}
@@ -751,7 +755,7 @@ function setFinders(e,config) {
             position: {
                 my: "center",
                 at: "top",
-                of: window,
+                of: "#mura-content",
                 collision: "fit"
             },
             buttons: {}
