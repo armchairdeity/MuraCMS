@@ -282,46 +282,50 @@ function getCommenter() output=false {
 	<cfreturn rs/>
 </cffunction>
 
-<cffunction name="delete">
-	<cfset var pluginManager=getPluginManager()>
-	<cfset var pluginEvent=createObject("component","mura.event")>
-	<cfset var eventArgs=structNew()>
+<cffunction name="delete" access="remote" output="false">
+	<cfif allowModuleAccess()>
+		<cfset var pluginManager=getPluginManager()>
+		<cfset var pluginEvent=createObject("component","mura.event")>
+		<cfset var eventArgs=structNew()>
 
-	<cfset eventArgs.siteID=variables.instance.siteID>
-	<cfset eventArgs.commentBean=this>
-  <cfset eventArgs.bean=this>
-	<cfset pluginEvent.init(eventArgs)>
+		<cfset eventArgs.siteID=variables.instance.siteID>
+		<cfset eventArgs.commentBean=this>
+	  <cfset eventArgs.bean=this>
+		<cfset pluginEvent.init(eventArgs)>
 
-	<cfset pluginManager.announceEvent(eventToAnnounce="onBeforeCommentDelete",currentEventObject=pluginEvent,objectid=getValue("commentid"))>
+		<cfset pluginManager.announceEvent(eventToAnnounce="onBeforeCommentDelete",currentEventObject=pluginEvent,objectid=getValue("commentid"))>
 
-	<cfquery>
-		update tcontentcomments set isDeleted = 1 where commentID = <cfqueryparam cfsqltype="cf_sql_varchar" value="#getCommentID()#">
-	</cfquery>
+		<cfquery>
+			update tcontentcomments set isDeleted = 1 where commentID = <cfqueryparam cfsqltype="cf_sql_varchar" value="#getCommentID()#">
+		</cfquery>
 
-	<cfset pluginManager.announceEvent(eventToAnnounce="onAfterCommentDelete",currentEventObject=pluginEvent,objectid=getValue("commentid"))>
+		<cfset pluginManager.announceEvent(eventToAnnounce="onAfterCommentDelete",currentEventObject=pluginEvent,objectid=getValue("commentid"))>
 
-	<cfset variables.contentManager.setCommentStat(variables.instance.contentID,variables.instance.siteID) />
+		<cfset variables.contentManager.setCommentStat(variables.instance.contentID,variables.instance.siteID) />
+	</cfif>
 </cffunction>
 
-<cffunction name="undelete">
-	<cfset var pluginManager=getPluginManager()>
-	<cfset var currentEventObject=createObject("component","mura.event")>
-	<cfset var eventArgs=structNew()>
+<cffunction name="undelete" access="remote" output="false">
+	<cfif allowModuleAccess()>
+		<cfset var pluginManager=getPluginManager()>
+		<cfset var currentEventObject=createObject("component","mura.event")>
+		<cfset var eventArgs=structNew()>
 
-	<cfset eventArgs.siteID=variables.instance.siteID>
-	<cfset eventArgs.commentBean=this>
-  <cfset eventArgs.bean=this>
-	<cfset currentEventObject.init(eventArgs)>
+		<cfset eventArgs.siteID=variables.instance.siteID>
+		<cfset eventArgs.commentBean=this>
+	  <cfset eventArgs.bean=this>
+		<cfset currentEventObject.init(eventArgs)>
 
-	<cfset pluginManager.announceEvent(eventToAnnounce="onBeforeCommentUndelete",currentEventObject=currentEventObject,objectid=getValue("commentid"))>
+		<cfset pluginManager.announceEvent(eventToAnnounce="onBeforeCommentUndelete",currentEventObject=currentEventObject,objectid=getValue("commentid"))>
 
-	<cfquery>
-		update tcontentcomments set isDeleted = 0 where commentID = <cfqueryparam cfsqltype="cf_sql_varchar" value="#getCommentID()#">
-	</cfquery>
+		<cfquery>
+			update tcontentcomments set isDeleted = 0 where commentID = <cfqueryparam cfsqltype="cf_sql_varchar" value="#getCommentID()#">
+		</cfquery>
 
-	<cfset pluginManager.announceEvent(eventToAnnounce="onAfterCommentUndelete",currentEventObject=currentEventObject,objectid=getValue("commentid"))>
+		<cfset pluginManager.announceEvent(eventToAnnounce="onAfterCommentUndelete",currentEventObject=currentEventObject,objectid=getValue("commentid"))>
 
-	<cfset variables.contentManager.setCommentStat(variables.instance.contentID,variables.instance.siteID) />
+		<cfset variables.contentManager.setCommentStat(variables.instance.contentID,variables.instance.siteID) />
+	</cfif>
 </cffunction>
 
 <cffunction name="flag" access="remote" output="false">
