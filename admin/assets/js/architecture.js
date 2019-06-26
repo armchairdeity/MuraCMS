@@ -2760,6 +2760,10 @@ buttons: {
 						objectstyles[item.attr("name")] = objectstyles[item.attr("name")] + ',' + item.val();
 					}
 				}
+
+				if(typeof objectstyles[item.attr("name")] != 'undefined' && objectstyles[item.attr("name")]==''){
+					delete objectstyles[item.attr("name")];
+				}
 			}
 		})
 
@@ -2782,6 +2786,11 @@ buttons: {
 						metastyles[item.attr("name")] = metastyles[item.attr("name")] + ',' + item.val();
 					}
 				}
+
+				if(typeof metastyles[item.attr("name")] != 'undefined' && metastyles[item.attr("name")]==''){
+					delete metastyles[item.attr("name")];
+				}
+
 			}
 		})
 
@@ -2801,9 +2810,14 @@ buttons: {
 							contentstyles[item.attr("name")] = item.val();
 						}
 					} else if (!(item.attr("type") == "checkbox" && !item.is(":checked")) ){
-						acontentstyles[item.attr("name")] = contentstyles[item.attr("name")] + ',' + item.val();
+						contentstyles[item.attr("name")] = contentstyles[item.attr("name")] + ',' + item.val();
 					}
 				}
+
+				if(typeof contentstyles[item.attr("name")] != 'undefined' && contentstyles[item.attr("name")]==''){
+					delete contentstyles[item.attr("name")];
+				}
+
 			}
 		})
 
@@ -2826,6 +2840,10 @@ buttons: {
 						stylesupport['stylesupport'][item.attr("name")] = stylesupport[item.attr("name")] + ',' + item.val();
 					}
 				}
+
+				if(typeof stylesupport[item.attr("name")] != 'undefined' && stylesupport[item.attr("name")]==''){
+					delete stylesupport[item.attr("name")];
+				}
 			}
 		})
 
@@ -2834,6 +2852,124 @@ buttons: {
 		stylesupport.objectstyles=objectstyles;
 		stylesupport.metastyles=metastyles;
 		stylesupport.contentstyles=contentstyles;;
+
+		/*
+		{"objectminheightuom":"px","objectmarginuom":"px","objectpaddinguom":"px","objectbackgroundimageurl":"http://localhost:8080/sites/default/assets/Image/2012-10-27_1201.png","objectBackgroundPositionY":"top","objectBackgroundPositionX":"left","metamarginuom":"px","metapaddinguom":"px","contentwidthuom":"%","contentminheightuom":"px","contentmarginuom":"px","contentpaddinguom":"px","objectstyles":{"backgroundImage":"url('http://localhost:8080/sites/default/assets/Image/2012-10-27_1201.png')","backgroundSize":"auto","backgroundRepeat":"no-repeat","backgroundAttachment":"scroll"},"metastyles":{},"contentstyles":{}}
+		*/
+		if(typeof stylesupport.objectminheightuomval == 'undefined'){
+			delete stylesupport.objectminheightuom;
+			delete stylesupport.objectminheightnum;
+		}
+
+		if(typeof stylesupport.contentwidthuomval == 'undefined'){
+			delete stylesupport.contentwidthuom;
+			delete stylesupport.contentwidthnum;
+		}
+
+		if(typeof stylesupport.contentminheightuomval == 'undefined'){
+			delete stylesupport.contentminheightuom;
+			delete stylesupport.contentminheightnum;
+		}
+
+		if(!(stylesupport.objectstyles.marginTop || stylesupport.objectstyles.marginLeft || stylesupport.objectstyles.marginBottom|| stylesupport.objectstyles.marginRight)){
+			delete stylesupport.objectmarginuom;
+		}
+
+		if(!(stylesupport.objectstyles.paddingTop || stylesupport.objectstyles.paddingLeft || stylesupport.objectstyles.paddingBottom|| stylesupport.objectstyles.paddingRight)){
+			delete stylesupport.objectpaddinguom;
+		}
+
+		if(!(stylesupport.metastyles.marginTop || stylesupport.metastyles.marginLeft || stylesupport.metastyles.marginBottom|| stylesupport.metastyles.marginRight)){
+			delete stylesupport.metamarginuom;
+		}
+
+		if(!(stylesupport.metastyles.paddingTop || stylesupport.metastyles.paddingLeft || stylesupport.metastyles.paddingBottom|| stylesupport.metastyles.paddingRight)){
+			delete stylesupport.metapaddinguom;
+		}
+
+		if(!(stylesupport.contentstyles.marginTop || stylesupport.contentstyles.marginLeft || stylesupport.contentstyles.marginBottom|| stylesupport.contentstyles.marginRight)){
+			delete stylesupport.contentmarginuom;
+		}
+
+		if(!(stylesupport.contentstyles.paddingTop || stylesupport.contentstyles.paddingLeft || stylesupport.contentstyles.paddingBottom|| stylesupport.contentstyles.paddingRight)){
+			delete stylesupport.contentpaddinguom;
+		}
+
+		var bgoptions=[
+		'backgroundImage',
+		'backgroundAttachment',
+		'backgroundRepeat',
+		'backgroundSize'];
+
+		if(!stylesupport.objectbackgroundimageurl){
+			var bgsupportoptions=[
+			'objectbackgroundimageurl',
+			'objectBackgroundPositionY',
+			'objectbackgroundpositiony',
+			'objectBackgroundPositionX',
+			'objectbackgroundpositionx',
+			'objectbackgroundimageurl'
+			];
+
+
+			for(var p=0;p<bgsupportoptions.length;p++){
+				if(typeof stylesupport[bgsupportoptions[p]] != 'undefined'){
+					delete stylesupport[bgsupportoptions[p]];
+				}
+			}
+			for(var p=0;p<bgoptions.length;p++){
+				if(typeof stylesupport.objectstyles[bgoptions[p]] != 'undefined'){
+					delete stylesupport.objectstyles[bgoptions[p]];
+				}
+			}
+		}
+
+		if(!stylesupport.metabackgroundimageurl){
+			var bgsupportoptions=[
+			'metabackgroundimageurl',
+			'metaBackgroundPositionY',
+			'metabackgroundpositiony',
+			'metaBackgroundPositionX',
+			'metabackgroundpositionx',
+			'metabackgroundimageurl'
+			];
+
+
+			for(var p=0;p<bgsupportoptions.length;p++){
+				if(typeof stylesupport[bgsupportoptions[p]] != 'undefined'){
+					delete stylesupport[bgsupportoptions[p]];
+				}
+			}
+			for(var p=0;p<bgoptions.length;p++){
+				if(typeof stylesupport.metastyles[bgoptions[p]] != 'undefined'){
+					delete stylesupport.metastyles[bgoptions[p]];
+				}
+			}
+		}
+
+		if(!stylesupport.contentbackgroundimageurl){
+			var bgsupportoptions=[
+			'contentbackgroundimageurl',
+			'contentBackgroundPositionY',
+			'contentbackgroundpositiony',
+			'contentBackgroundPositionX',
+			'contentbackgroundpositionx',
+			'contentbackgroundimageurl'
+			];
+
+
+			for(var p=0;p<bgsupportoptions.length;p++){
+				if(typeof stylesupport[bgsupportoptions[p]] != 'undefined'){
+					delete stylesupport[bgsupportoptions[p]];
+				}
+			}
+			for(var p=0;p<bgoptions.length;p++){
+				if(typeof stylesupport.contentstyles[bgoptions[p]] != 'undefined'){
+					delete stylesupport.contentstyles[bgoptions[p]];
+				}
+			}
+		}
+
 		this.availableObject.params.stylesupport=JSON.stringify(stylesupport);
 
 		if(typeof originParams == 'object'){
