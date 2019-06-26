@@ -57,12 +57,6 @@ li .cke_skin_mura {
     box-sizing: border-box
 }
 
-.mura-object {
-		width: 100%;
-		box-sizing: border-box;
-		-moz-box-sizing: border-box;
-}
-
 .mura-column:last-child, .mura-object:last-child {
 		margin-right: 0;
 }
@@ -76,14 +70,7 @@ li .cke_skin_mura {
 		max-width: 100%;
 		box-sizing: border-box;
 }
-.mura-pull-right:not(.mura-expanded), .mura-right:not(.mura-expanded) {
-		float: right;
-		margin-left: auto;
-}
-.mura-pull-left:not(.mura-expanded), .mura-left:not(.mura-expanded) {
-		float: left;
-		margin-right: auto;
-}
+
 .mura-center {
 		margin: 0 auto;
 }
@@ -98,12 +85,7 @@ li .cke_skin_mura {
 		max-width: 100%;
 		box-sizing: border-box;
 }
-.mura-pull-right, .mura-right {
-		float: right;
-}
-.mura-pull-left, .mura-left {
-		float: left;
-}
+
 .mura-center {
 		margin: 0 auto;
 }
@@ -111,21 +93,95 @@ li .cke_skin_mura {
 		float: none;
 }
 
+.mura-object {
+		width: 100%;
+		box-sizing: border-box;
+		-moz-box-sizing: border-box;
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+		align-items: stretch;
+		justify-content: flex-start;
+		align-content: flex-start;
+		flex-grow: 1;
+}
+
+
+.mura-object[data-object="container"] > .mura-object-content		{
+	width: 100%;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	align-items: stretch;
+	justify-content: flex-start;
+	align-content: flex-start;
+	flex-grow: 1;
+
+	.mura-pull-right:not(.mura-expanded), .mura-right:not(.mura-expanded) {
+			justify-self: flex-end;
+	}
+
+	.mura-pull-left:not(.mura-expanded), .mura-left:not(.mura-expanded) {
+			justify-self: flex-start;
+	}
+}
+
+.mura-region-local[data-loose="true"] {
+	width: 100%;
+	margin-right: 0;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	display: block;
+
+	.mura-pull-right:not(.mura-expanded), .mura-right:not(.mura-expanded) {
+			float: right;
+			margin-left: auto;
+	}
+	.mura-pull-left:not(.mura-expanded), .mura-left:not(.mura-expanded) {
+			float: left;
+			margin-right: auto;
+	}
+}
+
 .mura-region-inherited, .mura-region-local {
 		width: 100%;
 		margin-right: 0;
-		display: block; //float: left;
 		box-sizing: border-box;
+		-moz-box-sizing: border-box;
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+		align-items: stretch;
+		align-content: flex-start;
+
+		.mura-pull-right:not(.mura-expanded), .mura-right:not(.mura-expanded) {
+				justify-self: flex-end;
+		}
+
+		.mura-pull-left:not(.mura-expanded), .mura-left:not(.mura-expanded) {
+				justify-self: flex-start;
+		}
+
+		.mura-object {
+			display: flex;
+			position: relative;
+			flex-direction: row;
+			flex-wrap: wrap;
+			align-items: stretch;
+			align-content: flex-start;
+			flex-grow: 0;
+		}
+
+		.mura-object-meta-wrapper {
+			justify-content: center;
+			width: 100%;
+		}
 
     box-sizing:border-box .svAsset+.mura-region .mura-region-local, .svAsset+.mura-region .mura-region-local {
         float: none;
     }
-
-		.mura-object {
-			float: left;
-			position: relative;
-		}
-
 
     /* For devices larger than 400px */
     @media (min-width: 400px) {
@@ -144,6 +200,7 @@ li .cke_skin_mura {
 
 			.mura-object	{
 				width: 100% !important;
+				display: flex !important;
 			}
 
 			.mura-object[data-object="container"] {
@@ -185,15 +242,18 @@ li .cke_skin_mura {
 				.mura-nine.mura-object                   { width: 75%; }
 				.mura-ten.mura-object                    { width: 83.33%; }
 				.mura-eleven.mura-object                 { width: 91.66%; }
-				.mura-twelve.mura-object                 { width: 100% }
-				.mura-one-third.mura-object               { width: 33.33%; }
-				.mura-two-thirds.mura-object              { width: 66.66%; }
-				.mura-one-half.mura-object                { width: 50%; }
+				.mura-twelve.mura-object                 { width: 100%;}
+				.mura-one-third.mura-object              { width: 33.33%; }
+				.mura-two-thirds.mura-object             { width: 66.66%; }
+				.mura-one-half.mura-object               { width: 50%; }
     }
 
 		/* medium 992 - 1199  If less than force 100% */
 		@media (max-width: 991px) {
-				.mura-object.mura-md	{ width: 100% !important; }
+				.mura-object.mura-md	{
+					display: flex !important;
+					width: 100% !important;
+				}
 				.mura-object.mura-md > .mura-object-content {
 					width: 100%;
 					margin-left: 0px !important;
@@ -207,7 +267,10 @@ li .cke_skin_mura {
 
 		/* large  1200+ If less than force 100%*/
 		@media (max-width: 1199px) {
-				.mura-object.mura-lg	{ width: 100% !important; }
+				.mura-object.mura-lg	{
+					display: flex !important;
+					width: 100% !important;
+				}
 
 				.mura-object.mura-lg > .mura-object-content		{
 					width: 100% !important;
@@ -258,24 +321,11 @@ li .cke_skin_mura {
 		box-sizing: border-box;
 	}
 
+	.mura-object.mura-object-label-left {
+			flex-direction: row;
+		}
 
-	.mura-object.mura-object-label-right > .mura-object-meta-wrapper {
-		float:right;
-		box-sizing: border-box;
-	}
-
-	.mura-object.mura-object-label-left > .mura-object-meta-wrapper,
-	.mura-object.mura-object-label-left > .mura-object-content  {
-		float:left;
-		box-sizing: border-box;
-	}
-
-
-	.mura-expanded.mura-object.mura-object-label-left {
-		flex-direction: row;
-	}
-
-	.mura-expanded.mura-object.mura-object-label-right{
+	.mura-object.mura-object-label-right{
 		flex-direction: row-reverse;
 	}
 
@@ -284,16 +334,15 @@ li .cke_skin_mura {
 	.mura-expanded.mura-object.mura-object-label-left > .mura-object-meta-wrapper,
 	.mura-expanded.mura-object.mura-object-label-left > .mura-object-content {
 		flex-grow: 1;
-		flex-basis: 50%;
+		width: 50%;
 	}
 
 }
 
-.mura-object, .mura-object-content, .mura-object-meta-wrapper, .mura-object-meta {
+.mura-object-content, .mura-object-meta-wrapper, .mura-object-meta {
 	position: relative;
 	display: block;
 	box-sizing: border-box;
-	height: 100%;
 }
 
 .mura-object:not(.mura-object-label-left) > .mura-object-meta-wrapper:after {
