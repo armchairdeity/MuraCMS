@@ -345,10 +345,30 @@ function setDatePickers(e, t, i) {
 }
 
 function setColorPickers(e) {
+		var colorSelectors= {};
+		var hasColors=false;
+		if(Array.isArray(themeColorOptions) && themeColorOptions.length){
+			for(var c=0;c<themeColorOptions.length;c++){
+				if(typeof themeColorOptions[c].value != 'undefined'){
+					colorSelectors[themeColorOptions[c].value]=themeColorOptions[c].value;
+				} else {
+					colorSelectors[themeColorOptions[c].VALUE]=themeColorOptions[c].VALUE;
+				}
+			}
+			hasColors=true;
+		}
     $(e).each(function(e) {
-        $(this).colorpicker({
-            align: 'left'
-        });
+				if(hasColors){
+					$(this).colorpicker({
+							align: 'left',
+							colorSelectors:colorSelectors
+					});
+				} else {
+					$(this).colorpicker({
+							align: 'left'
+					});
+				}
+
     });
 }
 
@@ -725,7 +745,7 @@ function setFinders(e,config) {
     } else $(e).unbind("click").on("click", function() {
         var a = Mura(this);
         var w = parseInt(Mura('#mura-content').width()) - 120;
-        $("#alertDialogMessage").html('<div id="MuraFileBrowserContainer"></div>'), 
+        $("#alertDialogMessage").html('<div id="MuraFileBrowserContainer"></div>'),
         $("#alertDialog").attr("title", "Select File"),
         $("#alertDialog").dialog({
             resizable: !1,
@@ -733,8 +753,8 @@ function setFinders(e,config) {
             minWidth: 712,
             open: function(e, t) {
                 var i = this;
-                MuraFileBrowser.config.height = 600, 
-                MuraFileBrowser.config.selectMode = 2, 
+                MuraFileBrowser.config.height = 600,
+                MuraFileBrowser.config.selectMode = 2,
                 MuraFileBrowser.config.resourcepath = "Application_Root";
 								if(typeof config != 'undefined'){
 									Mura.extend(MuraFileBrowser.config,config);
