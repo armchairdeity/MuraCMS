@@ -1384,6 +1384,7 @@ config: {
         <imageeditwindow v-if="isDisplayWindow=='EDITIMAGE'" :settings="settings" :currentFile="currentFile" :currentIndex="currentIndex"></imageeditwindow>
         <actionwindow v-if="isDisplayWindow" :settings="settings" :isDisplayWindow="isDisplayWindow" :currentIndex="currentIndex" :currentFile="currentFile" :error="error"></actionwindow>
         <div class="mura-header">
+        <h1 class="mura-modal-only">File Browser</h1>
           <ul class="breadcrumb">
             <li @click="setDirDepth(-1)"><a><i class="mi-home"></i>{{resourcepath}}</a></li>
             <li v-for="(item,index) in foldertree" @click="setDirDepth(index)"><a><i class="mi-folder-open"></i>{{item}}</a></li>
