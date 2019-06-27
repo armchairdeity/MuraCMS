@@ -7,7 +7,7 @@
 	<cfset m=application.Mura.getBean('m').init(session.siteid)>
 </cfsilent>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
+<html class="mura">
 <head>
 	<title>Mura File Browser</title>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -36,8 +36,11 @@
 	</cfoutput>
 </head>
 <body class="mura-admin MuraFileBrowserWindow">
-	<div class="mura">
-  	<div id="MuraFileBrowserContainer"></div>
+	<div class="content">
+		<div class="mura-header">
+		<h1>File Browser</h1>
+		</div>
+		<div id="MuraFileBrowserContainer"></div>
 	</div>
 </body>
 <cfoutput>

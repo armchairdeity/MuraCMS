@@ -501,7 +501,6 @@ config: {
       compstyle: function() {
         this.posx = this.menux;
         this.posy = this.menuy;
-
         return ;
       }
       , getTop: function() {
@@ -1223,12 +1222,20 @@ config: {
       , checkIsFile: function() {
         return fileViewer.checkIsFile();
       }
-      ,openMenu: function(e,file,index,ref) {
+      , openMenu: function(e,file,index,ref) {
 
         this.$root.isDisplayContext = 0;
 
-        var left = Math.floor(document.getElementById('fileitem-'+index).getBoundingClientRect().left) - 26;
-        var top =  Math.floor(document.getElementById('fileitem-'+index).getBoundingClientRect().top) + window.scrollX;
+        // listmode
+        var offsetLeft = 33;
+        var offsetTop = 10;
+        if (document.getElementById('alertDialog')){
+          offsetLeft += Math.floor(document.getElementById('alertDialog').getBoundingClientRect().left); 
+          offsetTop += Math.floor(document.getElementById('alertDialog').getBoundingClientRect().top); 
+        } 
+
+        var left = Math.floor(document.getElementById('fileitem-'+index).getBoundingClientRect().left) - offsetLeft;
+        var top =  Math.floor(document.getElementById('fileitem-'+index).getBoundingClientRect().top) - offsetTop;
 
         this.$nextTick(function () {
           this.$root.isDisplayContext = 1;
@@ -1240,7 +1247,6 @@ config: {
         this.$root.currentIndex = index;
         this.menux = left;
         this.menuy = top;
-
         e.preventDefault();
       }
     }
@@ -1261,8 +1267,8 @@ config: {
           </div>
         </div>
         <div v-for="(file,index) in files">
-          <div class="fileviewer-item"  :id="'fileitem-'+index"  v-if="parseInt(file.isfile)" @click="openMenu($event,file,index)">
-            <div class="fileviewer-item-image">
+          <div class="fileviewer-item" v-if="parseInt(file.isfile)">
+            <div class="fileviewer-item-image" @click="openMenu($event,file,index)">
               <div v-if="0" class="fileviewer-item-icon" :class="['fileviewer-item-icon-' + file.type]"></div>
               <div v-else class="fileviewer-item-icon" :style="{ 'background-image': 'url(' + encodeURI(file.url) + ')' }"></div>
             </div>
@@ -1274,6 +1280,9 @@ config: {
                 <div v-if="parseInt(file.isfile)" class="fileviewer-item-meta-size">
                   {{file.size}}kb
                 </div>
+              </div>
+              <div class="fileviewer-item-actions">
+                <a href="#" :id="'fileitem-'+index" class="show-actions" @click="openMenu($event,file,index)"><i class="mi-ellipsis-v"></i></a>
               </div>
             </div>
           </div>
@@ -1315,14 +1324,20 @@ config: {
         this.$root.back( );
       }
       ,openMenu: function(e,file,index) {
-        this.menux = Math.floor(document.getElementById('fileitem-'+index).getBoundingClientRect().left)+5;
-        this.menuy =  Math.floor(document.getElementById('fileitem-'+index).getBoundingClientRect().top)+10 + window.scrollX;
 
+        // gridmode
+        var offsetLeft = 0;
+        if (document.getElementById('alertDialog')){
+          offsetLeft = Math.floor(document.getElementById('alertDialog').getBoundingClientRect().left); 
+        } 
+
+        this.menux = Math.floor(document.getElementById('fileitem-'+index).getBoundingClientRect().left) - 28 - offsetLeft;
+        this.menuy =  Math.floor(document.getElementById('fileitem-'+index).getBoundingClientRect().top);
+ 
         this.$root.currentFile = file;
         this.$root.currentIndex = index;
 
         this.$root.isDisplayContext = 0;
-
 
         this.$nextTick(function () {
           this.$root.isDisplayContext = 1;
@@ -1335,13 +1350,14 @@ config: {
 
         e.preventDefault();
       }
+
     }
   });
 
   Vue.component('filewindow', {
     props: ['files','folders','foldertree','isDisplayContext','currentFile','settings','displaymode'],
     template: `
-      <div class="filewindow-wrapper">
+      <div class="filewindow-wrapper" id="mura-filewindow-wrapper">
         <gridmode v-if="displaymode==1" :currentFile="currentFile"   :foldertree="foldertree" :files="files" :folders="folders" :isDisplayContext="isDisplayContext"></gridmode>
         <listmode  v-if="displaymode==2" :settings="settings" :currentFile="currentFile" :foldertree="foldertree" :files="files" :folders="folders" :isDisplayContext="isDisplayContext"></listmode>
       </div>`,

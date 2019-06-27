@@ -1,3 +1,16 @@
+/* styling body for 'browse server' browser window */
+body.MuraFileBrowserWindow{
+  background-color: #fff;
+}
+
+/* also see jquery-ui-override where breadcrumb is styled for ui-dialog */
+body.MuraFileBrowserWindow .mura-header ul.breadcrumb{
+  background-color: #FAFAFA;
+  border-radius: 0;
+  border: 1px solid #eaeaea;
+  padding: 4px 12px;
+}
+
 #spinner {
   position: absolute;
   z-index: 10000;
@@ -349,8 +362,27 @@ input.filebrowser-filter {
 }
 
 .fileviewer-item-meta-details {
+  bottom: 10px;
+  position: absolute;
+  right: 20px;
+}
+
+.fileviewer-item-actions{
   position: absolute;
   bottom: 10px;
+  font-size: 18px;
+  left: 10px;
+  line-height: 18px;
+}
+
+.fileviewer-item-actions a.show-actions{
+  color: #949494 !important;
+  cursor: pointer;
+  display: inline-block;
+  float: left;
+  margin-left: 0;
+  text-align: left;
+  width: 40px;
 }
 
 .image {
@@ -372,7 +404,7 @@ input.filebrowser-filter {
   top: 0;
   background-color: rgba(0, 0, 0, 0.8);
 }
-
+ 
 .fileviewer-gallery {
   display: block;
   width: 70%;

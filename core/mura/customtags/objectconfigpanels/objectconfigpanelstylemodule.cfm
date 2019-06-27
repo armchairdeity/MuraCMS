@@ -38,16 +38,6 @@
             <div class="mura-panel-body">
             	<!--- panel contents --->
 							<cfif request.haspositionoptions>
-								<div class="mura-control-group">
-									<!--- todo: rbkeys for label and options --->
-									<label>Full-width Breakpoint</label>
-									<select name="breakpoint" class="classtoggle">
-									<option value="">Phone</option>
-									<option value="mura-sm"<cfif listFind(attributes.params.class,'mura-sm',' ')> selected</cfif>>768px (Tablet)</option>
-									<option value="mura-md"<cfif listFind(attributes.params.class,'mura-md',' ')> selected</cfif>>992px (Laptop)</option>
-									<option value="mura-lg"<cfif listFind(attributes.params.class,'mura-lg',' ')> selected</cfif>> 1200px (Desktop)</option>
-									</select>
-								</div>
 
 								<div class="mura-control-group">
 									<label>#application.rbFactory.getKeyValue(session.rb,'sitemanager.content.fields.alignment')#</label>
@@ -75,6 +65,16 @@
 									</select>
 								</div>
 
+								<div class="mura-control-group">
+									<!--- todo: rbkeys for label and options --->
+									<label>Full-Width Breakpoint</label>
+									<select name="breakpoint" class="classtoggle">
+									<option value=""> (Phone)</option>
+									<option value="mura-sm"<cfif listFind(attributes.params.class,'mura-sm',' ')> selected</cfif>>768px (Tablet)</option>
+									<option value="mura-md"<cfif listFind(attributes.params.class,'mura-md',' ')> selected</cfif>>992px (Laptop)</option>
+									<option value="mura-lg"<cfif listFind(attributes.params.class,'mura-lg',' ')> selected</cfif>> 1200px (Desktop)</option>
+									</select>
+								</div>
 								<!--- todo: bootstrap slider --->
 								<!--- 						<input
 									type="text"
