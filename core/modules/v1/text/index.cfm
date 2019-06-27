@@ -54,6 +54,8 @@ version 2 without this exception.  You may, if you choose, apply this exception 
 	#$.content(objectParams.source)#
 <cfelseif objectParams.sourcetype eq 'custom'>
 	#objectParams.source#
+<cfelse>
+	<p></p>
 </cfif>
 </cfoutput>
 <cfelse>

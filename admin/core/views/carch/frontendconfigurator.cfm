@@ -14,7 +14,7 @@
 	<cfparam name="rc.objecticonclass" default="mi-cog">
 	<cfparam name="rc.isnew" default="false">
 
-	<cfif not len(rc.objectname) and len(rc.object) gt 1>
+	<cfif not len(rc.objectname) and len(rc.object) gt 1 or rc.objectname eq 'null' or rc.objectname eq 'undefined'>
 		<cfif rc.$.siteConfig().hasDisplayObject(rc.object)>
 			<cfset objectDef=rc.$.siteConfig().getDisplayObject(rc.object)>
 			<cfset rc.objectname=objectDef.name>
@@ -57,7 +57,7 @@
 
 				<cfif rc.sourceFrame eq 'modal'>
 					<a href="##" class="btn mura-primary" id="saveConfigDraft"><i class="mi-check"></i> #esapiEncode('html_attr',application.rbFactory.getKeyValue(session.rb,"sitemanager.content.apply"))#</a>
-				<cfelse>	
+				<cfelse>
 					<a href="##" class="btn mura-primary" id="closeConfigurator" onclick="frontEndProxy.post({cmd:'showobjects'});"><i class="mi-check"></i> Done</a>
 				</cfif>
 

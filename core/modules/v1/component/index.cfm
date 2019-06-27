@@ -99,6 +99,8 @@ version 2 without this exception.  You may, if you choose, apply this exception 
 	<cfif not variables.rsTemplate.doCache>
 		<cfset request.cacheItem=variables.rsTemplate.doCache/>
 	</cfif>
+<cfelseif listFindNoCase('author,editor',variables.$.event('r').perm)>
+	<p></p>
 <cfelse>
 	<cfset request.muraValidObject=false>
 </cfif>

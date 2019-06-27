@@ -90,7 +90,8 @@
 		            .set($.event().getAllValues())
 		            .render($)#
 					</cfif>
-
+			<cfelseif listFindNoCase('author,editor',variables.$.event('r').perm)>
+				<p></p>
 		  <cfelse>
 		    <cfset request.muraValidObject=false>
 		  </cfif>
