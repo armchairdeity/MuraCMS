@@ -464,6 +464,7 @@
 			openFrontEndToolsModal(displayObject, true);
 			Mura.processAsyncObject(displayObject);
 
+			Mura(displayObject).on('click',Mura.handleObjectClick);
 			Mura(displayObject).closest('.mura-region-local').data('dirty', true);
 			Mura(displayObject).on('dragover', function() {})
 			Mura('#adminSave').show();
