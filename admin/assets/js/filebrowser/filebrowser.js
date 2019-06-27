@@ -1222,7 +1222,7 @@ config: {
       , checkIsFile: function() {
         return fileViewer.checkIsFile();
       }
-      ,openMenu: function(e,file,index,ref) {
+      , openMenu: function(e,file,index,ref) {
 
         this.$root.isDisplayContext = 0;
 

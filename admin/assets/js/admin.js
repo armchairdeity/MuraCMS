@@ -730,6 +730,7 @@ function setFinders(e,config) {
         $("#alertDialog").dialog({
             resizable: !1,
             width: w,
+            minWidth: 712,
             open: function(e, t) {
                 var i = this;
                 MuraFileBrowser.config.height = 600, 
