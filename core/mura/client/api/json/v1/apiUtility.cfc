@@ -68,15 +68,18 @@ component extends="mura.cfobject" hint="This provides JSON/REST API functionalit
 			allowfieldselect=false
 		});
 
+
 		registerEntity('content',{
 			public=true,
 			fields="links,images,parentid,moduleid,path,contentid,contenthistid,changesetid,siteid,active,approved,title,menutitle,summary,tags,type,subtype,displayStart,displayStop,display,filename,url,assocurl,isNew,remoteid,remoteurl"
 		});
 
+		/* the fields get switch up in the bean allowQueryParams(); */
 		registerEntity('comment',{
 			public=true,
 			moduleid='00000000000000000000000000000000015',
-			fields="links,entered,isspam,flagcount,parentid,name,isapproved,kids,isdeleted,userid,subscribe,isnew,contentid,path,siteid,id,remoteid,contenthistid"
+			allowfieldselect=true,
+			fields="comments,links,entered,isspam,flagcount,parentid,name,isapproved,kids,isdeleted,userid,subscribe,isnew,contentid,path,siteid,id,remoteid,contenthistid"
 		});
 
 		registerEntity('user',{public=false,moduleid='00000000000000000000000000000000008'});

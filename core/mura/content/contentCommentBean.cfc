@@ -413,6 +413,14 @@ function getCommenter() output=false {
 
 	<cfset currentEventObject.init(eventArgs)>
 
+	<cfif allowModuleAccess()>
+		<cfif not exists()>
+			<cfset variables.instance.isapproved=1>
+		</cfif>
+	<cfelse>
+		<cfset variables.instance.isapproved=getBean('settingsManager').getSite(variables.instance.siteid).getCommentApprovalDefault()>
+	</cfif>
+
 	<cfif len(variables.instance.parentID)>
 		<cfset path=variables.contentManager.getCommentBean().setCommentID(variables.instance.parentID).load().getPath()>
 	</cfif>
@@ -709,23 +717,34 @@ To Unsubscribe Click Here:
 	<cfparam name="arguments.params.isdeleted" default=0>
 	<cfparam name="arguments.param.isapproved" default="0">
 	<cfif not allowModuleAccess()>
+		<cfset arguments.params.fields="comments,links,entered,isspam,flagcount,parentid,name,isapproved,kids,isdeleted,userid,subscribe,isnew,contentid,path,siteid,id,remoteid,contenthistid">
 		<cfset params.isspam=0>
 		<cfset params.isdeleted=0>
-		<cfset param.isapproved=0>
+		<cfset param.isapproved=1><!--- this get explicitly set in the save method --->
+	<cfelse>
+		<cfset arguments.params.fields="comments,email,links,entered,isspam,flagcount,parentid,name,isapproved,kids,isdeleted,userid,subscribe,isnew,contentid,path,siteid,id,remoteid,contenthistid">
 	</cfif>
 	<cfreturn true>
 </cffunction>
 
 <cffunction name="allowModuleAccess" output="false">
 	<cfset var sessionData=getSession()>
-	<cfreturn not request.muraapirequest or (
-			(not listFind(sessionData.mura.memberships,'Admin;#getBean('settingsManager').getSite(get('siteid')).getPrivateUserPoolID()#;0')
-			and not listFind(sessionData.mura.memberships,'S2'))
-			and not (
+	<cfreturn not request.muraapirequest or  (
+			(listFind(sessionData.mura.memberships,'Admin;#getBean('settingsManager').getSite(get('siteid')).getPrivateUserPoolID()#;0')
+			or listFind(sessionData.mura.memberships,'S2'))
+			or (
 				getBean('permUtility').getModulePerm('00000000000000000000000000000000015',get('siteid'))
 				and getBean('permUtility').getModulePerm('00000000000000000000000000000000000',get('siteid'))
 			)
 		)>
+</cffunction>
+
+<cffunction name="allowSave" output="false">
+	<cfif allowModuleAccess()>
+		<cfreturn true>
+	<cfelse>
+		<cfreturn not exists()>
+	</cfif>
 </cffunction>
 
 </cfcomponent>
