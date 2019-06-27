@@ -2076,18 +2076,12 @@ var Mura=(function(){
 
 				function() {
 
-					if (typeof openFrontEndToolsModal == 'function') {
-						find(".frontEndToolsModal").on('click',
-							function(event) {
-								event.preventDefault();
-								openFrontEndToolsModal(this);
-							}
-						);
+					if (Mura.handleObjectClick == 'function') {
+						find('.mura-object, .frontEndToolsModal').on('click',Mura.handleObjectClick);
 					}
 
-
-					if (typeof window !='undefined' && typeof window.document != 'undefined'	&& window.MuraInlineEditor && window.MuraInlineEditor
-							.checkforImageCroppers) {
+					if (typeof window !='undefined' && typeof window.document != 'undefined'	&& window.MuraInlineEditor
+							&& window.MuraInlineEditor.checkforImageCroppers) {
 							find("img").each(function() {
 									window.muraInlineEditor.checkforImageCroppers(
 											this);
@@ -2572,14 +2566,7 @@ var Mura=(function(){
 								obj.children('.frontEndToolsModal').remove();
 								obj.prepend(window.Mura.layoutmanagertoolbar);
 
-								var openToolbar=function(event){
-									event.preventDefault();
-									openFrontEndToolsModal(this);
-								};
-
-								obj.find(".frontEndToolsModal").each(function(){
-									Mura(this).off('click',openToolbar).on('click',openToolbar);
-								})
+								obj.off('click',Mura.handleObjectClick).on('click',Mura.handleObjectClick);
 
 								obj.find("img").each(function(){MuraInlineEditor.checkforImageCroppers(this);});
 
@@ -3303,7 +3290,6 @@ var Mura=(function(){
 
 		config.formdata=(typeof FormData != 'undefined') ? true : false;
 
-		Mura.editing;
 
 		var initForDataOnly=false;
 
@@ -20888,7 +20874,7 @@ Mura.templates['meta']=function(context){
 	}
 }
 Mura.templates['content']=function(context){
-	context.html=context.html || context.content || context.source || '';
+	context.html=context.html || context.content || context.source || '<p></p>';
 	return '<div class="mura-object-content">' + context.html + '</div>';
 }
 Mura.templates['text']=function(context){
@@ -20896,7 +20882,7 @@ Mura.templates['text']=function(context){
 	if(context.label){
 		context.source=context.source || '';
 	} else {
-		context.source=context.source || '';
+		context.source=context.source || '<p></p>';
 	}
 	return context.source;
 }
@@ -20905,7 +20891,7 @@ Mura.templates['embed']=function(context){
 	if(context.label){
 		context.source=context.source || '';
 	} else {
-		context.source=context.source || '';
+		context.source=context.source || '<p></p>';
 	}
 	return context.source;
 }

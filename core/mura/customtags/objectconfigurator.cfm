@@ -37,19 +37,9 @@
 		<cfparam name="request.haspositionoptions" default="false">
 		<cfparam name="attributes.params.isbodyobject" default="false">
 
-		<cfparam name="request.colorOptions" default="">
-		<cfif structKeyExists($.getContentRenderer(),'coloroptions')>
-			<cfset request.colorOptions = $.getContentRenderer().coloroptions>
-		<cfelseif structKeyExists($.getContentRenderer(),'colorArray')>
-			<cfset request.colorOptions = $.getContentRenderer().colorArray>
-		</cfif>
 
-		<cfparam name="request.modulethemeoptions" default="#arrayNew(1)#">
-		<cfif structKeyExists($.getContentRenderer(),'modulethemeoptions') and isArray($.getContentRenderer().modulethemeoptions)>
-			<cfset request.modulethemeoptions = $.getContentRenderer().modulethemeoptions>
-		<cfelseif structKeyExists($.getContentRenderer(),'modulethemeArray') and isArray($.getContentRenderer().modulethemeArray)>
-			<cfset request.modulethemeoptions = $.getContentRenderer().modulethemeArray>
-		</cfif>
+		<cfset request.colorOptions = $.getContentRenderer().getColorOptions()>
+		<cfset request.modulethemeoptions = $.getContentRenderer().getModuleThemeOptions()>
 
 		<cfset contentcontainerclass=esapiEncode("javascript",$.getContentRenderer().expandedContentContainerClass)>
 
@@ -223,7 +213,7 @@
 					$('#panel-gds-object').trigger('click');
 				} else {
 					$('.panel-gds-box[data-gdsel="' + visiblekids[0].id + '"]').trigger('click');
-				}				
+				}
 			}
 
 			// set panel state cookie
@@ -232,7 +222,7 @@
 				var newStates = [];
 
 				for (i in savedStates){
-					if (newStates.length <= 10){					
+					if (newStates.length <= 10){
 						var item = savedStates[i];
 						if (item[0] != instanceid){
 							newStates.push(item);
@@ -248,7 +238,7 @@
 				 	newStates.unshift(thisArr);
 				 	var str = JSON.stringify(newStates);
 				 	Mura.createCookie('mura_configpanelstate',encodeURIComponent(str));
-				
+
 				},500);
 			}
 
@@ -260,7 +250,7 @@
 					} else {
 						return cps;
 					}
-			}	
+			}
 
 			// apply open panels
 			function applyConfigPanelStates(){
@@ -906,7 +896,7 @@
 					$(this).parents('.mura-colorpicker').find('.mura-colorpicker-swatch').css('background-color','transparent');
 				}
 			})
-			
+
 			window.configuratorInited=true;
 		});
 	</script>

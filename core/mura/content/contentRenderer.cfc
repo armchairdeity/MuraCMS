@@ -2815,7 +2815,7 @@ Display Objects
 							(getBean('permUtility').getModulePerm("00000000000000000000000000000000000",variables.event.getValue('siteID')))
 							or listFind(sessionData.mura.memberships,'S2')
 						)
-					) 
+					)
 				) and getShowAdminToolBar()
 			) and not request.muraExportHTML />
 		</cfif>
@@ -3046,9 +3046,9 @@ Display Objects
 
 	<cfset var processedFilepath = this.getMinifiedFile(filepath=arguments.filepath, siteid=arguments.siteid) />
 	<cfset var attr = "" />
-	
+
 	<cfoutput>
-		<script src="#processedFilepath#" 
+		<script src="#processedFilepath#"
 			<cfloop collection="#arguments.attrs#" item=attr>
 				#attr#=#arguments.attrs[attr]#
 			</cfloop>
@@ -3065,7 +3065,7 @@ Display Objects
 	<cfset var attr = "" />
 
 	<cfoutput>
-		<link href="#processedFilepath#" 
+		<link href="#processedFilepath#"
 			<cfloop collection="#arguments.attrs#" item=attr>
 				#attr#=#arguments.attrs[attr]#
 			</cfloop>
@@ -3083,9 +3083,9 @@ Display Objects
 	<cfset var fileExtension = filenameArray[2] />
 	<cfset var minifiedFilepath = dir & "dist/" & "#filenameArray[1]#.min.#fileExtension#" />
 
-	<cfset var site = application.settingsManager.getSite(arguments.siteid)/> 
+	<cfset var site = application.settingsManager.getSite(arguments.siteid)/>
 	<cfset var cacheFactory = site.getCacheFactory(name="jsAndCssFileLookup")>
-	
+
 	<cfset var filepathArray = arguments.filepath.listToArray(".")/>
 
 	<cfset var processedFilepath = "" />
@@ -3275,6 +3275,27 @@ Display Objects
 
 		return returnString;
 	}
+
+	function getColorOptions(){
+		if(isdefined('this.colorArray') && isArray(this.colorArray)){
+			return this.colorArray;
+		} else if (isdefined('this.colorOptions') && isArray(this.colorOptions)){
+			return this.colorOptions;
+		} else {
+			return [];
+		}
+	}
+
+	function getModuleThemeOptions(){
+		if(isdefined('this.modulethemeArray') && isArray(this.modulethemeArray)){
+			return this.colorArray;
+		} else if (isdefined('this.modulethemeOptions') && isArray(this.modulethemeOptions)){
+			return this.modulethemeOptions;
+		} else {
+			return [];
+		}
+	}
+
 </cfscript>
 
 

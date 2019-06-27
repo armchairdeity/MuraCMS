@@ -357,6 +357,29 @@
 		return initFrontendUI(a,isnew);
 	};
 
+	var openToolbar=function(event){
+		if(!window.Mura.editing){
+			return;
+		}
+		var source = Mura(event.target || event.srcElement);
+		if(source.is('.frontEndToolsModal') ){
+			event.preventDefault();
+			event.stopPropagation();
+			openFrontEndToolsModal(this);
+		} else if(source.is('.mura-object') ){
+			event.preventDefault();
+			event.stopPropagation();
+			openFrontEndToolsModal(Mura(this).children('.frontEndToolsModal').node);
+		} else if (!source.is('a, button')) {
+			var parentObj=source.closest('.mura-object');
+			if(parentObj.length){
+				event.preventDefault();
+				event.stopPropagation();
+				openFrontEndToolsModal(parentObj.children('.frontEndToolsModal').node);
+			}
+		}
+	};
+
 	var initFrontendUI=function(a,isnew){
 		var src=a.href;
 		var editableObj=utility(a);
@@ -396,6 +419,12 @@
 				This reloads the element in the dom to ensure that all the latest
 				values are present
 			*/
+
+			if(typeof Mura.currentObjectInstanceID != 'undefined' && Mura.currentObjectInstanceID == editableObj.data('instanceid')){
+				return;
+			}
+
+			Mura.currentObjectInstanceID= editableObj.data('instanceid');
 
 			editableObj=Mura('[data-instanceid="' + editableObj.data('instanceid') + '"]');
 			editableObj.hide().show();
@@ -566,14 +595,14 @@
 			var appliedHeight = 0;
 
 
-			// mark: finding size of ckeditor in modal 
+			// mark: finding size of ckeditor in modal
 
 			var isEditText = framesrc.includes('cArch.edittext');
 			var isFullHeight = framesrc.includes('cArch.editLive') || framesrc.includes('cArch.edit');
 			var windowHeight = Math.max(frameHeight, utility(window).height());
 
 			utility('##frontEndToolsModalContainer ##frontEndToolsModalBody,##frontEndToolsModalContainer ##frontEndToolsModaliframe').width(frontEndModalWidth);
-			
+
 			if (isEditText){
 				appliedHeight = Math.min(760, utility(window).height()-96);
 			} else if(isFullHeight) {
@@ -763,9 +792,10 @@
 			if(typeof Mura != 'undefined'){
 				var sheet=Mura.getStyleSheet('mura-inline-editor');
 				sheet.insertRule(
-					'.mura-region-local,	.mura-region-inherited {	min-height: 15px;	}',
+					'.mura-region-local, .mura-region-inherited, .mura-object {	min-height: 24px;	}',
 					sheet.cssRules.length
 				);
+
 			}
 
 			utility(document)
@@ -1213,11 +1243,7 @@
 
 			<cfif $.getContentRenderer().useLayoutManager()>
 			if(window.Mura.layoutmanager){
-				var openToolbar=function(event){
-					event.preventDefault();
-					//console.log("fet:" + 1106)
-					openFrontEndToolsModal(this);
-				};
+
 
 				Mura("img").each(function(){MuraInlineEditor.checkforImageCroppers(this);});
 
@@ -1235,8 +1261,7 @@
 						item.children('.frontEndToolsModal').remove();
 						item.prepend(window.Mura.layoutmanagertoolbar );
 
-						item.find(".frontEndToolsModal")
-							.off("click",openToolbar)
+						item.off("click",openToolbar)
 							.on("click",openToolbar);
 
 
@@ -1257,8 +1282,7 @@
 									item.children('.frontEndToolsModal').remove();
 									item.prepend(window.Mura.layoutmanagertoolbar);
 
-									item.find(".frontEndToolsModal")
-										.off("click",openToolbar)
+									item.off("click",openToolbar)
 										.on("click",openToolbar);
 
 									item.find("img").each(function(){MuraInlineEditor.checkforImageCroppers(this);});
@@ -1281,8 +1305,7 @@
 									item.children('.frontEndToolsModal').remove();
 									item.prepend(window.Mura.layoutmanagertoolbar);
 
-									item.find(".frontEndToolsModal")
-										.off("click",openToolbar)
+									item.off("click",openToolbar)
 										.on("click",openToolbar);
 
 									item.find("img").each(function(){MuraInlineEditor.checkforImageCroppers(this);});
@@ -1303,8 +1326,7 @@
 					item.addClass("mura-active");
 					item.children('.frontEndToolsModal').remove();
 					item.prepend(window.Mura.layoutmanagertoolbar);
-					item.find(".frontEndToolsModal")
-						.off("click",openToolbar)
+					item.off("click",openToolbar)
 						.on("click",openToolbar);
 				});
 
@@ -2346,7 +2368,7 @@
 	window.openFrontEndToolsModal=openFrontEndToolsModal;
 	window.themepath=window.themepath || Mura.themepath;
 	window.muraInlineEditor=window.MuraInlineEditor;
-
+	Mura.handleObjectClick=openToolbar;
 	Mura.initFrontendUI=initFrontendUI;
 
 	<cfif url.contenttype eq 'Variation'>
