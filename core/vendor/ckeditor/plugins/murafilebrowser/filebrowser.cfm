@@ -36,13 +36,12 @@
 	</cfoutput>
 </head>
 <body class="mura-admin MuraFileBrowserWindow">
-<main id="main-container" class="block-constrain">
 	<div class="content">
-		<div id="mura-content">
-	  	<div id="MuraFileBrowserContainer"></div>
+		<div class="mura-header">
+		<h1>File Browser</h1>
 		</div>
+		<div id="MuraFileBrowserContainer"></div>
 	</div>
-</main>
 </body>
 <cfoutput>
 <script>

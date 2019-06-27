@@ -1227,7 +1227,10 @@ config: {
         this.$root.isDisplayContext = 0;
 
         // listmode
-        var parentLeft = Math.floor(document.getElementById('alertDialog').getBoundingClientRect().left); 
+        var parentLeft = 0;
+        if (document.getElementById('alertDialog')){
+          parentLeft = Math.floor(document.getElementById('alertDialog').getBoundingClientRect().left); 
+        } 
         var left = Math.floor(document.getElementById('fileitem-'+index).getBoundingClientRect().left) - parentLeft - 33;
         var top =  Math.floor(document.getElementById('fileitem-'+index).getBoundingClientRect().top) - 10;
 
@@ -1320,7 +1323,11 @@ config: {
       ,openMenu: function(e,file,index) {
 
         // gridmode
-        var parentLeft = Math.floor(document.getElementById('alertDialog').getBoundingClientRect().left); 
+        var parentLeft = 0;
+        if (document.getElementById('alertDialog')){
+          parentLeft = Math.floor(document.getElementById('alertDialog').getBoundingClientRect().left); 
+        } 
+
         this.menux = Math.floor(document.getElementById('fileitem-'+index).getBoundingClientRect().left) - 28 - parentLeft;
         this.menuy =  Math.floor(document.getElementById('fileitem-'+index).getBoundingClientRect().top);
  

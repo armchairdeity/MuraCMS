@@ -1,3 +1,14 @@
+/* styling body for 'browse server' browser window */
+body.MuraFileBrowserWindow{
+  background-color: #fff;
+}
+/* also see jquery-ui-override where breadcrumb is styled for ui-dialog */
+body.MuraFileBrowserWindow .mura-header ul.breadcrumb{
+  background-color: #FAFAFA;
+  border-radius: 0;
+  border: 1px solid #eaeaea;
+  padding: 4px 12px;
+}
 #spinner {
   position: absolute;
   z-index: 10000;
