@@ -1791,23 +1791,6 @@ Display Objects
 					</cfcase>
 				</cfswitch>
 			<cfelse>
-				<!---
-					Render crumblist and title if required which is beind phazed out
-					infavor of handling that within a content_type include
-				--->
-				 <cfoutput>
-				 	<cfif structKeyExists(arguments,'titleAttribute')>
-				 		<#getHeaderTag('headline')# class="pageTitle">#renderEditableAttribute(attribute=arguments.titleAttribute,required=true)#</#getHeaderTag('headline')#>
-					<cfelseif arguments.pageTitle neq ''>
-						<#getHeaderTag('headline')# class="pageTitle"><cfif arguments.pageTitle eq $.content('title')>#renderEditableAttribute(attribute='title',required=true)#<cfelse>#arguments.pageTitle#</cfif></#getHeaderTag('headline')#>
-					</cfif>
-					<cfif arguments.crumblist>
-						#dspCrumbListLinks("crumblist",arguments.crumbseparator)#
-					</cfif>
-					<cfif $.hasParent() and $.getParent().getType() eq 'Calendar' and len(arguments.displayIntervalDesc)>
-						<p<cfif len(arguments.displayIntervalClass)> class="#arguments.displayIntervalClass#"</cfif>>#arguments.displayIntervalDesc#</p>
-					</cfif>
-				</cfoutput>
 
 				<!---
 					Look for custom overrides via events or content types includes.  Preferred for future development
@@ -1826,6 +1809,25 @@ Display Objects
 					wth content_type includes for all base content types. So this will eventually be phased out
 				 --->
 				<cfelse>
+
+					<!---
+						Render crumblist and title if required which is beind phazed out
+						infavor of handling that within a content_type include
+					--->
+					 <cfoutput>
+						<cfif structKeyExists(arguments,'titleAttribute')>
+							<#getHeaderTag('headline')# class="pageTitle">#renderEditableAttribute(attribute=arguments.titleAttribute,required=true)#</#getHeaderTag('headline')#>
+						<cfelseif arguments.pageTitle neq ''>
+							<#getHeaderTag('headline')# class="pageTitle"><cfif arguments.pageTitle eq $.content('title')>#renderEditableAttribute(attribute='title',required=true)#<cfelse>#arguments.pageTitle#</cfif></#getHeaderTag('headline')#>
+						</cfif>
+						<cfif arguments.crumblist>
+							#dspCrumbListLinks("crumblist",arguments.crumbseparator)#
+						</cfif>
+						<cfif $.hasParent() and $.getParent().getType() eq 'Calendar' and len(arguments.displayIntervalDesc)>
+							<p<cfif len(arguments.displayIntervalClass)> class="#arguments.displayIntervalClass#"</cfif>>#arguments.displayIntervalDesc#</p>
+						</cfif>
+					</cfoutput>
+
 					<cfswitch expression="#$.content('type')#">
 					<cfcase value="File">
 						<cfif variables.event.getValue('contentBean').getContentType() eq "Image"

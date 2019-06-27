@@ -362,6 +362,7 @@
 			return;
 		}
 		var source = Mura(event.target || event.srcElement);
+
 		if(source.is('.frontEndToolsModal') ){
 			event.preventDefault();
 			event.stopPropagation();
@@ -369,8 +370,8 @@
 		} else if(source.is('.mura-object') ){
 			event.preventDefault();
 			event.stopPropagation();
-			openFrontEndToolsModal(Mura(this).children('.frontEndToolsModal').node);
-		} else if (!source.is('a, button')) {
+			openFrontEndToolsModal(source.node);
+		} else if (!source.is('a, button, input, select, textarea')) {
 			var parentObj=source.closest('.mura-object');
 			if(parentObj.length){
 				event.preventDefault();
@@ -386,32 +387,31 @@
 		var targetFrame='modal';
 
 		//This is an advance look at the protential configurable object to see if it's a non-configurable component for form
-		if(utility(a).hasClass("mura-object")){
-			var tempCheck=utility(a);
-		} else {
-			var tempCheck=utility(a).closest(".mura-object,.mura-async-object");
-		}
-
-		var lcaseObject=tempCheck.data('object');
-		if(typeof lcaseObject=='string'){
-			lcaseObject=lcaseObject.toLowerCase();
-		}
-
-		//If the it's a form of component that's not configurable then go straight to edit it
-		if((lcaseObject=='form' || lcaseObject=='component') && tempCheck.data('notconfigurable')){
-			if(Mura.isUUID(tempCheck.data('objectid'))){
-					src=adminLoc + '?muraAction=cArch.editLive&compactDisplay=true&contentid=' + encodeURIComponent(tempCheck.data('objectid')) + '&type='+ encodeURIComponent(tempCheck.data('object')) + '&siteid='+  Mura.siteid + '&instanceid=' + encodeURIComponent(tempCheck.data('instanceid'));
+		if(!src)
+			if(editableObj.hasClass("mura-object")){
+				var editableObj=editableObj;
 			} else {
-					src=adminLoc + '?muraAction=cArch.editLive&compactDisplay=true&title=' + encodeURIComponent(tempCheck.data('objectid')) + '&type='+ encodeURIComponent(tempCheck.data('object')) + '&siteid=' + Mura.siteid + '&instanceid=' + encodeURIComponent(tempCheck.data('instanceid'));
+				var editableObj=editableObj.closest(".mura-object,.mura-async-object");
 			}
 
-		}
+			var lcaseObject=editableObj.data('object');
+			if(typeof lcaseObject=='string'){
+				lcaseObject=lcaseObject.toLowerCase();
+			}
+
+			//If the it's a form of component that's not configurable then go straight to edit it
+			if((lcaseObject=='form' || lcaseObject=='component') && editableObj.data('notconfigurable')){
+				if(Mura.isUUID(editableObj.data('objectid'))){
+						src=adminLoc + '?muraAction=cArch.editLive&compactDisplay=true&contentid=' + encodeURIComponent(editableObj.data('objectid')) + '&type='+ encodeURIComponent(editableObj.data('object')) + '&siteid='+  Mura.siteid + '&instanceid=' + encodeURIComponent(editableObj.data('instanceid'));
+				} else {
+						src=adminLoc + '?muraAction=cArch.editLive&compactDisplay=true&title=' + encodeURIComponent(editableObj.data('objectid')) + '&type='+ encodeURIComponent(editableObj.data('object')) + '&siteid=' + Mura.siteid + '&instanceid=' + encodeURIComponent(editableObj.data('instanceid'));
+				}
+
+			}
 
 		//If there's no direct src to goto then we're going to assume it's a display object configurator
 		if(!src){
-			if(utility(a).hasClass("mura-object")){
-			var editableObj=utility(a);
-			} else {
+			if(editableObj.hasClass("mura-object")){
 				var editableObj=utility(a).closest(".mura-object,.mura-async-object");
 			}
 
@@ -460,6 +460,7 @@
 		}
 
 		if(targetFrame=='modal'){
+			editableObj=Mura(a);
 			var isModal=editableObj.attr("data-configurator");
 
 			//These are for the preview iframes
@@ -2276,7 +2277,9 @@
 		   return false;
 		},
 		sidebarAction:function(action){
+
 			if(action=='showobjects'){
+				Mura.currentObjectInstanceID='';
 				MuraInlineEditor.resetEditableAttributes();
 				Mura('.mura-object-selected').removeClass('mura-object-selected');
 				Mura('#mura-sidebar-configurator').hide();
@@ -2284,6 +2287,7 @@
 				Mura('#mura-sidebar-objects').show();
 				Mura('#mura-sidebar-editor').hide();
 			} else if(action=='showlegacyobjects'){
+				Mura.currentObjectInstanceID='';
 				MuraInlineEditor.resetEditableAttributes();
 				Mura('.mura-object-selected').removeClass('mura-object-selected');
 				Mura('#mura-sidebar-configurator').hide();
@@ -2297,16 +2301,19 @@
 				Mura('#mura-sidebar-objects').hide();
 				Mura('#mura-sidebar-editor').hide();
 			} else if(action=='showeditor'){
+				Mura.currentObjectInstanceID='';
 				Mura('.mura-object-selected').removeClass('mura-object-selected');
 				Mura('#mura-sidebar-configurator').hide();
 				Mura('#mura-sidebar-objects-legacy').hide();
 				Mura('#mura-sidebar-objects').hide();
 				Mura('#mura-sidebar-editor').show();
 			} else if(action=='minimizesidebar'){
+				Mura.currentObjectInstanceID='';
 				Mura('#mura-sidebar-container').fadeOut();
 				Mura('body').removeClass('mura-sidebar-state__pushed--right')
 				Mura('.mura-object').removeClass('mura-active').addClass("mura-active-min");
 			} else if(action=='restoresidebar'){
+				Mura.currentObjectInstanceID='';
 				Mura('#mura-sidebar-container').fadeIn();
 				Mura('body').addClass('mura-sidebar-state__pushed--right');
 				Mura('.mura-object').removeClass('mura-active-min').addClass("mura-active");
