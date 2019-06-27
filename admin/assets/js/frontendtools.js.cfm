@@ -2277,7 +2277,9 @@
 		   return false;
 		},
 		sidebarAction:function(action){
+
 			if(action=='showobjects'){
+				Mura.currentObjectInstanceID='';
 				MuraInlineEditor.resetEditableAttributes();
 				Mura('.mura-object-selected').removeClass('mura-object-selected');
 				Mura('#mura-sidebar-configurator').hide();
@@ -2285,6 +2287,7 @@
 				Mura('#mura-sidebar-objects').show();
 				Mura('#mura-sidebar-editor').hide();
 			} else if(action=='showlegacyobjects'){
+				Mura.currentObjectInstanceID='';
 				MuraInlineEditor.resetEditableAttributes();
 				Mura('.mura-object-selected').removeClass('mura-object-selected');
 				Mura('#mura-sidebar-configurator').hide();
@@ -2298,16 +2301,19 @@
 				Mura('#mura-sidebar-objects').hide();
 				Mura('#mura-sidebar-editor').hide();
 			} else if(action=='showeditor'){
+				Mura.currentObjectInstanceID='';
 				Mura('.mura-object-selected').removeClass('mura-object-selected');
 				Mura('#mura-sidebar-configurator').hide();
 				Mura('#mura-sidebar-objects-legacy').hide();
 				Mura('#mura-sidebar-objects').hide();
 				Mura('#mura-sidebar-editor').show();
 			} else if(action=='minimizesidebar'){
+				Mura.currentObjectInstanceID='';
 				Mura('#mura-sidebar-container').fadeOut();
 				Mura('body').removeClass('mura-sidebar-state__pushed--right')
 				Mura('.mura-object').removeClass('mura-active').addClass("mura-active-min");
 			} else if(action=='restoresidebar'){
+				Mura.currentObjectInstanceID='';
 				Mura('#mura-sidebar-container').fadeIn();
 				Mura('body').addClass('mura-sidebar-state__pushed--right');
 				Mura('.mura-object').removeClass('mura-active-min').addClass("mura-active");
