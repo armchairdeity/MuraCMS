@@ -371,7 +371,7 @@
 			event.preventDefault();
 			event.stopPropagation();
 			openFrontEndToolsModal(source.node);
-		} else if (!source.is('a, button')) {
+		} else if (!source.is('a, button, input, select, textarea')) {
 			var parentObj=source.closest('.mura-object');
 			if(parentObj.length){
 				event.preventDefault();
