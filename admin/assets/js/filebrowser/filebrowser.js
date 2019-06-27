@@ -501,7 +501,6 @@ config: {
       compstyle: function() {
         this.posx = this.menux;
         this.posy = this.menuy;
-
         return ;
       }
       , getTop: function() {
@@ -1227,8 +1226,9 @@ config: {
 
         this.$root.isDisplayContext = 0;
 
-        var left = Math.floor(document.getElementById('fileitem-'+index).getBoundingClientRect().left) - 26;
-        var top =  Math.floor(document.getElementById('fileitem-'+index).getBoundingClientRect().top) + window.scrollX;
+        var parentLeft = Math.floor(document.getElementById('mura-filewindow-wrapper').getBoundingClientRect().left); 
+        var left = Math.floor(document.getElementById('fileitem-'+index).getBoundingClientRect().left) - parentLeft - 33;
+        var top =  Math.floor(document.getElementById('fileitem-'+index).getBoundingClientRect().top) + window.scrollX - 79;
 
         this.$nextTick(function () {
           this.$root.isDisplayContext = 1;
@@ -1240,7 +1240,6 @@ config: {
         this.$root.currentIndex = index;
         this.menux = left;
         this.menuy = top;
-
         e.preventDefault();
       }
     }
@@ -1315,8 +1314,13 @@ config: {
         this.$root.back( );
       }
       ,openMenu: function(e,file,index) {
-        this.menux = Math.floor(document.getElementById('fileitem-'+index).getBoundingClientRect().left)+5;
+        
+        var parentLeft = Math.floor(document.getElementById('mura-filewindow-wrapper').getBoundingClientRect().left); 
+        this.menux = Math.floor(document.getElementById('fileitem-'+index).getBoundingClientRect().left) - parentLeft;
         this.menuy =  Math.floor(document.getElementById('fileitem-'+index).getBoundingClientRect().top)+10 + window.scrollX;
+ 
+        console.log('parentLeft: ' + parentLeft);
+        console.log('this.menux: ' + this.menux);
 
         this.$root.currentFile = file;
         this.$root.currentIndex = index;
@@ -1341,7 +1345,7 @@ config: {
   Vue.component('filewindow', {
     props: ['files','folders','foldertree','isDisplayContext','currentFile','settings','displaymode'],
     template: `
-      <div class="filewindow-wrapper">
+      <div class="filewindow-wrapper" id="mura-filewindow-wrapper">
         <gridmode v-if="displaymode==1" :currentFile="currentFile"   :foldertree="foldertree" :files="files" :folders="folders" :isDisplayContext="isDisplayContext"></gridmode>
         <listmode  v-if="displaymode==2" :settings="settings" :currentFile="currentFile" :foldertree="foldertree" :files="files" :folders="folders" :isDisplayContext="isDisplayContext"></listmode>
       </div>`,
