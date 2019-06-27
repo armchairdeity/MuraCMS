@@ -347,7 +347,6 @@ function setDatePickers(e, t, i) {
 function setColorPickers(e) {
 		var colorSelectors= {};
 		var hasColors=false;
-		console.log(themeColorOptions)
 		if(Array.isArray(themeColorOptions) && themeColorOptions.length){
 			for(var c=0;c<themeColorOptions.length;c++){
 				if(typeof themeColorOptions[c].value != 'undefined'){
@@ -358,7 +357,6 @@ function setColorPickers(e) {
 			}
 			hasColors=true;
 		}
-		console.log(colorSelectors)
     $(e).each(function(e) {
 				if(hasColors){
 					$(this).colorpicker({
