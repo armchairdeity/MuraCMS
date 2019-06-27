@@ -2,6 +2,7 @@
 body.MuraFileBrowserWindow{
   background-color: #fff;
 }
+
 /* also see jquery-ui-override where breadcrumb is styled for ui-dialog */
 body.MuraFileBrowserWindow .mura-header ul.breadcrumb{
   background-color: #FAFAFA;
@@ -9,6 +10,7 @@ body.MuraFileBrowserWindow .mura-header ul.breadcrumb{
   border: 1px solid #eaeaea;
   padding: 4px 12px;
 }
+
 #spinner {
   position: absolute;
   z-index: 10000;
@@ -402,7 +404,7 @@ input.filebrowser-filter {
   top: 0;
   background-color: rgba(0, 0, 0, 0.8);
 }
-
+ 
 .fileviewer-gallery {
   display: block;
   width: 70%;

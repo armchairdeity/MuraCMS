@@ -1227,12 +1227,15 @@ config: {
         this.$root.isDisplayContext = 0;
 
         // listmode
-        var parentLeft = 0;
+        var offsetLeft = 33;
+        var offsetTop = 10;
         if (document.getElementById('alertDialog')){
-          parentLeft = Math.floor(document.getElementById('alertDialog').getBoundingClientRect().left); 
+          offsetLeft += Math.floor(document.getElementById('alertDialog').getBoundingClientRect().left); 
+          offsetTop += Math.floor(document.getElementById('alertDialog').getBoundingClientRect().top); 
         } 
-        var left = Math.floor(document.getElementById('fileitem-'+index).getBoundingClientRect().left) - parentLeft - 33;
-        var top =  Math.floor(document.getElementById('fileitem-'+index).getBoundingClientRect().top) - 10;
+
+        var left = Math.floor(document.getElementById('fileitem-'+index).getBoundingClientRect().left) - offsetLeft;
+        var top =  Math.floor(document.getElementById('fileitem-'+index).getBoundingClientRect().top) - offsetTop;
 
         this.$nextTick(function () {
           this.$root.isDisplayContext = 1;
@@ -1323,12 +1326,12 @@ config: {
       ,openMenu: function(e,file,index) {
 
         // gridmode
-        var parentLeft = 0;
+        var offsetLeft = 0;
         if (document.getElementById('alertDialog')){
-          parentLeft = Math.floor(document.getElementById('alertDialog').getBoundingClientRect().left); 
+          offsetLeft = Math.floor(document.getElementById('alertDialog').getBoundingClientRect().left); 
         } 
 
-        this.menux = Math.floor(document.getElementById('fileitem-'+index).getBoundingClientRect().left) - 28 - parentLeft;
+        this.menux = Math.floor(document.getElementById('fileitem-'+index).getBoundingClientRect().left) - 28 - offsetLeft;
         this.menuy =  Math.floor(document.getElementById('fileitem-'+index).getBoundingClientRect().top);
  
         this.$root.currentFile = file;
