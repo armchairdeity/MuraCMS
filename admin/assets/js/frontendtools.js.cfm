@@ -387,26 +387,27 @@
 		var targetFrame='modal';
 
 		//This is an advance look at the protential configurable object to see if it's a non-configurable component for form
-		if(editableObj.hasClass("mura-object")){
-			var editableObj=editableObj;
-		} else {
-			var editableObj=editableObj.closest(".mura-object,.mura-async-object");
-		}
-		
-		var lcaseObject=editableObj.data('object');
-		if(typeof lcaseObject=='string'){
-			lcaseObject=lcaseObject.toLowerCase();
-		}
-
-		//If the it's a form of component that's not configurable then go straight to edit it
-		if((lcaseObject=='form' || lcaseObject=='component') && editableObj.data('notconfigurable')){
-			if(Mura.isUUID(editableObj.data('objectid'))){
-					src=adminLoc + '?muraAction=cArch.editLive&compactDisplay=true&contentid=' + encodeURIComponent(editableObj.data('objectid')) + '&type='+ encodeURIComponent(editableObj.data('object')) + '&siteid='+  Mura.siteid + '&instanceid=' + encodeURIComponent(editableObj.data('instanceid'));
+		if(!src)
+			if(editableObj.hasClass("mura-object")){
+				var editableObj=editableObj;
 			} else {
-					src=adminLoc + '?muraAction=cArch.editLive&compactDisplay=true&title=' + encodeURIComponent(editableObj.data('objectid')) + '&type='+ encodeURIComponent(editableObj.data('object')) + '&siteid=' + Mura.siteid + '&instanceid=' + encodeURIComponent(editableObj.data('instanceid'));
+				var editableObj=editableObj.closest(".mura-object,.mura-async-object");
 			}
 
-		}
+			var lcaseObject=editableObj.data('object');
+			if(typeof lcaseObject=='string'){
+				lcaseObject=lcaseObject.toLowerCase();
+			}
+
+			//If the it's a form of component that's not configurable then go straight to edit it
+			if((lcaseObject=='form' || lcaseObject=='component') && editableObj.data('notconfigurable')){
+				if(Mura.isUUID(editableObj.data('objectid'))){
+						src=adminLoc + '?muraAction=cArch.editLive&compactDisplay=true&contentid=' + encodeURIComponent(editableObj.data('objectid')) + '&type='+ encodeURIComponent(editableObj.data('object')) + '&siteid='+  Mura.siteid + '&instanceid=' + encodeURIComponent(editableObj.data('instanceid'));
+				} else {
+						src=adminLoc + '?muraAction=cArch.editLive&compactDisplay=true&title=' + encodeURIComponent(editableObj.data('objectid')) + '&type='+ encodeURIComponent(editableObj.data('object')) + '&siteid=' + Mura.siteid + '&instanceid=' + encodeURIComponent(editableObj.data('instanceid'));
+				}
+
+			}
 
 		//If there's no direct src to goto then we're going to assume it's a display object configurator
 		if(!src){
@@ -459,6 +460,7 @@
 		}
 
 		if(targetFrame=='modal'){
+			editableObj=Mura(a);
 			var isModal=editableObj.attr("data-configurator");
 
 			//These are for the preview iframes
