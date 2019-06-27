@@ -595,14 +595,14 @@
 			var appliedHeight = 0;
 
 
-			// mark: finding size of ckeditor in modal 
+			// mark: finding size of ckeditor in modal
 
 			var isEditText = framesrc.includes('cArch.edittext');
 			var isFullHeight = framesrc.includes('cArch.editLive') || framesrc.includes('cArch.edit');
 			var windowHeight = Math.max(frameHeight, utility(window).height());
 
 			utility('##frontEndToolsModalContainer ##frontEndToolsModalBody,##frontEndToolsModalContainer ##frontEndToolsModaliframe').width(frontEndModalWidth);
-			
+
 			if (isEditText){
 				appliedHeight = Math.min(760, utility(window).height()-96);
 			} else if(isFullHeight) {
@@ -792,9 +792,10 @@
 			if(typeof Mura != 'undefined'){
 				var sheet=Mura.getStyleSheet('mura-inline-editor');
 				sheet.insertRule(
-					'.mura-region-local,	.mura-region-inherited {	min-height: 15px;	}',
+					'.mura-region-local, .mura-region-inherited, .mura-object {	min-height: 15px;	}',
 					sheet.cssRules.length
 				);
+
 			}
 
 			utility(document)
