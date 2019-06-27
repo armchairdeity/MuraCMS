@@ -1226,9 +1226,10 @@ config: {
 
         this.$root.isDisplayContext = 0;
 
-        var parentLeft = Math.floor(document.getElementById('mura-filewindow-wrapper').getBoundingClientRect().left); 
+        // listmode
+        var parentLeft = Math.floor(document.getElementById('alertDialog').getBoundingClientRect().left); 
         var left = Math.floor(document.getElementById('fileitem-'+index).getBoundingClientRect().left) - parentLeft - 33;
-        var top =  Math.floor(document.getElementById('fileitem-'+index).getBoundingClientRect().top) + window.scrollX - 79;
+        var top =  Math.floor(document.getElementById('fileitem-'+index).getBoundingClientRect().top) - 10;
 
         this.$nextTick(function () {
           this.$root.isDisplayContext = 1;
@@ -1260,8 +1261,8 @@ config: {
           </div>
         </div>
         <div v-for="(file,index) in files">
-          <div class="fileviewer-item"  :id="'fileitem-'+index"  v-if="parseInt(file.isfile)" @click="openMenu($event,file,index)">
-            <div class="fileviewer-item-image">
+          <div class="fileviewer-item" v-if="parseInt(file.isfile)">
+            <div class="fileviewer-item-image" @click="openMenu($event,file,index)">
               <div v-if="0" class="fileviewer-item-icon" :class="['fileviewer-item-icon-' + file.type]"></div>
               <div v-else class="fileviewer-item-icon" :style="{ 'background-image': 'url(' + encodeURI(file.url) + ')' }"></div>
             </div>
@@ -1273,6 +1274,9 @@ config: {
                 <div v-if="parseInt(file.isfile)" class="fileviewer-item-meta-size">
                   {{file.size}}kb
                 </div>
+              </div>
+              <div class="fileviewer-item-actions">
+                <a href="#" :id="'fileitem-'+index" class="show-actions" @click="openMenu($event,file,index)"><i class="mi-ellipsis-v"></i></a>
               </div>
             </div>
           </div>
@@ -1314,19 +1318,16 @@ config: {
         this.$root.back( );
       }
       ,openMenu: function(e,file,index) {
-        
-        var parentLeft = Math.floor(document.getElementById('mura-filewindow-wrapper').getBoundingClientRect().left); 
-        this.menux = Math.floor(document.getElementById('fileitem-'+index).getBoundingClientRect().left) - parentLeft;
-        this.menuy =  Math.floor(document.getElementById('fileitem-'+index).getBoundingClientRect().top)+10 + window.scrollX;
- 
-        console.log('parentLeft: ' + parentLeft);
-        console.log('this.menux: ' + this.menux);
 
+        // gridmode
+        var parentLeft = Math.floor(document.getElementById('alertDialog').getBoundingClientRect().left); 
+        this.menux = Math.floor(document.getElementById('fileitem-'+index).getBoundingClientRect().left) - 28 - parentLeft;
+        this.menuy =  Math.floor(document.getElementById('fileitem-'+index).getBoundingClientRect().top);
+ 
         this.$root.currentFile = file;
         this.$root.currentIndex = index;
 
         this.$root.isDisplayContext = 0;
-
 
         this.$nextTick(function () {
           this.$root.isDisplayContext = 1;
@@ -1339,6 +1340,7 @@ config: {
 
         e.preventDefault();
       }
+
     }
   });
 

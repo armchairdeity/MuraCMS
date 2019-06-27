@@ -349,8 +349,27 @@ input.filebrowser-filter {
 }
 
 .fileviewer-item-meta-details {
+  bottom: 10px;
+  position: absolute;
+  right: 20px;
+}
+
+.fileviewer-item-actions{
   position: absolute;
   bottom: 10px;
+  font-size: 18px;
+  left: 10px;
+  line-height: 18px;
+}
+
+.fileviewer-item-actions a.show-actions{
+  color: #949494 !important;
+  cursor: pointer;
+  display: inline-block;
+  float: left;
+  margin-left: 0;
+  text-align: left;
+  width: 40px;
 }
 
 .image {
