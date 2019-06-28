@@ -266,7 +266,9 @@
 					}
 					var perm=item.data('perm');
 					Mura.resetAsyncObject(item.node,false);
-					item.data('perm',perm);
+					if(perm){
+						item.data('perm',perm);
+					}
 
 					item.addClass('mura-active');
 					Mura.processAsyncObject(item.node,false).then(function(){
