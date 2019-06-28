@@ -347,7 +347,7 @@ function setDatePickers(e, t, i) {
 function setColorPickers(e) {
 		var colorSelectors= {};
 		var hasColors=false;
-		if(Array.isArray(themeColorOptions) && themeColorOptions.length){
+		if(typeof themeColorOptions != 'undefined' && Array.isArray(themeColorOptions) && themeColorOptions.length){
 			for(var c=0;c<themeColorOptions.length;c++){
 				if(typeof themeColorOptions[c].value != 'undefined'){
 					colorSelectors[themeColorOptions[c].value]=themeColorOptions[c].value;
