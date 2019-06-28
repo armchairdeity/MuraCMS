@@ -405,6 +405,8 @@
 
 			//If the it's a form of component that's not configurable then go straight to edit it
 			if((lcaseObject=='form' || lcaseObject=='component') && editableObj.data('notconfigurable')){
+				MuraInlineEditor.sidebarAction('showobjects');
+
 				if(Mura.isUUID(editableObj.data('objectid'))){
 						src=adminLoc + '?muraAction=cArch.editLive&compactDisplay=true&contentid=' + encodeURIComponent(editableObj.data('objectid')) + '&type='+ encodeURIComponent(editableObj.data('object')) + '&siteid='+  Mura.siteid + '&instanceid=' + encodeURIComponent(editableObj.data('instanceid'));
 				} else {
