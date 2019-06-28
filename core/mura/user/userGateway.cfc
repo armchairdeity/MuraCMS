@@ -111,10 +111,12 @@
 			'#variables.settingsManager.getSite(arguments.siteid).getPublicUserPoolID()#'
 			</cfif>
 
+		<!---
 		<cfif arguments.search eq ''>
 			and 0=1
 		</cfif>
-
+		--->
+		
 		 and (
 		 		tusers.lname like <cfqueryparam cfsqltype="cf_sql_varchar" value="%#arguments.search#%">
 		 		or tusers.fname like <cfqueryparam cfsqltype="cf_sql_varchar" value="%#arguments.search#%">
